@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="KGk-i7-Jjw" customClass="ConversationTableViewCell" customModule="ChatApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="398" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="398" height="108"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-04-kSA">
+                        <rect key="frame" x="0.0" y="5" width="398" height="98"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlE-K3-lUf">
+                                <rect key="frame" x="85" y="5" width="308" height="88"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngô Quốc Dũng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23i-h9-dGe">
+                                        <rect key="frame" x="0.0" y="0.0" width="308" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="SDZ-Cp-uFo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="what's up anh chai nay có gì mới hông" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6X-QM-Rqx">
+                                        <rect key="frame" x="0.0" y="53" width="308" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="Rs3-Bn-dmJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGray2Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="m6X-QM-Rqx" secondAttribute="trailing" id="08J-ab-Ze2"/>
+                                    <constraint firstItem="23i-h9-dGe" firstAttribute="top" secondItem="vlE-K3-lUf" secondAttribute="top" id="42T-O5-qOw"/>
+                                    <constraint firstAttribute="bottom" secondItem="m6X-QM-Rqx" secondAttribute="bottom" id="LV3-pF-HZs"/>
+                                    <constraint firstItem="m6X-QM-Rqx" firstAttribute="leading" secondItem="vlE-K3-lUf" secondAttribute="leading" id="WhS-2a-bBD"/>
+                                    <constraint firstAttribute="trailing" secondItem="23i-h9-dGe" secondAttribute="trailing" id="iiM-GD-nPV"/>
+                                    <constraint firstItem="23i-h9-dGe" firstAttribute="leading" secondItem="vlE-K3-lUf" secondAttribute="leading" id="yYZ-iN-co9"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_dung" translatesAutoresizingMaskIntoConstraints="NO" id="hhq-YK-GOS">
+                                <rect key="frame" x="20" y="19" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="3K6-q1-1sD"/>
+                                    <constraint firstAttribute="height" constant="60" id="4yw-Bd-4EV"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.083858977299999998" green="0.84007617030000004" blue="1" alpha="0.3280823377" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="vlE-K3-lUf" firstAttribute="leading" secondItem="hhq-YK-GOS" secondAttribute="trailing" constant="5" id="8YC-II-kfP"/>
+                            <constraint firstAttribute="trailing" secondItem="vlE-K3-lUf" secondAttribute="trailing" constant="5" id="9kM-8V-b6d"/>
+                            <constraint firstItem="vlE-K3-lUf" firstAttribute="top" secondItem="bpc-04-kSA" secondAttribute="top" constant="5" id="HSR-0x-bGp"/>
+                            <constraint firstAttribute="bottom" secondItem="vlE-K3-lUf" secondAttribute="bottom" constant="5" id="KVP-H1-YKg"/>
+                            <constraint firstItem="hhq-YK-GOS" firstAttribute="leading" secondItem="bpc-04-kSA" secondAttribute="leading" constant="20" id="TUg-O1-r9p"/>
+                            <constraint firstItem="hhq-YK-GOS" firstAttribute="centerY" secondItem="bpc-04-kSA" secondAttribute="centerY" id="WJg-0e-fzx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bpc-04-kSA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0Mz-7C-muh"/>
+                    <constraint firstAttribute="trailing" secondItem="bpc-04-kSA" secondAttribute="trailing" id="Y0s-mk-Qvu"/>
+                    <constraint firstAttribute="bottom" secondItem="bpc-04-kSA" secondAttribute="bottom" constant="5" id="peL-A5-5l4"/>
+                    <constraint firstItem="bpc-04-kSA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="pz3-3c-2k6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatarImage" destination="hhq-YK-GOS" id="uo9-B3-8ms"/>
+                <outlet property="conversationView" destination="bpc-04-kSA" id="KfV-FO-thX"/>
+            </connections>
+            <point key="canvasLocation" x="75.362318840579718" y="117.1875"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="avatar_dung" width="316" height="316"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

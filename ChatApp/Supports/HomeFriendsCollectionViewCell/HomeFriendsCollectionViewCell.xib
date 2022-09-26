@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeFriendsCollectionViewCell" customModule="ChatApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="132" height="126"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="132" height="126"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_thinh" translatesAutoresizingMaskIntoConstraints="NO" id="MYV-sX-8tV">
+                        <rect key="frame" x="0.0" y="0.0" width="132" height="126"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="MYV-sX-8tV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3eQ-21-SOl"/>
+                <constraint firstAttribute="trailing" secondItem="MYV-sX-8tV" secondAttribute="trailing" id="6Oi-3A-FOK"/>
+                <constraint firstAttribute="bottom" secondItem="MYV-sX-8tV" secondAttribute="bottom" id="R3v-rZ-Gbu"/>
+                <constraint firstItem="MYV-sX-8tV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aBE-An-lG3"/>
+            </constraints>
+            <size key="customSize" width="132" height="126"/>
+            <connections>
+                <outlet property="avatarImage" destination="MYV-sX-8tV" id="xxV-Ue-8Yr"/>
+            </connections>
+            <point key="canvasLocation" x="109" y="-3"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="avatar_thinh" width="240" height="240"/>
+    </resources>
+</document>

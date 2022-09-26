@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "HomeFriendsCollectionViewCell.awakeFromNib():HomeFriendsCollectionViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "avatarImage.bounds.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "avatarImage.layer.cornerRadius">
+            </PersistentString>
+            <PersistentString
+               value = "avatarImage.bounds.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewController.setupCollectionAndTableView():HomeViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "avatarImage.layer.cornerRadius">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
