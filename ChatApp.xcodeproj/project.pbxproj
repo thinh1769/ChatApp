@@ -21,6 +21,8 @@
 		22A55B6F28DEF6E100F936B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A55B6D28DEF6E100F936B3 /* LaunchScreen.storyboard */; };
 		22A55B7928DEF7A300F936B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A55B7728DEF7A300F936B3 /* SignUpViewController.swift */; };
 		22A55B7A28DEF7A300F936B3 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A55B7828DEF7A300F936B3 /* SignUpViewController.xib */; };
+		FCC8F9FE28EF048B00930DA2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8F9FC28EF048B00930DA2 /* ChatViewController.swift */; };
+		FCC8F9FF28EF048B00930DA2 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		22A55B7028DEF6E100F936B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22A55B7728DEF7A300F936B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		22A55B7828DEF7A300F936B3 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		FCC8F9FC28EF048B00930DA2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +69,10 @@
 		223C627828E02C5400B19A64 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				223C627A28E02C8200B19A64 /* Home */,
-				223C627328DF015300B19A64 /* Login */,
 				22A55B7628DEF77600F936B3 /* SignUp */,
+				223C627328DF015300B19A64 /* Login */,
+				223C627A28E02C8200B19A64 /* Home */,
+				FCC8F9FB28EF031C00930DA2 /* Chat */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -155,6 +160,15 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		FCC8F9FB28EF031C00930DA2 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				FCC8F9FC28EF048B00930DA2 /* ChatViewController.swift */,
+				FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +233,7 @@
 				22A55B6F28DEF6E100F936B3 /* LaunchScreen.storyboard in Resources */,
 				223C627E28E02CBD00B19A64 /* HomeViewController.xib in Resources */,
 				22A55B6C28DEF6E100F936B3 /* Assets.xcassets in Resources */,
+				FCC8F9FF28EF048B00930DA2 /* ChatViewController.xib in Resources */,
 				22A55B7A28DEF7A300F936B3 /* SignUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +247,7 @@
 			files = (
 				223C627D28E02CBD00B19A64 /* HomeViewController.swift in Sources */,
 				2246D57628E0477300E1180D /* HomeFriendsCollectionViewCell.swift in Sources */,
+				FCC8F9FE28EF048B00930DA2 /* ChatViewController.swift in Sources */,
 				223C627628DF01B000B19A64 /* LoginViewController.swift in Sources */,
 				22973D7628E053D200F47C05 /* ConversationTableViewCell.swift in Sources */,
 				22A55B7928DEF7A300F936B3 /* SignUpViewController.swift in Sources */,

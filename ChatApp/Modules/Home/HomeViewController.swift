@@ -55,7 +55,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
@@ -69,6 +69,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return 90
     }
     
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(ChatViewController(), animated: true)
+    }
+
     
 }
 
