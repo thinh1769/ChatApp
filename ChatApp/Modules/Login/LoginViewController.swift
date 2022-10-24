@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import RxSwift
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var viewModel = LoginViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -17,6 +22,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneTextField.text = ""
+        passwordTextField.text = ""
         loginBtn.layer.cornerRadius = 17
         
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -26,8 +33,16 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
     @IBAction func onClickLoginBtn(_ sender: UIButton) {
-        let vc = HomeViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        guard let phone = phoneTextField.text,
+              let password = passwordTextField.text else { return }
+        
+        viewModel.login(userName: phone, password: password).subscribe { user in
+            let vc = HomeViewController()
+            vc.name = user.user.name ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        } onCompleted: { 
+        }.disposed(by: viewModel.bag)
+
     }
     
     @IBAction func onClickSignUpBtn(_ sender: UIButton) {

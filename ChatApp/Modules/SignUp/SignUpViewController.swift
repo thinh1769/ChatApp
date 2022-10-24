@@ -10,6 +10,12 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var passworfTextField: UITextField!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    var viewModel = SignUpViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -27,7 +33,18 @@ class SignUpViewController: UIViewController {
     }
 
     @IBAction func onClickSignUpBtn(_ sender: UIButton) {
-        let vc = HomeViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        guard let phone = phoneTextField.text,
+              let password = passworfTextField.text,
+              let name = nameTextField.text,
+              let confirmPass = confirmPasswordTextField.text
+        else { return }
+        if password == confirmPass {
+            self.viewModel.register(phoneNumber: phone, password: password, name: name).subscribe { user in
+                let vc = HomeViewController()
+                vc.name = user.user.name ?? ""
+                self.navigationController?.pushViewController(vc, animated: true)
+            } onDisposed: {
+            }.disposed(by: self.viewModel.bag)
+        }
     }
 }

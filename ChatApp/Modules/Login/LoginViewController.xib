@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="ChatApp" customModuleProvider="target">
             <connections>
                 <outlet property="loginBtn" destination="cj8-95-NBe" id="P8j-pG-qqE"/>
+                <outlet property="passwordTextField" destination="3Cv-uM-oSL" id="Qzg-PJ-wXn"/>
+                <outlet property="phoneTextField" destination="vxL-WN-JwS" id="TWh-ai-AJD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,7 +39,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Cv-uM-oSL">
                             <rect key="frame" x="0.0" y="75" width="315" height="55"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                     </subviews>
                     <constraints>

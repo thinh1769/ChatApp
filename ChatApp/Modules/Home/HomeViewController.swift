@@ -9,24 +9,23 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var homeFriendsCollectionView: UICollectionView!
     @IBOutlet weak var conversationTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
     var cellSize = 0.0
+    var name = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nameLabel.text = name
         setupCollectionAndTableView()
-        
-        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.view.addGestureRecognizer(tap)
     }
-    @objc func dismissKeyboard(){
-        self.view.endEditing(true)
+    
+    @IBAction func logoutBtnClicked(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
-
     func setupCollectionAndTableView() {
         homeFriendsCollectionView.delegate = self
         homeFriendsCollectionView.dataSource = self
@@ -53,6 +52,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = ChatViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -62,6 +66,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "conversationTableViewCell", for: indexPath) as? ConversationTableViewCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -73,7 +78,8 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(ChatViewController(), animated: true)
+        let vc = ChatViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     

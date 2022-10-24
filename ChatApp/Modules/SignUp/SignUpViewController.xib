@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="ChatApp" customModuleProvider="target">
             <connections>
+                <outlet property="confirmPasswordTextField" destination="1uK-3Q-R3Z" id="8ii-LT-3QS"/>
+                <outlet property="nameTextField" destination="bnQ-I5-aMI" id="lQp-tR-DbO"/>
+                <outlet property="passworfTextField" destination="v8Z-c0-EJw" id="Hxe-6r-bth"/>
+                <outlet property="phoneTextField" destination="Hak-5A-j4j" id="JM6-xX-koQ"/>
                 <outlet property="signUpBtn" destination="0dB-gq-1pc" id="mm8-f5-7Zy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,14 +38,14 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-c0-EJw">
                             <rect key="frame" x="0.0" y="72.666666666666686" width="354" height="52.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uK-3Q-R3Z">
                             <rect key="frame" x="0.0" y="145" width="354" height="52.666666666666657"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnQ-I5-aMI">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnQ-I5-aMI">
                             <rect key="frame" x="0.0" y="217.66666666666669" width="354" height="52.333333333333314"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>

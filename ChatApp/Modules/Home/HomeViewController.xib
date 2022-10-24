@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="conversationTableView" destination="VWs-PG-aPy" id="3Ad-cP-fsv"/>
                 <outlet property="homeFriendsCollectionView" destination="ey4-Hx-98J" id="lzV-eS-4zb"/>
+                <outlet property="nameLabel" destination="yTd-yz-ddG" id="JLF-zl-xoM"/>
                 <outlet property="searchTextField" destination="Q7h-o2-zs9" id="me3-WX-bFT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,7 +26,7 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_background" translatesAutoresizingMaskIntoConstraints="NO" id="hio-mK-md1">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="208.5"/>
                 </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VWs-PG-aPy">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VWs-PG-aPy">
                     <rect key="frame" x="30" y="238.5" width="315" height="428.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
@@ -52,6 +53,9 @@
                                     <buttonConfiguration key="configuration" style="plain" image="line.horizontal.3" catalog="system" title="">
                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="logoutBtnClicked:" destination="-1" eventType="touchUpInside" id="Hbo-bL-DQY"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqf-Om-tTx">
                                     <rect key="frame" x="252" y="6" width="31.5" height="24.5"/>
@@ -130,8 +134,8 @@
         </view>
     </objects>
     <resources>
-        <image name="bell.fill" catalog="system" width="123" height="128"/>
-        <image name="line.horizontal.3" catalog="system" width="128" height="65"/>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="logo" width="36.5" height="39"/>
         <image name="top_background" width="142.5" height="110"/>
         <systemColor name="systemBackgroundColor">
