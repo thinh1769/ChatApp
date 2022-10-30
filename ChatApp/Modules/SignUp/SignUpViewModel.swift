@@ -13,9 +13,14 @@ class SignUpViewModel {
     let service = AuthService()
     var user = UserInfo()
     let bag = DisposeBag()
+    private var socket = Managers.socketManager
     
-    func register(phoneNumber: String, password: String, name: String) -> Observable<UserResponse> {
-        let user = UserInfo(phoneNumber: phoneNumber, password: password, name: name, status: true)
+    func register(phoneNumber: String, password: String, name: String) -> Observable<UserInfo> {
+        let user = UserInfo(phoneNumber: phoneNumber, password: password, name: name)
         return service.register(user: user)
+    }
+    
+    func connectToSocket() {
+        socket.connectToSocket()
     }
 }

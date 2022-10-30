@@ -12,7 +12,13 @@ import RxSwift
 class LoginViewModel {
     private let service = AuthService()
     let bag = DisposeBag()
-    func login(userName: String, password: String) -> Observable<UserResponse> {
+    private var socket = Managers.socketManager
+    
+    func login(userName: String, password: String) -> Observable<UserInfo> {
         return service.login(userName: userName, password: password)
+    }
+    
+    func connectToSocket() {
+        socket.connectToSocket()
     }
 }

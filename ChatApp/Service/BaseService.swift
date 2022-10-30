@@ -13,9 +13,7 @@ class BaseService {
     private var baseHeader: HTTPHeaders
     init() {
         baseHeader = HTTPHeaders()
-        if AuthService.isLoggedIn() {
-            baseHeader.add(HTTPHeader(name: HeaderRequest.token.rawValue, value: "Bearer " + AuthService.getAuthInfo(info: KeyAuth.token)))
-        }
+        baseHeader.add(HTTPHeader(name: "token", value: "Bearer " + (UserDefaults.userInfo?.token ?? "")))
     }
     
     func createRequest<Body: Codable, Response: Codable>(api: ApiConstants, method: HTTPMethod, parameters: Body, headers: [String: String]? = nil) -> Observable<Response> {

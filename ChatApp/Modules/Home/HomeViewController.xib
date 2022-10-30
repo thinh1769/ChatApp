@@ -50,7 +50,7 @@
                                     <rect key="frame" x="283.5" y="0.0" width="31.5" height="36.5"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="line.horizontal.3" catalog="system" title="">
+                                    <buttonConfiguration key="configuration" style="plain" image="iphone.and.arrow.forward" catalog="system" title="">
                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -61,7 +61,7 @@
                                     <rect key="frame" x="252" y="6" width="31.5" height="24.5"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="bell.fill" catalog="system" title=""/>
+                                    <buttonConfiguration key="configuration" style="plain" image="plus.message" catalog="system" title=""/>
                                 </button>
                             </subviews>
                             <constraints>
@@ -84,7 +84,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for contacts" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q7h-o2-zs9">
                             <rect key="frame" x="10" y="147" width="295" height="36.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
                         </textField>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ey4-Hx-98J">
                             <rect key="frame" x="0.0" y="46.5" width="315" height="80"/>
@@ -130,13 +130,13 @@
                 <constraint firstItem="VWs-PG-aPy" firstAttribute="top" secondItem="hio-mK-md1" secondAttribute="bottom" constant="30" id="xp8-jy-c8J"/>
                 <constraint firstItem="hio-mK-md1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zvI-K3-Ggm"/>
             </constraints>
-            <point key="canvasLocation" x="130.40000000000001" y="77.811094452773617"/>
+            <point key="canvasLocation" x="247" y="-516"/>
         </view>
     </objects>
     <resources>
-        <image name="bell.fill" catalog="system" width="128" height="124"/>
-        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="iphone.and.arrow.forward" catalog="system" width="108" height="128"/>
         <image name="logo" width="36.5" height="39"/>
+        <image name="plus.message" catalog="system" width="128" height="113"/>
         <image name="top_background" width="142.5" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

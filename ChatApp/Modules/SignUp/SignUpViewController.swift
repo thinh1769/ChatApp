@@ -41,7 +41,9 @@ class SignUpViewController: UIViewController {
         if password == confirmPass {
             self.viewModel.register(phoneNumber: phone, password: password, name: name).subscribe { user in
                 let vc = HomeViewController()
-                vc.name = user.user.name ?? ""
+                UserDefaults.userInfo = user
+                self.viewModel.connectToSocket()
+                vc.name = user.name ?? ""
                 self.navigationController?.pushViewController(vc, animated: true)
             } onDisposed: {
             }.disposed(by: self.viewModel.bag)

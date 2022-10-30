@@ -15,6 +15,7 @@
                 <outlet property="chatInputText" destination="xsh-bh-GMI" id="ihN-rM-cWb"/>
                 <outlet property="inforButton" destination="NHw-TE-KuA" id="WP6-Kq-7oZ"/>
                 <outlet property="messageTableView" destination="J0M-Ad-O3n" id="jWn-Iy-wBO"/>
+                <outlet property="otherUserNameLabel" destination="32z-Zl-ubs" id="Laj-TX-gHA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

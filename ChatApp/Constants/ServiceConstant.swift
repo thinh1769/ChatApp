@@ -8,7 +8,8 @@
 import Foundation
 
 enum Base: String {
-    case url = "http://localhost:9090/"
+    case url = "http://172.20.10.3:9090/"
+//    case url = "http://localhost:9090/"
 }
 
 enum HeaderRequest: String {
@@ -18,6 +19,11 @@ enum HeaderRequest: String {
 
 enum KeyAuth: String {
     case token = "token"
+}
+
+enum TypeTableCell: Int {
+    case chat = 0
+    case friend = 1
 }
 
 enum ServiceError: Error {
@@ -53,6 +59,7 @@ struct StatusCode {
     static let OK = 200
     static let BAD_REQUEST = 400
     static let UNAUTHORIZED = 401
+    static let NOT_FOUND_CHAT = 404
     static let SERVER_ERROR = 500
 }
 
@@ -67,8 +74,11 @@ enum HTTPMethodSupport: String {
 enum ApiConstants: String {
     case login = "auth/login/"
     case register = "auth/register/"
-    case logout = "log-out"
-   
+    case logout = "auth/logout"
+    case getAllChats = "chats/"
+    case getAllMessages = "chats/messages/" // {chatId}
+    case searchFriends = "users/search/" // {userName or phoneNumber}
+    case getChatByUserId = "chats/getByOtherUser/" //{userId}
     
     var method: HTTPMethodSupport {
         switch self {
@@ -78,6 +88,14 @@ enum ApiConstants: String {
             return .post
         case .logout:
             return .post
+        case .getAllChats:
+            return .get
+        case .getAllMessages:
+            return .get
+        case .searchFriends:
+            return .get
+        case .getChatByUserId:
+            return .get
         }
     }
 

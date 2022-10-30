@@ -22,8 +22,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        phoneTextField.text = ""
-        passwordTextField.text = ""
+        phoneTextField.text = "0934348847"
+        passwordTextField.text = "11111"
         loginBtn.layer.cornerRadius = 17
         
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -37,8 +37,10 @@ class LoginViewController: UIViewController {
               let password = passwordTextField.text else { return }
         
         viewModel.login(userName: phone, password: password).subscribe { user in
+            UserDefaults.userInfo = user
+            self.viewModel.connectToSocket()
             let vc = HomeViewController()
-            vc.name = user.user.name ?? ""
+            vc.name = user.name ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         } onCompleted: { 
         }.disposed(by: viewModel.bag)

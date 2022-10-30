@@ -14,7 +14,7 @@ extension UserDefaults {
         case primaryColor = "PrimaryColor"
         case userRole = "UserRole"
         case userInfo = "UserInfo"
-        case deviceToken = "DeviceToken"
+        case token = "Token"
         case phoneNumber = "PhoneNumber"
     }
     
@@ -100,17 +100,17 @@ extension UserDefaults {
         defs.set(value, forKey: key.rawValue)
     }
     
-    static var deviceToken: String? {
+    static var token: String? {
         get {
-            return defs.string(forKey: Key.deviceToken.rawValue)
+            return defs.string(forKey: Key.token.rawValue)
         }
         
         set {
             guard let value = newValue else {
-                defs.removeObject(forKey: Key.deviceToken.rawValue)
+                defs.removeObject(forKey: Key.token.rawValue)
                 return
             }
-            defs.set(value, forKey: Key.deviceToken.rawValue)
+            defs.set(value, forKey: Key.token.rawValue)
         }
     }
     

@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import SocketIO
 
-struct Message: Codable {
-    var id: Int
-    var ownerId: Int
-    var text: String
+struct Message: Codable, SocketData {
+    var id: String?
+    var type: Int
+    var content: String
+    var chatId: String?
+    var sender: UserInfo?
 }

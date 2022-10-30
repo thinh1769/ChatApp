@@ -60,7 +60,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.083858977299999998" green="0.84007617030000004" blue="1" alpha="0.3280823377" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.58574582669068542" green="0.91086937203069274" blue="1" alpha="0.3280823377" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="vlE-K3-lUf" firstAttribute="leading" secondItem="hhq-YK-GOS" secondAttribute="trailing" constant="5" id="8YC-II-kfP"/>
                             <constraint firstAttribute="trailing" secondItem="vlE-K3-lUf" secondAttribute="trailing" constant="5" id="9kM-8V-b6d"/>
@@ -82,6 +82,8 @@
             <connections>
                 <outlet property="avatarImage" destination="hhq-YK-GOS" id="uo9-B3-8ms"/>
                 <outlet property="conversationView" destination="bpc-04-kSA" id="KfV-FO-thX"/>
+                <outlet property="lastMessageLabel" destination="m6X-QM-Rqx" id="hKW-Be-eaQ"/>
+                <outlet property="userNameLabel" destination="23i-h9-dGe" id="aOr-xt-ygJ"/>
             </connections>
             <point key="canvasLocation" x="75.362318840579718" y="117.1875"/>
         </tableViewCell>

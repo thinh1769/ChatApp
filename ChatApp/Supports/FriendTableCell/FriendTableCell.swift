@@ -1,30 +1,28 @@
 //
-//  ConversationTableViewCell.swift
+//  FriendTableCell.swift
 //  ChatApp
 //
-//  Created by Nguyễn Thịnh on 25/09/2022.
+//  Created by Nguyễn Thịnh on 29/10/2022.
 //
 
 import UIKit
 
-class ConversationTableViewCell: UITableViewCell {
+class FriendTableCell: UITableViewCell {
 
-    @IBOutlet weak var conversationView: UIView!
-    
-    @IBOutlet weak var lastMessageLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var friendTableView: UIView!
     @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var otherUserNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        conversationView.layer.cornerRadius = 23
         avatarImage.layer.cornerRadius = avatarImage.bounds.height/2
+        friendTableView.layer.cornerRadius = 23
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        // Configure the view for the selected state
     }
     
 }
