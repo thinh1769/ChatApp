@@ -30,25 +30,25 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="q5w-u4-vz2">
                     <rect key="frame" x="30" y="285.33333333333331" width="354" height="269.99999999999994"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hak-5A-j4j">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hak-5A-j4j">
                             <rect key="frame" x="0.0" y="0.0" width="354" height="52.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-c0-EJw">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Họ tên" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnQ-I5-aMI">
                             <rect key="frame" x="0.0" y="72.666666666666686" width="354" height="52.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uK-3Q-R3Z">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-c0-EJw">
                             <rect key="frame" x="0.0" y="145" width="354" height="52.666666666666657"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnQ-I5-aMI">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nhập lại mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1uK-3Q-R3Z">
                             <rect key="frame" x="0.0" y="217.66666666666669" width="354" height="52.333333333333314"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                     </subviews>
                     <constraints>
@@ -64,9 +64,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="uE8-Ld-CYu"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="SIGN UP"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="ĐĂNG KÝ"/>
                     <connections>
                         <action selector="onClickSignUpBtn:" destination="-1" eventType="touchUpInside" id="Vir-2o-Uki"/>
                     </connections>
@@ -74,13 +75,23 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="jG9-V3-EzF">
                     <rect key="frame" x="165.66666666666666" y="81.666666666666671" width="82.666666666666657" height="82.000000000000014"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrC-nU-1gj">
+                    <rect key="frame" x="30" y="575.33333333333337" width="354" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Bạn đã có tài khoản? Đăng nhập ngay"/>
+                    <connections>
+                        <action selector="onClickedSignInBtn:" destination="-1" eventType="touchUpInside" id="vJg-Cc-FR7"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="jG9-V3-EzF" firstAttribute="width" secondItem="XHG-wP-Oot" secondAttribute="width" multiplier="1/5" id="1Cg-rO-cEj"/>
                 <constraint firstItem="XHG-wP-Oot" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2R8-pu-ZLc"/>
+                <constraint firstItem="KrC-nU-1gj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="3oU-Zx-oqd"/>
                 <constraint firstItem="x6U-sb-vTN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="6H5-7x-gam"/>
+                <constraint firstItem="KrC-nU-1gj" firstAttribute="top" secondItem="q5w-u4-vz2" secondAttribute="bottom" constant="20" id="AZc-6p-KSC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0dB-gq-1pc" secondAttribute="trailing" constant="30" id="B8W-mz-HdD"/>
                 <constraint firstItem="0dB-gq-1pc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="F5B-Ly-BpP"/>
                 <constraint firstItem="jG9-V3-EzF" firstAttribute="centerY" secondItem="XHG-wP-Oot" secondAttribute="centerY" id="LhG-xi-0ZC"/>
@@ -94,10 +105,12 @@
                 <constraint firstItem="x6U-sb-vTN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mHo-EQ-G7B"/>
                 <constraint firstItem="x6U-sb-vTN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mnW-xc-lwY"/>
                 <constraint firstItem="x6U-sb-vTN" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/3" id="o13-EN-zDk"/>
+                <constraint firstItem="KrC-nU-1gj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uEs-Na-mwO"/>
                 <constraint firstItem="jG9-V3-EzF" firstAttribute="centerX" secondItem="XHG-wP-Oot" secondAttribute="centerX" id="ueg-qR-Heb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XHG-wP-Oot" secondAttribute="trailing" id="yMi-du-32l"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KrC-nU-1gj" secondAttribute="trailing" constant="30" id="zjB-qX-lLB"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="96"/>
+            <point key="canvasLocation" x="101" y="135"/>
         </view>
     </objects>
     <resources>

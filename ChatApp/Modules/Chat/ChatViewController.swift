@@ -32,11 +32,13 @@ class ChatViewController: UIViewController {
         inforButton.setTitle("", for: .normal)
         setupMessageTableView()
         viewModel.receiveMessage { message in
-            var listMessages = self.viewModel.messages.value
-            listMessages.append(message)
-            self.viewModel.messages.accept(listMessages)
-            self.messageTableView.reloadData()
-            self.messageTableView.scrollToRow(at: [0, self.viewModel.messages.value.count - 1], at: .top, animated: true)
+            if self.viewModel.chatId == message.chatId {
+                var listMessages = self.viewModel.messages.value
+                listMessages.append(message)
+                self.viewModel.messages.accept(listMessages)
+                self.messageTableView.reloadData()
+                self.messageTableView.scrollToRow(at: [0, self.viewModel.messages.value.count - 1], at: .top, animated: true)
+            }
         }
 //        chatInputText.rx.controlEvent([.editingDidBegin])
 //            .subscribe {

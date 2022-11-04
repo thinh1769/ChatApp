@@ -13,5 +13,7 @@ struct Message: Codable, SocketData {
     var type: Int
     var content: String
     var chatId: String?
+    var recall: Bool?
+    var createdAt: String?
     var sender: UserInfo?
 }

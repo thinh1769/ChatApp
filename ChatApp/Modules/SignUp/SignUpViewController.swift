@@ -49,4 +49,7 @@ class SignUpViewController: UIViewController {
             }.disposed(by: self.viewModel.bag)
         }
     }
+    @IBAction func onClickedSignInBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

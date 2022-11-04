@@ -31,7 +31,7 @@ class ChatViewModel {
     }
     
     func postChat(_ userId: String) -> Observable<Chat> {
-        return chatService.postChat(userId)
+        return chatService.postChat(0, [userId])
     }
     
     func receiveMessage(completion: @escaping(Message) -> Void) {

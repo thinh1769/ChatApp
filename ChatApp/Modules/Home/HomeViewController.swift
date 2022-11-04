@@ -23,6 +23,23 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.receiveMessage { message in
+            self.viewModel.chats.accept(self.viewModel.sortChat(self.viewModel.updateChatWhenReceiveNewMessage(message)))
+            self.conversationTableView.reloadData()
+        }
+        
+        viewModel.receiveCreateChat { chat in
+            var listChat = self.viewModel.chats.value
+            if chat.receiver?.id == UserDefaults.userInfo?.id {
+                let convertedChat = self.viewModel.updateChatWhenReceiveNewChat(chat)
+                listChat.append(convertedChat)
+            } else {
+                listChat.append(chat)
+            }
+            self.viewModel.chats.accept(self.viewModel.sortChat(listChat))
+            self.setUpTableView(TypeTableCell.chat.rawValue)
+        }
+        
         searchTextField.rx.controlEvent([.editingDidEnd]).subscribe { [weak self] _ in
             guard let self = self else { return }
             if self.searchTextField.text == "" {
@@ -41,7 +58,9 @@ class HomeViewController: UIViewController {
         setupBinding()
     }
     
-    @IBAction func searchBtnClicked(_ sender: UIButton) {
+    @IBAction func createGroupBtnClicked(_ sender: UIButton) {
+        let vc = CreateGroupViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func logoutBtnClicked(_ sender: UIButton) {
@@ -72,7 +91,7 @@ class HomeViewController: UIViewController {
     func setupBinding() {
         viewModel.getAllChats().bind { [weak self] chats in
             guard let self = self else { return }
-            self.viewModel.chats.accept(chats)
+            self.viewModel.chats.accept(self.viewModel.sortChat(chats))
             self.conversationTableView.reloadData()
         }.disposed(by: viewModel.bag)
     }
@@ -86,7 +105,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeFriendsCollectionViewcell", for: indexPath) as? HomeFriendsCollectionViewCell else { return UICollectionViewCell() }
-        
+        cell.avatarImage.layer.cornerRadius = cellSize/2
+        cell.deleteBtn.isHidden = true
         return cell
     }
     
@@ -109,7 +129,13 @@ extension HomeViewController: UITableViewDataSource {
         if viewModel.typeTable == TypeTableCell.chat.rawValue {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "conversationTableViewCell", for: indexPath) as? ConversationTableViewCell else { return UITableViewCell() }
             cell.selectionStyle = .none
-            cell.userNameLabel.text = viewModel.chats.value[indexPath.row].receiver?.name ??  self.viewModel.chats.value[indexPath.row].chatName ?? ""
+            var name = ""
+            if viewModel.chats.value[indexPath.row].type == 0 {
+                name = viewModel.chats.value[indexPath.row].receiver?.name ?? ""
+            } else {
+                name = viewModel.chats.value[indexPath.row].chatName ?? ""
+            }
+            cell.userNameLabel.text = name
             cell.lastMessageLabel.text = viewModel.chats.value[indexPath.row].lastMessage?.content ?? ""
             return cell
         } else {
@@ -130,7 +156,13 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ChatViewController()
         if viewModel.typeTable == TypeTableCell.chat.rawValue {
-            vc.inject(otherUserId: nil, chatId: viewModel.chats.value[indexPath.row].id, chatName: (viewModel.chats.value[indexPath.row].receiver?.name ?? viewModel.chats.value[indexPath.row].chatName) ?? "")
+            var name = ""
+            if viewModel.chats.value[indexPath.row].type == 0 {
+                name = viewModel.chats.value[indexPath.row].receiver?.name ?? ""
+            } else {
+                name = viewModel.chats.value[indexPath.row].chatName ?? ""
+            }
+            vc.inject(otherUserId: nil, chatId: viewModel.chats.value[indexPath.row].id, chatName: name)
         } else {
             vc.inject(otherUserId: viewModel.searchFriendsList.value[indexPath.row].id, chatId: nil, chatName: viewModel.searchFriendsList.value[indexPath.row].name ?? "")
         }

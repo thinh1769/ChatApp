@@ -9,12 +9,17 @@ import UIKit
 
 class HomeFriendsCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var avatarImage: UIImageView!
+    
+    var deleteButtonDidTappedAtIndex : (() -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.avatarImage.layer.masksToBounds = true
-        avatarImage.layer.cornerRadius = 40
+        //avatarImage.layer.cornerRadius = 40
     }
-
+    @IBAction func onClickedDeleteBtn(_ sender: UIButton) {
+        self.deleteButtonDidTappedAtIndex?()
+    }
+    
 }

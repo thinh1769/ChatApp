@@ -13,5 +13,6 @@ protocol SocketIOManager {
     func observeUserList(completionHandler: @escaping ([[String: Any]]) -> Void)
     func sendMessage(_ message: Message)
     func receiveMessages(completion: @escaping(Message) -> Void)
+    func receiveCreateChat(completion: @escaping(Chat) -> Void)
     func closeConnection()
 }

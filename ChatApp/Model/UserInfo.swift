@@ -13,5 +13,6 @@ struct UserInfo: Codable {
     var password: String?
     var name: String?
     var birthDay: String?
+    var avatar: String?
     var token: String?
 }

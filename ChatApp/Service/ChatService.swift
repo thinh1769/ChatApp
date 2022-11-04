@@ -27,9 +27,8 @@ class ChatService: BaseService {
         return request(api: ApiConstants.searchFriends.rawValue + nameOrPhoneNumber, method: .get)
     }
     
-    func postChat(_ userId: String) -> Observable<Chat> {
-        let users = [userId]
-        let params = ["type" : 0, "users": users] as [String : Any]
+    func postChat(_ type: Int, _ users: [String], _ chatName: String = "") -> Observable<Chat> {
+        let params = ["type" : type, "users": users, "chatName": chatName, "createBy": UserDefaults.userInfo?.id ?? ""] as [String : Any]
         return request(api: ApiConstants.getAllChats.rawValue, method: .post, params: params)
     }
 }

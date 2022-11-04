@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2204655F290E2B9000DF96F1 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2204655D290E2B9000DF96F1 /* CreateGroupViewController.swift */; };
 		22046560290E2B9000DF96F1 /* CreateGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2204655E290E2B9000DF96F1 /* CreateGroupViewController.xib */; };
+		220465622910190900DF96F1 /* CreateGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220465612910190900DF96F1 /* CreateGroupViewModel.swift */; };
 		220BB42C290CE4380029B8E5 /* FriendTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220BB42A290CE4380029B8E5 /* FriendTableCell.swift */; };
 		220BB42D290CE4380029B8E5 /* FriendTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220BB42B290CE4380029B8E5 /* FriendTableCell.xib */; };
 		223C627628DF01B000B19A64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C627428DF01B000B19A64 /* LoginViewController.swift */; };
@@ -52,6 +53,7 @@
 		202222F46EE15064EA054C50 /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2204655D290E2B9000DF96F1 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		2204655E290E2B9000DF96F1 /* CreateGroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGroupViewController.xib; sourceTree = "<group>"; };
+		220465612910190900DF96F1 /* CreateGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewModel.swift; sourceTree = "<group>"; };
 		220BB42A290CE4380029B8E5 /* FriendTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableCell.swift; sourceTree = "<group>"; };
 		220BB42B290CE4380029B8E5 /* FriendTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableCell.xib; sourceTree = "<group>"; };
 		223C627428DF01B000B19A64 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				2204655D290E2B9000DF96F1 /* CreateGroupViewController.swift */,
 				2204655E290E2B9000DF96F1 /* CreateGroupViewController.xib */,
+				220465612910190900DF96F1 /* CreateGroupViewModel.swift */,
 			);
 			path = CreateGroup;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				2204655F290E2B9000DF96F1 /* CreateGroupViewController.swift in Sources */,
 				FCB53EAB290644C100A75944 /* Managers.swift in Sources */,
 				22C716FE290297F200368D73 /* UserInfo.swift in Sources */,
+				220465622910190900DF96F1 /* CreateGroupViewModel.swift in Sources */,
 				22C716F22902828200368D73 /* BaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
