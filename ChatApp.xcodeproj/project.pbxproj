@@ -16,6 +16,8 @@
 		223C627728DF01B000B19A64 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223C627528DF01B000B19A64 /* LoginViewController.xib */; };
 		223C627D28E02CBD00B19A64 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C627B28E02CBD00B19A64 /* HomeViewController.swift */; };
 		223C627E28E02CBD00B19A64 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223C627C28E02CBD00B19A64 /* HomeViewController.xib */; };
+		223F9C0B29160A5B0076AED4 /* BubbleMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F9C0929160A5B0076AED4 /* BubbleMessageCell.swift */; };
+		223F9C0C29160A5B0076AED4 /* BubbleMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223F9C0A29160A5B0076AED4 /* BubbleMessageCell.xib */; };
 		2246D57628E0477300E1180D /* HomeFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246D57428E0477300E1180D /* HomeFriendsCollectionViewCell.swift */; };
 		2246D57728E0477300E1180D /* HomeFriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2246D57528E0477300E1180D /* HomeFriendsCollectionViewCell.xib */; };
 		22973D7628E053D200F47C05 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22973D7428E053D200F47C05 /* ConversationTableViewCell.swift */; };
@@ -60,6 +62,8 @@
 		223C627528DF01B000B19A64 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		223C627B28E02CBD00B19A64 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		223C627C28E02CBD00B19A64 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		223F9C0929160A5B0076AED4 /* BubbleMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleMessageCell.swift; sourceTree = "<group>"; };
+		223F9C0A29160A5B0076AED4 /* BubbleMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BubbleMessageCell.xib; sourceTree = "<group>"; };
 		2246D57428E0477300E1180D /* HomeFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2246D57528E0477300E1180D /* HomeFriendsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFriendsCollectionViewCell.xib; sourceTree = "<group>"; };
 		22973D7428E053D200F47C05 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
@@ -168,9 +172,19 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		223F9C0829160A200076AED4 /* BubbleMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				223F9C0929160A5B0076AED4 /* BubbleMessageCell.swift */,
+				223F9C0A29160A5B0076AED4 /* BubbleMessageCell.xib */,
+			);
+			path = BubbleMessageCell;
+			sourceTree = "<group>";
+		};
 		2246D57228E0461C00E1180D /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				223F9C0829160A200076AED4 /* BubbleMessageCell */,
 				220BB429290CE4020029B8E5 /* FriendTableCell */,
 				22973D7C28F2866A00F47C05 /* MessageCell */,
 				22973D7328E0538900F47C05 /* ConversationTableViewCell */,
@@ -397,6 +411,7 @@
 				FCC8F9FF28EF048B00930DA2 /* ChatViewController.xib in Resources */,
 				220BB42D290CE4380029B8E5 /* FriendTableCell.xib in Resources */,
 				22A55B7A28DEF7A300F936B3 /* SignUpViewController.xib in Resources */,
+				223F9C0C29160A5B0076AED4 /* BubbleMessageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCB53EA9290644A200A75944 /* SocketIOManagerDefault.swift in Sources */,
+				223F9C0B29160A5B0076AED4 /* BubbleMessageCell.swift in Sources */,
 				223C627D28E02CBD00B19A64 /* HomeViewController.swift in Sources */,
 				22C717082902F8FE00368D73 /* HomeViewModel.swift in Sources */,
 				22C7170029029B5F00368D73 /* ResponseMain.swift in Sources */,

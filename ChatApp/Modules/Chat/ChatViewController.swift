@@ -19,10 +19,11 @@ class ChatViewController: UIViewController {
     
     var viewModel = ChatViewModel()
     
-    func inject(otherUserId: String?, chatId: String?, chatName: String) {
+    func inject(otherUserId: String?, chatId: String?, chatName: String, chatType: Int) {
         viewModel.chatId = chatId ?? ""
         viewModel.chatName = chatName
         viewModel.otherUserId = otherUserId ?? ""
+        viewModel.chatType = chatType
     }
     
     override func viewDidLoad() {
@@ -48,6 +49,7 @@ class ChatViewController: UIViewController {
     
     private func setupMessageTableView() {
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "messageCell")
+        messageTableView.register(UINib(nibName: "BubbleMessageCell", bundle: nil), forCellReuseIdentifier: "bubbleMessageCell")
         messageTableView.delegate = self
         messageTableView.dataSource = self
         
@@ -102,16 +104,30 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
-            else{ return UITableViewCell() }
         if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
+                else{ return UITableViewCell() }
             cell.emptyViewSender.isHidden = true
             cell.emptyViewMe.isHidden = false
+            cell.messageText.text = viewModel.messages.value[indexPath.row].content
+            return cell
         } else {
-            cell.emptyViewMe.isHidden = true
-            cell.emptyViewSender.isHidden = false
+            if viewModel.chatType == 1 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "bubbleMessageCell", for: indexPath) as? BubbleMessageCell
+                    else{ return UITableViewCell() }
+                cell.emptyViewMe.isHidden = true
+                cell.emptyViewSender.isHidden = false
+                cell.senderNameLabel.text = viewModel.messages.value[indexPath.row].sender?.name ?? ""
+                cell.messageText.text = viewModel.messages.value[indexPath.row].content
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
+                    else{ return UITableViewCell() }
+                cell.emptyViewSender.isHidden = false
+                cell.emptyViewMe.isHidden = true
+                cell.messageText.text = viewModel.messages.value[indexPath.row].content
+                return cell
+            }
         }
-        cell.messageText.text = viewModel.messages.value[indexPath.row].content
-        return cell
     }
 }

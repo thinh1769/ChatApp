@@ -162,9 +162,9 @@ extension HomeViewController: UITableViewDelegate {
             } else {
                 name = viewModel.chats.value[indexPath.row].chatName ?? ""
             }
-            vc.inject(otherUserId: nil, chatId: viewModel.chats.value[indexPath.row].id, chatName: name)
+            vc.inject(otherUserId: nil, chatId: viewModel.chats.value[indexPath.row].id, chatName: name, chatType: viewModel.chats.value[indexPath.row].type)
         } else {
-            vc.inject(otherUserId: viewModel.searchFriendsList.value[indexPath.row].id, chatId: nil, chatName: viewModel.searchFriendsList.value[indexPath.row].name ?? "")
+            vc.inject(otherUserId: viewModel.searchFriendsList.value[indexPath.row].id, chatId: nil, chatName: viewModel.searchFriendsList.value[indexPath.row].name ?? "", chatType: viewModel.chats.value[indexPath.row].type)
         }
         navigationController?.pushViewController(vc, animated: true)
     }

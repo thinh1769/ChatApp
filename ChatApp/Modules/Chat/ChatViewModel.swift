@@ -16,6 +16,7 @@ class ChatViewModel {
     var chatId = ""
     var chatName = ""
     var otherUserId = ""
+    var chatType = 0
     let chatService = ChatService()
     
     func getAllMessages() -> Observable<[Message]> {
