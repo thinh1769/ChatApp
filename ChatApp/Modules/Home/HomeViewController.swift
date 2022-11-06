@@ -164,7 +164,7 @@ extension HomeViewController: UITableViewDelegate {
             }
             vc.inject(otherUserId: nil, chatId: viewModel.chats.value[indexPath.row].id, chatName: name, chatType: viewModel.chats.value[indexPath.row].type)
         } else {
-            vc.inject(otherUserId: viewModel.searchFriendsList.value[indexPath.row].id, chatId: nil, chatName: viewModel.searchFriendsList.value[indexPath.row].name ?? "", chatType: viewModel.chats.value[indexPath.row].type)
+            vc.inject(otherUserId: viewModel.searchFriendsList.value[indexPath.row].id, chatId: nil, chatName: viewModel.searchFriendsList.value[indexPath.row].name ?? "", chatType: 0)
         }
         navigationController?.pushViewController(vc, animated: true)
     }

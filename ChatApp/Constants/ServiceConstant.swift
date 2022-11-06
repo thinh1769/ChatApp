@@ -8,8 +8,8 @@
 import Foundation
 
 enum Base: String {
-//    case url = "http://172.20.10.3:9090/"
-    case url = "http://localhost:9090/"
+    case url = "http://172.20.10.3:9090/"
+//    case url = "http://localhost:9090/"
 }
 
 enum HeaderRequest: String {
