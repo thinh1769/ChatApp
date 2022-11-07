@@ -18,6 +18,9 @@
 		223C627E28E02CBD00B19A64 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223C627C28E02CBD00B19A64 /* HomeViewController.xib */; };
 		223F9C0B29160A5B0076AED4 /* BubbleMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F9C0929160A5B0076AED4 /* BubbleMessageCell.swift */; };
 		223F9C0C29160A5B0076AED4 /* BubbleMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223F9C0A29160A5B0076AED4 /* BubbleMessageCell.xib */; };
+		223F9C13291774680076AED4 /* AddMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F9C12291774680076AED4 /* AddMemberViewModel.swift */; };
+		223F9C16291775390076AED4 /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223F9C14291775390076AED4 /* AddMemberViewController.swift */; };
+		223F9C17291775390076AED4 /* AddMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223F9C15291775390076AED4 /* AddMemberViewController.xib */; };
 		2246D57628E0477300E1180D /* HomeFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246D57428E0477300E1180D /* HomeFriendsCollectionViewCell.swift */; };
 		2246D57728E0477300E1180D /* HomeFriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2246D57528E0477300E1180D /* HomeFriendsCollectionViewCell.xib */; };
 		22973D7628E053D200F47C05 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22973D7428E053D200F47C05 /* ConversationTableViewCell.swift */; };
@@ -31,6 +34,9 @@
 		22A55B6F28DEF6E100F936B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A55B6D28DEF6E100F936B3 /* LaunchScreen.storyboard */; };
 		22A55B7928DEF7A300F936B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A55B7728DEF7A300F936B3 /* SignUpViewController.swift */; };
 		22A55B7A28DEF7A300F936B3 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A55B7828DEF7A300F936B3 /* SignUpViewController.xib */; };
+		22BE75072917C7F300778DB8 /* GroupNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE75052917C7F300778DB8 /* GroupNotificationCell.swift */; };
+		22BE75082917C7F300778DB8 /* GroupNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BE75062917C7F300778DB8 /* GroupNotificationCell.xib */; };
+		22BE750C2918052700778DB8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE750B2918052700778DB8 /* UserService.swift */; };
 		22C716F22902828200368D73 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C716F12902828200368D73 /* BaseService.swift */; };
 		22C716F42902841400368D73 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C716F32902841400368D73 /* AuthService.swift */; };
 		22C716F7290284AD00368D73 /* ServiceConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C716F6290284AD00368D73 /* ServiceConstant.swift */; };
@@ -41,7 +47,6 @@
 		22C717082902F8FE00368D73 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C717072902F8FE00368D73 /* HomeViewModel.swift */; };
 		22C7170A2903C72500368D73 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C717092903C72500368D73 /* SignUpViewModel.swift */; };
 		DCD9E3CE09658B98754D3D53 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DDBA3C89A558761E7455645 /* Pods_ChatApp.framework */; };
-		FCB53EA72906447A00A75944 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EA62906447A00A75944 /* SocketIOManager.swift */; };
 		FCB53EA9290644A200A75944 /* SocketIOManagerDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EA8290644A200A75944 /* SocketIOManagerDefault.swift */; };
 		FCB53EAB290644C100A75944 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EAA290644C100A75944 /* Managers.swift */; };
 		FCB53EAD2906731C00A75944 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EAC2906731C00A75944 /* ChatService.swift */; };
@@ -64,6 +69,9 @@
 		223C627C28E02CBD00B19A64 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		223F9C0929160A5B0076AED4 /* BubbleMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleMessageCell.swift; sourceTree = "<group>"; };
 		223F9C0A29160A5B0076AED4 /* BubbleMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BubbleMessageCell.xib; sourceTree = "<group>"; };
+		223F9C12291774680076AED4 /* AddMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewModel.swift; sourceTree = "<group>"; };
+		223F9C14291775390076AED4 /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
+		223F9C15291775390076AED4 /* AddMemberViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemberViewController.xib; sourceTree = "<group>"; };
 		2246D57428E0477300E1180D /* HomeFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2246D57528E0477300E1180D /* HomeFriendsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFriendsCollectionViewCell.xib; sourceTree = "<group>"; };
 		22973D7428E053D200F47C05 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +87,9 @@
 		22A55B7028DEF6E100F936B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22A55B7728DEF7A300F936B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		22A55B7828DEF7A300F936B3 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		22BE75052917C7F300778DB8 /* GroupNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNotificationCell.swift; sourceTree = "<group>"; };
+		22BE75062917C7F300778DB8 /* GroupNotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupNotificationCell.xib; sourceTree = "<group>"; };
+		22BE750B2918052700778DB8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		22C716F12902828200368D73 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		22C716F32902841400368D73 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		22C716F6290284AD00368D73 /* ServiceConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstant.swift; sourceTree = "<group>"; };
@@ -90,7 +101,6 @@
 		22C717092903C72500368D73 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9DDBA3C89A558761E7455645 /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21C8DF8869517526D478067 /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
-		FCB53EA62906447A00A75944 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		FCB53EA8290644A200A75944 /* SocketIOManagerDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManagerDefault.swift; sourceTree = "<group>"; };
 		FCB53EAA290644C100A75944 /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
 		FCB53EAC2906731C00A75944 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
@@ -149,6 +159,7 @@
 				223C627A28E02C8200B19A64 /* Home */,
 				FCC8F9FB28EF031C00930DA2 /* Chat */,
 				2204655C290E2B3900DF96F1 /* CreateGroup */,
+				223F9C0D291773860076AED4 /* AddMember */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -181,9 +192,20 @@
 			path = BubbleMessageCell;
 			sourceTree = "<group>";
 		};
+		223F9C0D291773860076AED4 /* AddMember */ = {
+			isa = PBXGroup;
+			children = (
+				223F9C14291775390076AED4 /* AddMemberViewController.swift */,
+				223F9C15291775390076AED4 /* AddMemberViewController.xib */,
+				223F9C12291774680076AED4 /* AddMemberViewModel.swift */,
+			);
+			path = AddMember;
+			sourceTree = "<group>";
+		};
 		2246D57228E0461C00E1180D /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				22BE75042917C74F00778DB8 /* GroupNotification */,
 				223F9C0829160A200076AED4 /* BubbleMessageCell */,
 				220BB429290CE4020029B8E5 /* FriendTableCell */,
 				22973D7C28F2866A00F47C05 /* MessageCell */,
@@ -277,12 +299,22 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		22BE75042917C74F00778DB8 /* GroupNotification */ = {
+			isa = PBXGroup;
+			children = (
+				22BE75052917C7F300778DB8 /* GroupNotificationCell.swift */,
+				22BE75062917C7F300778DB8 /* GroupNotificationCell.xib */,
+			);
+			path = GroupNotification;
+			sourceTree = "<group>";
+		};
 		22C716F02902820800368D73 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				22C716F12902828200368D73 /* BaseService.swift */,
 				22C716F32902841400368D73 /* AuthService.swift */,
 				FCB53EAC2906731C00A75944 /* ChatService.swift */,
+				22BE750B2918052700778DB8 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -323,7 +355,6 @@
 		FCB53EA52906444C00A75944 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				FCB53EA62906447A00A75944 /* SocketIOManager.swift */,
 				FCB53EA8290644A200A75944 /* SocketIOManagerDefault.swift */,
 				FCB53EAA290644C100A75944 /* Managers.swift */,
 			);
@@ -406,9 +437,11 @@
 				22973D7728E053D200F47C05 /* ConversationTableViewCell.xib in Resources */,
 				22A55B6F28DEF6E100F936B3 /* LaunchScreen.storyboard in Resources */,
 				22973D8028F2869D00F47C05 /* MessageCell.xib in Resources */,
+				223F9C17291775390076AED4 /* AddMemberViewController.xib in Resources */,
 				223C627E28E02CBD00B19A64 /* HomeViewController.xib in Resources */,
 				22A55B6C28DEF6E100F936B3 /* Assets.xcassets in Resources */,
 				FCC8F9FF28EF048B00930DA2 /* ChatViewController.xib in Resources */,
+				22BE75082917C7F300778DB8 /* GroupNotificationCell.xib in Resources */,
 				220BB42D290CE4380029B8E5 /* FriendTableCell.xib in Resources */,
 				22A55B7A28DEF7A300F936B3 /* SignUpViewController.xib in Resources */,
 				223F9C0C29160A5B0076AED4 /* BubbleMessageCell.xib in Resources */,
@@ -471,22 +504,25 @@
 				22C7170029029B5F00368D73 /* ResponseMain.swift in Sources */,
 				2246D57628E0477300E1180D /* HomeFriendsCollectionViewCell.swift in Sources */,
 				FCC8F9FE28EF048B00930DA2 /* ChatViewController.swift in Sources */,
+				223F9C16291775390076AED4 /* AddMemberViewController.swift in Sources */,
 				22C7170A2903C72500368D73 /* SignUpViewModel.swift in Sources */,
 				22C716F42902841400368D73 /* AuthService.swift in Sources */,
+				22BE75072917C7F300778DB8 /* GroupNotificationCell.swift in Sources */,
 				223C627628DF01B000B19A64 /* LoginViewController.swift in Sources */,
 				22973D7628E053D200F47C05 /* ConversationTableViewCell.swift in Sources */,
 				220BB42C290CE4380029B8E5 /* FriendTableCell.swift in Sources */,
 				22C716FC290297B300368D73 /* UserDefaults+Ext.swift in Sources */,
 				22A55B7928DEF7A300F936B3 /* SignUpViewController.swift in Sources */,
 				22A55B6328DEF6DD00F936B3 /* AppDelegate.swift in Sources */,
+				22BE750C2918052700778DB8 /* UserService.swift in Sources */,
 				FCB53EB12906923D00A75944 /* ChatViewModel.swift in Sources */,
+				223F9C13291774680076AED4 /* AddMemberViewModel.swift in Sources */,
 				FCB53EAF2906740500A75944 /* Chat.swift in Sources */,
 				22C7170229029F0F00368D73 /* LoginViewModel.swift in Sources */,
 				22973D8328F2B4CB00F47C05 /* Message.swift in Sources */,
 				22C716F7290284AD00368D73 /* ServiceConstant.swift in Sources */,
 				FCB53EAD2906731C00A75944 /* ChatService.swift in Sources */,
 				22A55B6528DEF6DD00F936B3 /* SceneDelegate.swift in Sources */,
-				FCB53EA72906447A00A75944 /* SocketIOManager.swift in Sources */,
 				22973D7F28F2869D00F47C05 /* MessageCell.swift in Sources */,
 				2204655F290E2B9000DF96F1 /* CreateGroupViewController.swift in Sources */,
 				FCB53EAB290644C100A75944 /* Managers.swift in Sources */,

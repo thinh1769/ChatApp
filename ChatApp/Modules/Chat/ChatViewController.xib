@@ -11,11 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController" customModule="ChatApp" customModuleProvider="target">
             <connections>
+                <outlet property="addMemberBtn" destination="REg-0J-bKi" id="etk-qh-V2c"/>
                 <outlet property="avatarImage" destination="qgT-5e-BGg" id="Ehe-K7-aqP"/>
                 <outlet property="chatInputText" destination="xsh-bh-GMI" id="ihN-rM-cWb"/>
                 <outlet property="inforButton" destination="NHw-TE-KuA" id="WP6-Kq-7oZ"/>
                 <outlet property="messageTableView" destination="J0M-Ad-O3n" id="jWn-Iy-wBO"/>
                 <outlet property="otherUserNameLabel" destination="32z-Zl-ubs" id="Laj-TX-gHA"/>
+                <outlet property="statusLabel" destination="ObX-DS-Y8H" id="M39-Ep-QcG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,23 +45,38 @@
                                 <action selector="onClickBackButton:" destination="-1" eventType="touchUpInside" id="ibd-7I-YuJ"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHw-TE-KuA">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHw-TE-KuA">
                             <rect key="frame" x="315" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="ITD-e6-0ff"/>
                                 <constraint firstAttribute="height" constant="40" id="r1H-VB-5hL"/>
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="info.circle.fill" catalog="system"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="info.circle.fill" catalog="system"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REg-0J-bKi">
+                            <rect key="frame" x="275" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="uoh-gL-iTC"/>
+                                <constraint firstAttribute="width" constant="40" id="vuT-cp-lBF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="add-member"/>
+                            <connections>
+                                <action selector="onClickedAddMemberBtn:" destination="-1" eventType="touchUpInside" id="wxZ-jj-DsH"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="2kZ-4j-ALF"/>
+                        <constraint firstItem="REg-0J-bKi" firstAttribute="centerY" secondItem="PUz-tY-GVa" secondAttribute="centerY" id="5W1-cE-Gdd"/>
                         <constraint firstItem="NHw-TE-KuA" firstAttribute="centerY" secondItem="PUz-tY-GVa" secondAttribute="centerY" id="AEb-0J-Bfx"/>
                         <constraint firstAttribute="trailing" secondItem="NHw-TE-KuA" secondAttribute="trailing" constant="20" id="Qs6-jx-KVm"/>
                         <constraint firstItem="SQ6-KS-gcU" firstAttribute="leading" secondItem="PUz-tY-GVa" secondAttribute="leading" constant="20" id="quL-qd-4JT"/>
                         <constraint firstItem="SQ6-KS-gcU" firstAttribute="centerY" secondItem="PUz-tY-GVa" secondAttribute="centerY" id="sdA-Kq-6so"/>
+                        <constraint firstItem="NHw-TE-KuA" firstAttribute="leading" secondItem="REg-0J-bKi" secondAttribute="trailing" id="xp1-5a-xMt"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzn-9G-Yui">
@@ -157,10 +174,11 @@
                 <constraint firstItem="GdG-w8-0m7" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="wfO-dx-KxH"/>
                 <constraint firstItem="GdG-w8-0m7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.23" id="zO7-FJ-02M"/>
             </constraints>
-            <point key="canvasLocation" x="-111" y="-12"/>
+            <point key="canvasLocation" x="-145" y="-36"/>
         </view>
     </objects>
     <resources>
+        <image name="add-member" width="19" height="18"/>
         <image name="avatar_dung" width="316" height="316"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>

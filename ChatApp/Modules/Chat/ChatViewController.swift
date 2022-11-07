@@ -10,12 +10,14 @@ import RxSwift
 import RxCocoa
 
 class ChatViewController: UIViewController {
-
-    @IBOutlet weak var otherUserNameLabel: UILabel!
-    @IBOutlet weak var chatInputText: UITextField!
-    @IBOutlet weak var avatarImage: UIImageView!
-    @IBOutlet weak var messageTableView: UITableView!
-    @IBOutlet weak var inforButton: UIButton!
+    
+    @IBOutlet weak private var statusLabel: UILabel!
+    @IBOutlet weak private var addMemberBtn: UIButton!
+    @IBOutlet weak private var otherUserNameLabel: UILabel!
+    @IBOutlet weak private var chatInputText: UITextField!
+    @IBOutlet weak private var avatarImage: UIImageView!
+    @IBOutlet weak private var messageTableView: UITableView!
+    @IBOutlet weak private var inforButton: UIButton!
     
     var viewModel = ChatViewModel()
     
@@ -26,12 +28,40 @@ class ChatViewController: UIViewController {
         viewModel.chatType = chatType
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        addMemberBtn.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        otherUserNameLabel.text = viewModel.chatName
-        avatarImage.layer.cornerRadius = avatarImage.bounds.size.height/2
-        inforButton.setTitle("", for: .normal)
+        fetchData()
         setupMessageTableView()
+        subscribeReceiveMessage()
+    }
+    
+    private func fetchData() {
+        avatarImage.layer.cornerRadius = avatarImage.bounds.size.height/2
+        otherUserNameLabel.text = viewModel.chatName
+        if viewModel.chatType == 1 {
+            viewModel.getAllMembers(viewModel.chatId).subscribe { users in
+                self.viewModel.users.accept(users)
+                self.setupUI()
+            } onError: { _ in
+            }.disposed(by: viewModel.bag)
+        }
+    }
+    
+    private func setupUI() {
+        if viewModel.chatType == 0 {
+            addMemberBtn.isHidden = true
+            statusLabel.text = "Online"
+        } else {
+            addMemberBtn.isHidden = false
+            statusLabel.text = "\(viewModel.users.value.count) thành viên"
+        }
+    }
+    
+    private func subscribeReceiveMessage() {
         viewModel.receiveMessage { message in
             if self.viewModel.chatId == message.chatId {
                 var listMessages = self.viewModel.messages.value
@@ -41,15 +71,12 @@ class ChatViewController: UIViewController {
                 self.messageTableView.scrollToRow(at: [0, self.viewModel.messages.value.count - 1], at: .top, animated: true)
             }
         }
-//        chatInputText.rx.controlEvent([.editingDidBegin])
-//            .subscribe {
-//                self.messageTableView.scrollToRow(at: [0, self.viewModel.messages.value.count - 1], at: .top, animated: true)
-//            }.disposed(by: DisposeBag())
     }
     
     private func setupMessageTableView() {
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "messageCell")
         messageTableView.register(UINib(nibName: "BubbleMessageCell", bundle: nil), forCellReuseIdentifier: "bubbleMessageCell")
+        messageTableView.register(UINib(nibName: "GroupNotificationCell", bundle: nil), forCellReuseIdentifier: "groupNotificationCell")
         messageTableView.delegate = self
         messageTableView.dataSource = self
         
@@ -96,6 +123,12 @@ class ChatViewController: UIViewController {
     @IBAction func onClickBackButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func onClickedAddMemberBtn(_ sender: UIButton) {
+        let vc = AddMemberViewController()
+        vc.inject(chatId: viewModel.chatId, members: viewModel.users.value)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
@@ -104,30 +137,35 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
+        switch viewModel.messages.value[indexPath.row].type {
+            ///ChatType: Text
+        case 0:
+            ///kiểm tra message có trùng với id đang đăng nhập
+            if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
                 else{ return UITableViewCell() }
-            cell.emptyViewSender.isHidden = true
-            cell.emptyViewMe.isHidden = false
-            cell.messageText.text = viewModel.messages.value[indexPath.row].content
-            return cell
-        } else {
-            if viewModel.chatType == 1 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "bubbleMessageCell", for: indexPath) as? BubbleMessageCell
-                    else{ return UITableViewCell() }
-                cell.emptyViewMe.isHidden = true
-                cell.emptyViewSender.isHidden = false
-                cell.senderNameLabel.text = viewModel.messages.value[indexPath.row].sender?.name ?? ""
-                cell.messageText.text = viewModel.messages.value[indexPath.row].content
+                cell.config(isViewSender: true, isViewMe: false, content: viewModel.messages.value[indexPath.row].content)
+                return cell
+                
+                /// nếu không thì kiểm
+            } else if viewModel.chatType == 0 {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
+                else{ return UITableViewCell() }
+                cell.config(isViewSender: false, isViewMe: true, content: viewModel.messages.value[indexPath.row].content)
                 return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
-                    else{ return UITableViewCell() }
-                cell.emptyViewSender.isHidden = false
-                cell.emptyViewMe.isHidden = true
-                cell.messageText.text = viewModel.messages.value[indexPath.row].content
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "bubbleMessageCell", for: indexPath) as? BubbleMessageCell
+                else{ return UITableViewCell() }
+                cell.config(senderName: viewModel.messages.value[indexPath.row].sender?.name ?? "", content: viewModel.messages.value[indexPath.row].content)
                 return cell
             }
+            ///ChatType: GroupNotification
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
+            cell.config(viewModel.messages.value[indexPath.row].content)
+            return cell
+        default:
+            return UITableViewCell()
         }
     }
 }

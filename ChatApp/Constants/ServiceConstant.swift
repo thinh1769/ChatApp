@@ -8,8 +8,8 @@
 import Foundation
 
 enum Base: String {
-    case url = "http://172.20.10.3:9090/"
-//    case url = "http://localhost:9090/"
+//    case url = "http://172.19.200.145:9090/"
+    case url = "http://localhost:9090/"
 }
 
 enum HeaderRequest: String {
@@ -79,6 +79,7 @@ enum ApiConstants: String {
     case getAllMessages = "chats/messages/" // {chatId}
     case searchFriends = "users/search/" // {userName or phoneNumber}
     case getChatByUserId = "chats/getByOtherUser/" //{userId}
+    case getUserByChatId = "users/getByChat/" // {chatId}
     
     var method: HTTPMethodSupport {
         switch self {
@@ -95,6 +96,8 @@ enum ApiConstants: String {
         case .searchFriends:
             return .get
         case .getChatByUserId:
+            return .get
+        case .getUserByChatId:
             return .get
         }
     }

@@ -21,24 +21,17 @@
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yxf-Uw-Jne">
                         <rect key="frame" x="5" y="5" width="568" height="95"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2o-8P-szx">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="95"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="mEN-HQ-fTg"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3P7-JB-aKs">
-                                <rect key="frame" x="150" y="0.0" width="268" height="95"/>
+                                <rect key="frame" x="0.0" y="0.0" width="418" height="95"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mn1-FA-Wyo">
-                                        <rect key="frame" x="15" y="30" width="238" height="55"/>
+                                        <rect key="frame" x="15" y="30" width="388" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAZ-uR-JGv">
-                                        <rect key="frame" x="15" y="5" width="238" height="20"/>
+                                        <rect key="frame" x="15" y="5" width="388" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="yRy-AQ-K9O"/>
                                         </constraints>
@@ -77,7 +70,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="emptyViewMe" destination="l2o-8P-szx" id="Y5T-fA-G8q"/>
                 <outlet property="emptyViewSender" destination="407-eI-Shp" id="NQq-LG-AIM"/>
                 <outlet property="messageText" destination="Mn1-FA-Wyo" id="Pbw-3J-svI"/>
                 <outlet property="messageView" destination="3P7-JB-aKs" id="jst-Xi-V8a"/>

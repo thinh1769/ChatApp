@@ -18,6 +18,12 @@ class MessageCell: UITableViewCell {
         messageView.layer.cornerRadius = self.bounds.size.height/4
     }
 
+    func config(isViewSender: Bool, isViewMe: Bool, content: String) {
+        emptyViewSender.isHidden = isViewSender
+        emptyViewMe.isHidden = isViewMe
+        messageText.text = content
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

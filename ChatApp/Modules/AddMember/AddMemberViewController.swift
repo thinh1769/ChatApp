@@ -1,24 +1,30 @@
 //
-//  CreateGroupViewController.swift
+//  AddMemberViewController.swift
 //  ChatApp
 //
-//  Created by Nguyễn Thịnh on 30/10/2022.
+//  Created by Nguyễn Thịnh on 06/11/2022.
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class CreateGroupViewController: UIViewController {
+class AddMemberViewController: UIViewController {
 
-    @IBOutlet weak var viewOfSelectedFriends: UIView!
-    @IBOutlet weak var createGroupBtn: UIButton!
-    @IBOutlet weak var backBtn: UIButton!
-    @IBOutlet weak var groupNameTextField: UITextField!
-    @IBOutlet weak var searchContactTextField: UITextField!
-    @IBOutlet weak var selectedFriendsCollectionView: UICollectionView!
-    @IBOutlet weak var friendsTableView: UITableView!
+    @IBOutlet weak private var groupAvatarImage: UIImageView!
+    @IBOutlet weak private var viewOfSelectedFriends: UIView!
+    @IBOutlet weak private var groupNameTextField: UITextField!
+    @IBOutlet weak private var searchContactTextField: UITextField!
+    @IBOutlet weak private var selectedFriendsCollectionView: UICollectionView!
+    @IBOutlet weak private var friendsTableView: UITableView!
     
-    var viewModel = CreateGroupViewModel()
+    var viewModel = AddMemberViewModel()
     var cellSize = 0.0
+    
+    func inject(chatId: String, members: [UserInfo]) {
+        viewModel.chatId = chatId
+        viewModel.listMember.accept(members)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,7 @@ class CreateGroupViewController: UIViewController {
     }
     
     private func setupUI() {
+        groupAvatarImage.layer.cornerRadius = groupAvatarImage.bounds.height/2
         searchContactTextField.rx.controlEvent([.editingDidEnd]).subscribe { [weak self] _ in
             guard let self = self else { return }
             if self.searchContactTextField.text == "" {
@@ -42,14 +49,10 @@ class CreateGroupViewController: UIViewController {
         searchContactTextField.delegate = self
     }
     
-    @IBAction func onClickedCreateGroupBtn(_ sender: UIButton) {
-        if let chatName = groupNameTextField.text, chatName.count > 0 && viewModel.selectedFriendsList.value.count > 1 {
-            viewModel.postChat(users: viewModel.selectedFriendsList.value, chatName: chatName).subscribe { [weak self] chat in
-                guard let self = self else { return }
-                self.viewModel.sendMessage(Message(type: 2, content: "\(UserDefaults.userInfo?.name ?? "") vừa tạo nhóm", chatId: chat.id))
-                self.navigationController?.popViewController(animated: true)
-            } onError: { _ in
-            } .disposed(by: viewModel.bag)
+    @IBAction func onClickedAddMemberBtn(_ sender: UIButton) {
+        if let chatName = groupNameTextField.text, chatName.count > 0 && viewModel.selectedFriendsList.value.count > 0 {
+            viewModel.addMember(viewModel.chatId, usersId: self.viewModel.selectedFriendsList.value)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -75,7 +78,7 @@ class CreateGroupViewController: UIViewController {
 }
 
 ///---------TableView Delegate & DataSource
-extension CreateGroupViewController: UITableViewDelegate {
+extension AddMemberViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !viewModel.checkSelectedFriend(viewModel.searchFriendsList.value[indexPath.row].id ?? "") {
             var list = viewModel.selectedFriendsList.value
@@ -87,7 +90,7 @@ extension CreateGroupViewController: UITableViewDelegate {
     }
 }
 
-extension CreateGroupViewController: UITableViewDataSource {
+extension AddMemberViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.searchFriendsList.value.count
     }
@@ -106,7 +109,7 @@ extension CreateGroupViewController: UITableViewDataSource {
 }
 
 ///------------CollectionView Delegate & DataSource
-extension CreateGroupViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AddMemberViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.selectedFriendsList.value.count
     }
@@ -128,7 +131,7 @@ extension CreateGroupViewController: UICollectionViewDelegate, UICollectionViewD
     }
 }
 
-extension CreateGroupViewController: UICollectionViewDelegateFlowLayout {
+extension AddMemberViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: selectedFriendsCollectionView.bounds.size.height , height: selectedFriendsCollectionView.bounds.size.height )
     }
@@ -143,7 +146,7 @@ extension CreateGroupViewController: UICollectionViewDelegateFlowLayout {
 }
 
 ///---------------UITextFieldDelegate
-extension CreateGroupViewController: UITextFieldDelegate {
+extension AddMemberViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let nameOrPhone = searchContactTextField.text else { return false }
         viewModel.searchFriend(nameOrPhone).subscribe { listUser in

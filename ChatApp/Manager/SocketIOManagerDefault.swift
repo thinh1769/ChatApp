@@ -8,6 +8,16 @@
 import Foundation
 import SocketIO
 
+protocol SocketIOManager {
+    
+    func connectToSocket()
+    func sendMessage(_ message: Message)
+    func receiveMessages(completion: @escaping(Message) -> Void)
+    func receiveCreateChat(completion: @escaping(Chat) -> Void)
+    func addMember(_ chatId: String, usersId: [String])
+    func closeConnection()
+}
+
 class SocketIOManagerDefault: NSObject, SocketIOManager {
     
     //MARK: - Instance Properties
@@ -28,8 +38,6 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
         manager.config = SocketIOClientConfiguration(
             arrayLiteral:.log(true), .compress, .extraHeaders(["token" : "Bearer \(UserDefaults.userInfo?.token ?? "")"])
         )
-        print("-=-=-=-=-=-=-=Token = \(UserDefaults.userInfo?.token ?? "")")
-        
         socket = manager.defaultSocket
     }
     
@@ -41,11 +49,8 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
         
         self.configSocket()
         socket.disconnect()
-        socket.on("connect_error") { data, _ in
-            print("=-=-=--=-=-=-=- error = \(data)")
-        }
         socket.on(clientEvent: .connect) {data, _ in
-            print(" socket connected")
+            print("Socket connected")
         }
         
         socket.on(clientEvent: .error) { data, _ in
@@ -55,18 +60,14 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
         socket.connect()
     }
     
-    func observeUserList(completionHandler: @escaping ([[String: Any]]) -> Void) {
-        socket.on("userList") { dataArray, _ in
-            completionHandler(dataArray[0] as! [[String: Any]])
-        }
-    }
-    
     func sendMessage(_ message: Message) {
         let params = ["type": message.type, "content": message.content, "chatId": message.chatId] as [String : Any]
         socket.emit("User-Send-Message", params)
-        socket.on("Error") { error, _ in
-            print("=-=-=-=-=-=-=-=-=-=-Error = \(error)")
-        }
+    }
+    
+    func addMember(_ chatId: String, usersId: [String]) {
+        let params = ["chatId": chatId, "usersId": usersId] as [String: Any]
+        socket.emit("User-Add-Member", params)
     }
     
     func receiveMessages(completion: @escaping(Message) -> Void) {
@@ -75,13 +76,19 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
             let content = messageResponse["content"] as! String
             let type = messageResponse["type"] as! Int
             let chatId = messageResponse["chatId"] as! String
-            let senderId = (messageResponse["sender"] as! NSDictionary)["id"] as! String
-            let senderName = (messageResponse["sender"] as! NSDictionary)["name"] as! String
-            let recall = messageResponse["recall"] as! Bool
             let createdAt = messageResponse["createdAt"] as! String
             
-            let message = Message(type: type, content: content, chatId: chatId, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
-            completion(message)
+            if type != 2 {
+                let recall = messageResponse["recall"] as! Bool
+                let senderId = (messageResponse["sender"] as! NSDictionary)["id"] as! String
+                let senderName = (messageResponse["sender"] as! NSDictionary)["name"] as! String
+                let message = Message(type: type, content: content, chatId: chatId, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
+                completion(message)
+            } else {
+                let message = Message(type: type, content: content, chatId: chatId, createdAt: createdAt)
+                completion(message)
+            }
+            
         }
     }
     
