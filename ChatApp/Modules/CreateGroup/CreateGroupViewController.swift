@@ -7,6 +7,10 @@
 
 import UIKit
 
+//protocol CreateGroupDelegate: AnyObject {
+//    func createGroup(adminId: String)
+//}
+
 class CreateGroupViewController: UIViewController {
 
     @IBOutlet weak var viewOfSelectedFriends: UIView!
@@ -17,8 +21,10 @@ class CreateGroupViewController: UIViewController {
     @IBOutlet weak var selectedFriendsCollectionView: UICollectionView!
     @IBOutlet weak var friendsTableView: UITableView!
     
+    //weak var delegate: CreateGroupDelegate?
     var viewModel = CreateGroupViewModel()
     var cellSize = 0.0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +56,10 @@ class CreateGroupViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             } onError: { _ in
             } .disposed(by: viewModel.bag)
+        } else if let chatName = groupNameTextField.text, chatName.count == 0 {
+            showAlert(message: "Chưa nhập tên nhóm!")
+        } else if viewModel.selectedFriendsList.value.count <= 1 {
+            showAlert(message: "Chưa đủ số lượng thành viên!")
         }
     }
     
@@ -72,6 +82,13 @@ class CreateGroupViewController: UIViewController {
         selectedFriendsCollectionView.backgroundColor = .clear
     }
 
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Cảnh báo", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    
 }
 
 ///---------TableView Delegate & DataSource
@@ -94,9 +111,7 @@ extension CreateGroupViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendTableCell", for: indexPath) as? FriendTableCell else { return UITableViewCell() }
-        cell.selectionStyle = .none
-        cell.backgroundColor = .clear
-        cell.otherUserNameLabel.text = viewModel.searchFriendsList.value[indexPath.row].name
+        cell.config(name: viewModel.searchFriendsList.value[indexPath.row].name ?? "", false, false)
         return cell
     }
     

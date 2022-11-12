@@ -21,30 +21,35 @@ class ChatViewController: UIViewController {
     
     var viewModel = ChatViewModel()
     
-    func inject(otherUserId: String?, chatId: String?, chatName: String, chatType: Int) {
+    func inject(otherUserId: String?, chatId: String?, chatName: String, chatType: Int, adminId: String) {
         viewModel.chatId = chatId ?? ""
         viewModel.chatName = chatName
         viewModel.otherUserId = otherUserId ?? ""
         viewModel.chatType = chatType
+        viewModel.adminId = adminId
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        addMemberBtn.isHidden = true
+        if viewModel.chatType == ChatType.single.rawValue {
+            addMemberBtn.isHidden = true
+        } else {
+            addMemberBtn.isHidden = false
+        }
+        avatarImage.layer.cornerRadius = avatarImage.bounds.size.height/2
+        otherUserNameLabel.text = viewModel.chatName
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
         setupMessageTableView()
-        subscribeReceiveMessage()
+        subscribeSocketIO()
     }
     
     private func fetchData() {
-        avatarImage.layer.cornerRadius = avatarImage.bounds.size.height/2
-        otherUserNameLabel.text = viewModel.chatName
-        if viewModel.chatType == 1 {
+        if viewModel.chatType == ChatType.group.rawValue {
             viewModel.getAllMembers(viewModel.chatId).subscribe { users in
-                self.viewModel.users.accept(users)
+                self.viewModel.listMember.accept(users)
                 self.setupUI()
             } onError: { _ in
             }.disposed(by: viewModel.bag)
@@ -52,18 +57,20 @@ class ChatViewController: UIViewController {
     }
     
     private func setupUI() {
-        if viewModel.chatType == 0 {
-            addMemberBtn.isHidden = true
+        if viewModel.chatType == ChatType.single.rawValue {
             statusLabel.text = "Online"
         } else {
-            addMemberBtn.isHidden = false
-            statusLabel.text = "\(viewModel.users.value.count) thành viên"
+            statusLabel.text = "\(viewModel.listMember.value.count) thành viên"
         }
     }
     
-    private func subscribeReceiveMessage() {
-        viewModel.receiveMessage { message in
+    private func subscribeSocketIO() {
+        viewModel.receiveMessage { [weak self] message in
+            guard let self = self else { return }
             if self.viewModel.chatId == message.chatId {
+                if message.type == MessageType.groupNotification.rawValue {
+                    self.fetchData()
+                }
                 var listMessages = self.viewModel.messages.value
                 listMessages.append(message)
                 self.viewModel.messages.accept(listMessages)
@@ -71,11 +78,19 @@ class ChatViewController: UIViewController {
                 self.messageTableView.scrollToRow(at: [0, self.viewModel.messages.value.count - 1], at: .top, animated: true)
             }
         }
+        
+        viewModel.receiveLeaveChat { [weak self] chatId in
+            guard let self = self else { return }
+            if self.viewModel.chatId == chatId {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     private func setupMessageTableView() {
-        messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "messageCell")
-        messageTableView.register(UINib(nibName: "BubbleMessageCell", bundle: nil), forCellReuseIdentifier: "bubbleMessageCell")
+        messageTableView.register(UINib(nibName: "SenderMessageCell", bundle: nil), forCellReuseIdentifier: "senderMessageCell")
+        messageTableView.register(UINib(nibName: "ReceiveMessageCell", bundle: nil), forCellReuseIdentifier: "receiveMessageCell")
+        messageTableView.register(UINib(nibName: "ReceiveGroupMessageCell", bundle: nil), forCellReuseIdentifier: "receiveGroupMessageCell")
         messageTableView.register(UINib(nibName: "GroupNotificationCell", bundle: nil), forCellReuseIdentifier: "groupNotificationCell")
         messageTableView.delegate = self
         messageTableView.dataSource = self
@@ -126,8 +141,17 @@ class ChatViewController: UIViewController {
     
     @IBAction func onClickedAddMemberBtn(_ sender: UIButton) {
         let vc = AddMemberViewController()
-        vc.inject(chatId: viewModel.chatId, members: viewModel.users.value)
+        vc.inject(chatId: viewModel.chatId, members: viewModel.listMember.value, chatName: viewModel.chatName)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func onClickedInfoBtn(_ sender: UIButton) {
+        if viewModel.chatType == ChatType.group.rawValue {
+            let vc = GroupManagerViewController()
+            vc.inject(viewModel.listMember.value, viewModel.adminId, viewModel.chatId, viewModel.chatName)
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
@@ -142,21 +166,19 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             ///kiểm tra message có trùng với id đang đăng nhập
             if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderMessageCell", for: indexPath) as? SenderMessageCell
                 else{ return UITableViewCell() }
-                cell.config(isViewSender: true, isViewMe: false, content: viewModel.messages.value[indexPath.row].content)
+                cell.config(content: viewModel.messages.value[indexPath.row].content)
                 return cell
                 
-                /// nếu không thì kiểm
-            } else if viewModel.chatType == 0 {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
+            } else if viewModel.chatType == ChatType.single.rawValue {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
                 else{ return UITableViewCell() }
-                cell.config(isViewSender: false, isViewMe: true, content: viewModel.messages.value[indexPath.row].content)
+                cell.config(content: viewModel.messages.value[indexPath.row].content)
                 return cell
             } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "bubbleMessageCell", for: indexPath) as? BubbleMessageCell
-                else{ return UITableViewCell() }
-                cell.config(senderName: viewModel.messages.value[indexPath.row].sender?.name ?? "", content: viewModel.messages.value[indexPath.row].content)
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveGroupMessageCell", for: indexPath) as? ReceiveGroupMessageCell else { return UITableViewCell() }
+                cell.config(name: viewModel.messages.value[indexPath.row].sender?.name ?? "", content: viewModel.messages.value[indexPath.row].content)
                 return cell
             }
             ///ChatType: GroupNotification
@@ -164,8 +186,18 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
             cell.config(viewModel.messages.value[indexPath.row].content)
             return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
+            cell.config(viewModel.messages.value[indexPath.row].content)
+            return cell
         default:
             return UITableViewCell()
         }
+    }
+}
+
+extension ChatViewController: ChooseNewAdminDelegate {
+    func chooseNewAdmin(adminId: String) {
+        viewModel.adminId = adminId
     }
 }

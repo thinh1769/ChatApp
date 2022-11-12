@@ -27,4 +27,9 @@ class ConversationTableViewCell: UITableViewCell {
 
     }
     
+    func config(name: String, content: String) {
+        userNameLabel.text = name
+        lastMessageLabel.text = content
+    }
+    
 }

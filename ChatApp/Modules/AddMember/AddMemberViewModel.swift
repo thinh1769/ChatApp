@@ -18,6 +18,7 @@ class AddMemberViewModel {
     var listMember = BehaviorRelay<[UserInfo]>(value: [])
     var usersId = [String]()
     var chatId = ""
+    var chatName = ""
     
     func searchFriend(_ nameOrPhoneNumber: String) -> Observable<[UserInfo]> {
         return chatService.searchFriend(nameOrPhoneNumber)

@@ -12,9 +12,13 @@ protocol SocketIOManager {
     
     func connectToSocket()
     func sendMessage(_ message: Message)
-    func receiveMessages(completion: @escaping(Message) -> Void)
+    func receiveMessages(completion: @escaping(Message, String?) -> Void)
     func receiveCreateChat(completion: @escaping(Chat) -> Void)
+    func receiveLeaveGroup(completion: @escaping(String) -> Void)
     func addMember(_ chatId: String, usersId: [String])
+    func chooseAdmin(chatId: String, userId: String)
+    func removeMember(chatId: String, userId: String)
+    func leaveGroup(chatId: String)
     func closeConnection()
 }
 
@@ -54,7 +58,7 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
         }
         
         socket.on(clientEvent: .error) { data, _ in
-            print("--------------- lỗi connect socket: \(data.description)")
+            print("lỗi connect socket: \(data.description)")
         }
         
         socket.connect()
@@ -70,7 +74,7 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
         socket.emit("User-Add-Member", params)
     }
     
-    func receiveMessages(completion: @escaping(Message) -> Void) {
+    func receiveMessages(completion: @escaping(Message, String?) -> Void) {
         socket.on("User-Send-Message") { responseData, _ in
             let messageResponse = responseData[0] as! NSDictionary
             let content = messageResponse["content"] as! String
@@ -78,15 +82,21 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
             let chatId = messageResponse["chatId"] as! String
             let createdAt = messageResponse["createdAt"] as! String
             
-            if type != 2 {
+            switch type{
+            case MessageType.text.rawValue:
                 let recall = messageResponse["recall"] as! Bool
                 let senderId = (messageResponse["sender"] as! NSDictionary)["id"] as! String
                 let senderName = (messageResponse["sender"] as! NSDictionary)["name"] as! String
                 let message = Message(type: type, content: content, chatId: chatId, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
-                completion(message)
-            } else {
+                completion(message, nil)
+            case MessageType.groupNotification.rawValue:
                 let message = Message(type: type, content: content, chatId: chatId, createdAt: createdAt)
-                completion(message)
+                completion(message, nil)
+            case MessageType.adminNotification.rawValue:
+                let message = Message(type: type, content: content, chatId: chatId, createdAt: createdAt)
+                let adminId = messageResponse["adminId"] as! String
+                completion(message, adminId)
+            default: break
             }
             
         }
@@ -109,9 +119,10 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
             
             let lassMessage = Message(type: messageType, content: messageContent, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
             
-            if type == 1 {
+            if type == ChatType.group.rawValue {
                 let chatName = chatResponse["chatName"] as! String
-                let chat = Chat(id: chatId, type: type, chatName: chatName, lastMessage: lassMessage)
+                let createBy = chatResponse["createBy"] as! String
+                let chat = Chat(id: chatId, createBy: createBy, type: type, chatName: chatName, lastMessage: lassMessage)
                 completion(chat)
             } else {
                 let receiver = chatResponse["receiver"] as! NSDictionary
@@ -121,5 +132,28 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
                 completion(chat)
             }
         }
+    }
+    
+    func chooseAdmin(chatId: String, userId: String) {
+        let params = ["chatId": chatId, "userId": userId] as [String: Any]
+        socket.emit("User-Select-Admin", params)
+    }
+    
+    func leaveGroup(chatId: String)   {
+        let param = ["chatId": chatId] as [String: Any]
+        socket.emit("User-Leave-Group", param)
+    }
+    
+    func receiveLeaveGroup(completion: @escaping(String) -> Void) {
+        socket.on("User-Remove-Chat") { responseData, _ in
+            let chatIdResponse = responseData[0] as! NSDictionary
+            let chatId = chatIdResponse["chatId"] as! String
+            completion(chatId)
+        }
+    }
+    
+    func removeMember(chatId: String, userId: String) {
+        let params = ["chatId": chatId, "userId": userId] as [String: Any]
+        socket.emit("User-Remove-Member", params)
     }
 }

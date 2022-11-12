@@ -40,16 +40,25 @@ class SignUpViewController: UIViewController {
         else { return }
         if password == confirmPass {
             self.viewModel.register(phoneNumber: phone, password: password, name: name).subscribe { user in
-                let vc = HomeViewController()
                 UserDefaults.userInfo = user
                 self.viewModel.connectToSocket()
+                let vc = HomeViewController()
                 vc.name = user.name ?? ""
                 self.navigationController?.pushViewController(vc, animated: true)
             } onDisposed: {
             }.disposed(by: self.viewModel.bag)
+        } else {
+            showAlert()
         }
     }
     @IBAction func onClickedSignInBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Cảnh báo", message: "Nhập lại mật khẩu chưa đúng", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
 }

@@ -15,8 +15,9 @@ class HomeViewModel {
     private let authService = AuthService()
     var chats = BehaviorRelay<[Chat]>(value: [])
     var searchFriendsList = BehaviorRelay<[UserInfo]>(value: [])
-    var typeTable = 0
     private var socket = Managers.socketManager
+    var typeTable = 0
+    var adminId = ""
     
     func getAllChats() -> Observable<[Chat]>{
         return chatService.getAllChats()
@@ -41,8 +42,22 @@ class HomeViewModel {
         return date
     }
     
+    func updateAdmin(chatId: String, adminId: String) {
+        var listChat = chats.value
+        for (index, element) in listChat.enumerated() {
+            if element.id == chatId {
+                listChat[index].createBy = adminId
+                chats.accept(listChat)
+                return
+            }
+        }
+    }
+    
     func receiveMessage(completion: @escaping(Message) -> Void) {
-        socket.receiveMessages { message in
+        socket.receiveMessages { message, newAdminId in
+            if let newAdminId = newAdminId {
+                self.updateAdmin(chatId: message.chatId ?? "", adminId: newAdminId)
+            }
             completion(message)
         }
     }
@@ -50,6 +65,23 @@ class HomeViewModel {
     func receiveCreateChat(completion: @escaping(Chat) -> Void) {
         socket.receiveCreateChat { chat in
             completion(chat)
+        }
+    }
+    
+    func receiveLeaveChat(completion: @escaping(String) -> Void) {
+        socket.receiveLeaveGroup { chatId in
+            completion(chatId)
+        }
+    }
+    
+    func removeChat(_ chatId: String) {
+        var listChat = chats.value
+        for (index, element) in listChat.enumerated() {
+            if element.id == chatId {
+                listChat.remove(at: index)
+                chats.accept(listChat)
+                return
+            }
         }
     }
     

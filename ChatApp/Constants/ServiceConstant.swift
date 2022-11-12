@@ -8,22 +8,25 @@
 import Foundation
 
 enum Base: String {
-//    case url = "http://172.19.200.145:9090/"
+//    case url = "http://192.168.2.16:9090/"
     case url = "http://localhost:9090/"
-}
-
-enum HeaderRequest: String {
-    case token = "Authorization"
-    case contentType = "Content-Type"
-}
-
-enum KeyAuth: String {
-    case token = "token"
 }
 
 enum TypeTableCell: Int {
     case chat = 0
     case friend = 1
+}
+
+enum ChatType: Int {
+    case single = 0
+    case group = 1
+}
+
+enum MessageType: Int {
+    case text = 0
+    case image = 1
+    case groupNotification = 2
+    case adminNotification = 3
 }
 
 enum ServiceError: Error {

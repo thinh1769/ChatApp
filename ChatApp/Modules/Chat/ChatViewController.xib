@@ -54,6 +54,9 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="info.circle.fill" catalog="system"/>
+                            <connections>
+                                <action selector="onClickedInfoBtn:" destination="-1" eventType="touchUpInside" id="XfF-3w-NjJ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REg-0J-bKi">
                             <rect key="frame" x="275" y="0.0" width="40" height="40"/>
@@ -174,7 +177,7 @@
                 <constraint firstItem="GdG-w8-0m7" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="wfO-dx-KxH"/>
                 <constraint firstItem="GdG-w8-0m7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.23" id="zO7-FJ-02M"/>
             </constraints>
-            <point key="canvasLocation" x="-145" y="-36"/>
+            <point key="canvasLocation" x="-79" y="-158"/>
         </view>
     </objects>
     <resources>

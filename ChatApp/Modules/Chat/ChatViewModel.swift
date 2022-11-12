@@ -13,13 +13,14 @@ class ChatViewModel {
     let bag = DisposeBag()
     private var socket = Managers.socketManager
     let messages = BehaviorRelay<[Message]>(value: [])
-    let users = BehaviorRelay<[UserInfo]>(value: [])
+    let listMember = BehaviorRelay<[UserInfo]>(value: [])
+    private let chatService = ChatService()
+    private let userService = UserService()
     var chatId = ""
     var chatName = ""
     var otherUserId = ""
     var chatType = 0
-    let chatService = ChatService()
-    private let userService = UserService()
+    var adminId = ""
     
     func getAllMessages() -> Observable<[Message]> {
         return chatService.getAllMessages(chatId)
@@ -38,8 +39,17 @@ class ChatViewModel {
     }
     
     func receiveMessage(completion: @escaping(Message) -> Void) {
-        socket.receiveMessages { message in
+        socket.receiveMessages { message, adminId  in
+            if let newAdminId = adminId, message.type == MessageType.adminNotification.rawValue  {
+                self.adminId = newAdminId
+            }
             completion(message)
+        }
+    }
+    
+    func receiveLeaveChat(completion: @escaping(String) -> Void) {
+        socket.receiveLeaveGroup { chatId in
+            completion(chatId)
         }
     }
     

@@ -42,7 +42,8 @@ class LoginViewController: UIViewController {
             let vc = HomeViewController()
             vc.name = user.name ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
-        } onCompleted: { 
+        } onError: { error in
+            print("------------------------ error = \(error.localizedDescription)")
         }.disposed(by: viewModel.bag)
 
     }

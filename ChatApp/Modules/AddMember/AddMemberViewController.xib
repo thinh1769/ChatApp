@@ -196,7 +196,7 @@
                 <constraint firstItem="vms-My-xXa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZJ6-4y-Tk1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gam-zK-WCP" secondAttribute="trailing" id="bDy-u2-Zd7"/>
             </constraints>
-            <point key="canvasLocation" x="-566" y="-23"/>
+            <point key="canvasLocation" x="314" y="-17"/>
         </view>
     </objects>
     <resources>

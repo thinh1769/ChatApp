@@ -21,9 +21,10 @@ class AddMemberViewController: UIViewController {
     var viewModel = AddMemberViewModel()
     var cellSize = 0.0
     
-    func inject(chatId: String, members: [UserInfo]) {
+    func inject(chatId: String, members: [UserInfo], chatName: String) {
         viewModel.chatId = chatId
         viewModel.listMember.accept(members)
+        viewModel.chatName = chatName
     }
     
     override func viewDidLoad() {
@@ -46,6 +47,7 @@ class AddMemberViewController: UIViewController {
         }
         .disposed(by: viewModel.bag)
         
+        groupNameTextField.text = viewModel.chatName
         searchContactTextField.delegate = self
     }
     
@@ -99,7 +101,7 @@ extension AddMemberViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendTableCell", for: indexPath) as? FriendTableCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-        cell.otherUserNameLabel.text = viewModel.searchFriendsList.value[indexPath.row].name
+        cell.config(name: viewModel.searchFriendsList.value[indexPath.row].name ?? "", false, false)
         return cell
     }
     

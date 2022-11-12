@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,14 +34,71 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2LK-2x-tf4">
+                                <rect key="frame" x="304" y="37" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cx0-UD-apa"/>
+                                    <constraint firstAttribute="width" constant="40" id="ueE-Ic-P8x"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.04677283753" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="person.fill.xmark" catalog="system">
+                                    <color key="titleColor" red="1" green="0.04677283753" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickedRemoveMemberBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LVQ-xk-jCV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="922-u6-9O6">
+                                <rect key="frame" x="264" y="37" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="5da-gu-6Uw"/>
+                                    <constraint firstAttribute="height" constant="40" id="Urs-9e-Qq2"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="person.fill.checkmark" catalog="system"/>
+                                <connections>
+                                    <action selector="onClickedChooseAdminBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="L8x-9c-nZE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BF-ZQ-2QK">
+                                <rect key="frame" x="319" y="5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="QdV-XT-vn0"/>
+                                    <constraint firstAttribute="width" constant="25" id="V1T-ag-UeK"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="ellipsis" catalog="system"/>
+                                <connections>
+                                    <action selector="onClickedActionBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qpd-aW-hpb"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="key.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BLZ-aV-0Hk">
+                                <rect key="frame" x="60" y="55.5" width="20" height="23"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="1yh-IO-5ju"/>
+                                    <constraint firstAttribute="width" constant="20" id="xlS-LH-3Xm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.89995594803825985" green="0.89843792070643114" blue="0.92495407701767596" alpha="0.70138559909845821" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.87847516717651841" green="0.88045493212936965" blue="0.91066587814176925" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xeO-Qm-fGi" secondAttribute="trailing" constant="20" id="1sX-t9-kHq"/>
                             <constraint firstItem="NWh-bF-mr7" firstAttribute="centerY" secondItem="kXz-3k-BTg" secondAttribute="centerY" id="6qr-EZ-ysN"/>
                             <constraint firstItem="NWh-bF-mr7" firstAttribute="leading" secondItem="kXz-3k-BTg" secondAttribute="leading" constant="20" id="8G1-WG-vUk"/>
                             <constraint firstItem="xeO-Qm-fGi" firstAttribute="centerY" secondItem="kXz-3k-BTg" secondAttribute="centerY" id="9ea-fc-hJs"/>
+                            <constraint firstItem="2LK-2x-tf4" firstAttribute="centerY" secondItem="kXz-3k-BTg" secondAttribute="centerY" constant="10" id="DEq-hH-dHh"/>
+                            <constraint firstAttribute="trailing" secondItem="922-u6-9O6" secondAttribute="trailing" constant="50" id="Dua-8W-Rnk"/>
                             <constraint firstItem="xeO-Qm-fGi" firstAttribute="leading" secondItem="NWh-bF-mr7" secondAttribute="trailing" constant="10" id="d6s-jk-dpo"/>
+                            <constraint firstItem="5BF-ZQ-2QK" firstAttribute="top" secondItem="kXz-3k-BTg" secondAttribute="top" constant="5" id="dwQ-pO-XSB"/>
+                            <constraint firstItem="BLZ-aV-0Hk" firstAttribute="centerY" secondItem="kXz-3k-BTg" secondAttribute="centerY" constant="20" id="es8-sS-Wys"/>
+                            <constraint firstItem="BLZ-aV-0Hk" firstAttribute="leading" secondItem="kXz-3k-BTg" secondAttribute="leading" constant="60" id="lZu-n4-ga9"/>
+                            <constraint firstItem="922-u6-9O6" firstAttribute="centerY" secondItem="kXz-3k-BTg" secondAttribute="centerY" constant="10" id="q4H-pO-7d5"/>
+                            <constraint firstAttribute="trailing" secondItem="5BF-ZQ-2QK" secondAttribute="trailing" constant="10" id="qFB-jW-MhP"/>
+                            <constraint firstAttribute="trailing" secondItem="2LK-2x-tf4" secondAttribute="trailing" constant="10" id="vS6-1Y-GJe"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -53,14 +111,31 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="actionBtn" destination="5BF-ZQ-2QK" id="Uia-vD-3sz"/>
                 <outlet property="avatarImage" destination="NWh-bF-mr7" id="MHI-6v-XL8"/>
+                <outlet property="chooseAdminBtn" destination="922-u6-9O6" id="NM3-44-SEw"/>
                 <outlet property="friendTableView" destination="kXz-3k-BTg" id="JiO-Xc-bwl"/>
+                <outlet property="keyAdminImage" destination="BLZ-aV-0Hk" id="8WE-L2-MMY"/>
                 <outlet property="otherUserNameLabel" destination="xeO-Qm-fGi" id="t2Q-mN-V5f"/>
+                <outlet property="removeMemberBtn" destination="2LK-2x-tf4" id="4ks-gG-0aI"/>
             </connections>
-            <point key="canvasLocation" x="-148" y="80"/>
+            <point key="canvasLocation" x="-559.4202898550725" y="44.866071428571423"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="avatar_thinh" width="240" height="240"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="key.fill" catalog="system" width="83" height="128"/>
+        <image name="person.fill.checkmark" catalog="system" width="128" height="88"/>
+        <image name="person.fill.xmark" catalog="system" width="128" height="88"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
