@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "avatar_dung.jpeg",
+      "filename" : "app-logo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "avatar_dung@2x.jpeg",
+      "filename" : "app-logo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "avatar_dung@3x.jpeg",
+      "filename" : "app-logo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

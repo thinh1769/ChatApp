@@ -11,6 +11,7 @@ import RxCocoa
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var homeFriendsCollectionView: UICollectionView!
     @IBOutlet weak var conversationTableView: UITableView!
@@ -68,7 +69,7 @@ class HomeViewController: UIViewController {
         }
         .disposed(by: viewModel.bag)
         searchTextField.delegate = self
-        
+        avatarImage.layer.cornerRadius = avatarImage.bounds.width / 2
         nameLabel.text = name
     }
     
@@ -143,8 +144,10 @@ extension HomeViewController: UITableViewDataSource {
             var name = ""
             if viewModel.chats.value[indexPath.row].type == ChatType.single.rawValue {
                 name = viewModel.chats.value[indexPath.row].receiver?.name ?? ""
+                cell.avatarImage.image = UIImage(named: "user-default-avatar")
             } else {
                 name = viewModel.chats.value[indexPath.row].chatName ?? ""
+                cell.avatarImage.image = UIImage(named: "avatar-group")
             }
             cell.config(name: name, content: viewModel.chats.value[indexPath.row].lastMessage?.content ?? "")
             return cell

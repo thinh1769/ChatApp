@@ -61,6 +61,7 @@ class ChatViewController: UIViewController {
             statusLabel.text = "Online"
         } else {
             statusLabel.text = "\(viewModel.listMember.value.count) thành viên"
+            avatarImage.image = UIImage(named: "avatar-group")
         }
     }
     

@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ChatApp" customModuleProvider="target">
             <connections>
+                <outlet property="avatarImage" destination="nSE-vM-lS7" id="Ono-ny-UQc"/>
                 <outlet property="conversationTableView" destination="VWs-PG-aPy" id="3Ad-cP-fsv"/>
                 <outlet property="homeFriendsCollectionView" destination="ey4-Hx-98J" id="lzV-eS-4zb"/>
                 <outlet property="nameLabel" destination="yTd-yz-ddG" id="JLF-zl-xoM"/>
@@ -36,17 +37,21 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQd-hS-tqo">
                             <rect key="frame" x="0.0" y="0.0" width="315" height="36.5"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="nSE-vM-lS7">
-                                    <rect key="frame" x="0.0" y="3.5" width="31.5" height="29.5"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-default-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="nSE-vM-lS7">
+                                    <rect key="frame" x="0.0" y="3.5" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="j6J-cR-4Y8"/>
+                                        <constraint firstAttribute="height" constant="30" id="yex-aL-1se"/>
+                                    </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyễn Phúc Thịnh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTd-yz-ddG">
-                                    <rect key="frame" x="41.5" y="8" width="149" height="21"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <rect key="frame" x="40" y="8" width="163.5" height="21"/>
+                                    <color key="tintColor" systemColor="tintColor"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                    <color key="textColor" systemColor="tintColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1j-yz-SRh">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1j-yz-SRh">
                                     <rect key="frame" x="272.5" y="3" width="42.5" height="31"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="31" id="HrI-dF-AHd"/>
@@ -54,7 +59,7 @@
                                     </constraints>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="iphone.and.arrow.forward" catalog="system" title="">
+                                    <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system" title="">
                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -83,9 +88,7 @@
                                 <constraint firstItem="nSE-vM-lS7" firstAttribute="leading" secondItem="rQd-hS-tqo" secondAttribute="leading" id="JLe-g3-UkZ"/>
                                 <constraint firstItem="yTd-yz-ddG" firstAttribute="centerY" secondItem="rQd-hS-tqo" secondAttribute="centerY" id="Peb-gY-v4A"/>
                                 <constraint firstItem="yTd-yz-ddG" firstAttribute="leading" secondItem="nSE-vM-lS7" secondAttribute="trailing" constant="10" id="Sr8-hb-oyU"/>
-                                <constraint firstItem="nSE-vM-lS7" firstAttribute="width" secondItem="rQd-hS-tqo" secondAttribute="width" multiplier="0.1" id="TEM-xf-mHM"/>
                                 <constraint firstItem="n1j-yz-SRh" firstAttribute="leading" secondItem="Aqf-Om-tTx" secondAttribute="trailing" id="Wmf-Z2-Hzi"/>
-                                <constraint firstItem="nSE-vM-lS7" firstAttribute="height" secondItem="rQd-hS-tqo" secondAttribute="height" multiplier="0.8" id="gD4-vc-Fas"/>
                                 <constraint firstItem="Aqf-Om-tTx" firstAttribute="width" secondItem="rQd-hS-tqo" secondAttribute="width" multiplier="0.1" id="umb-vZ-ZAj"/>
                                 <constraint firstItem="nSE-vM-lS7" firstAttribute="centerY" secondItem="rQd-hS-tqo" secondAttribute="centerY" id="yNR-fm-A8G"/>
                             </constraints>
@@ -143,12 +146,15 @@
         </view>
     </objects>
     <resources>
-        <image name="iphone.and.arrow.forward" catalog="system" width="108" height="128"/>
-        <image name="logo" width="36.5" height="39"/>
         <image name="plus.message" catalog="system" width="128" height="113"/>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="top_background" width="142.5" height="110"/>
+        <image name="user-default-avatar" width="1000" height="1000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

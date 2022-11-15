@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="132" height="126"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_thinh" translatesAutoresizingMaskIntoConstraints="NO" id="MYV-sX-8tV">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-default-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="MYV-sX-8tV">
                         <rect key="frame" x="0.0" y="0.0" width="132" height="126"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENR-MK-cfD">
@@ -53,7 +53,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="avatar_thinh" width="240" height="240"/>
+        <image name="user-default-avatar" width="1000" height="1000"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

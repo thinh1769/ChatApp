@@ -91,8 +91,12 @@
                         <constraint firstItem="6qt-wd-2fN" firstAttribute="leading" secondItem="e7a-EY-SX8" secondAttribute="leading" id="uPN-HI-BHC"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fKB-8S-F4y">
-                    <rect key="frame" x="140.66666666666666" y="81.666666666666686" width="93.666666666666657" height="81.333333333333314"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app-logo" translatesAutoresizingMaskIntoConstraints="NO" id="fKB-8S-F4y">
+                    <rect key="frame" x="112.66666666666669" y="67.333333333333314" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="JRI-2q-NZA"/>
+                        <constraint firstAttribute="width" constant="150" id="RzC-Gh-nQJ"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -108,19 +112,17 @@
                 <constraint firstItem="Xkn-oK-RdG" firstAttribute="top" secondItem="MGI-8s-1xq" secondAttribute="bottom" constant="40" id="FNU-ED-NYi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xkn-oK-RdG" secondAttribute="trailing" constant="30" id="G8h-dW-wqC"/>
                 <constraint firstItem="MGI-8s-1xq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="I8f-AD-ouA"/>
-                <constraint firstItem="fKB-8S-F4y" firstAttribute="width" secondItem="MGI-8s-1xq" secondAttribute="width" multiplier="1/4" id="JmG-Iw-XXp"/>
                 <constraint firstItem="fKB-8S-F4y" firstAttribute="centerX" secondItem="MGI-8s-1xq" secondAttribute="centerX" id="KKP-n2-X8Y"/>
                 <constraint firstItem="MGI-8s-1xq" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="1/3" id="Qag-qK-4XK"/>
                 <constraint firstItem="2E5-Ed-MNT" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="1/3" id="SYN-kD-tlu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cj8-95-NBe" secondAttribute="bottom" constant="20" id="W7o-Je-3Om"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="e7a-EY-SX8" secondAttribute="trailing" constant="30" id="btc-G7-WKN"/>
-                <constraint firstItem="fKB-8S-F4y" firstAttribute="centerY" secondItem="MGI-8s-1xq" secondAttribute="centerY" id="d2P-04-iZs"/>
+                <constraint firstItem="fKB-8S-F4y" firstAttribute="centerY" secondItem="MGI-8s-1xq" secondAttribute="centerY" constant="20" id="d2P-04-iZs"/>
                 <constraint firstAttribute="bottom" secondItem="2E5-Ed-MNT" secondAttribute="bottom" id="kcW-RB-LxJ"/>
                 <constraint firstItem="2E5-Ed-MNT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nnl-Ji-Zw7"/>
-                <constraint firstItem="fKB-8S-F4y" firstAttribute="height" secondItem="MGI-8s-1xq" secondAttribute="height" multiplier="1/3" id="sck-Wm-nIy"/>
                 <constraint firstItem="MGI-8s-1xq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yuy-Wb-YCP"/>
             </constraints>
-            <point key="canvasLocation" x="131.8840579710145" y="75.815217391304358"/>
+            <point key="canvasLocation" x="-244" y="26"/>
         </view>
         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="um2-wB-l1b">
             <rect key="frame" x="0.0" y="0.0" width="97" height="34"/>
@@ -131,8 +133,8 @@
         </textField>
     </objects>
     <resources>
+        <image name="app-logo" width="73.666664123535156" height="65.333335876464844"/>
         <image name="bottom_background" width="125.66666412353516" height="63.333332061767578"/>
-        <image name="logo" width="36.666667938232422" height="39.333332061767578"/>
         <image name="top_background" width="142.66667175292969" height="110.33333587646484"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
