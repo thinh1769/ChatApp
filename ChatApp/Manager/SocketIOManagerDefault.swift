@@ -19,6 +19,8 @@ protocol SocketIOManager {
     func chooseAdmin(chatId: String, userId: String)
     func removeMember(chatId: String, userId: String)
     func leaveGroup(chatId: String)
+    func recallMessage(messageId: String)
+    func receiveRecallMessage(completion: @escaping(String, String) -> Void)
     func closeConnection()
 }
 
@@ -77,6 +79,7 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
     func receiveMessages(completion: @escaping(Message, String?) -> Void) {
         socket.on("User-Send-Message") { responseData, _ in
             let messageResponse = responseData[0] as! NSDictionary
+            let messageId = messageResponse["id"] as! String
             let content = messageResponse["content"] as! String
             let type = messageResponse["type"] as! Int
             let chatId = messageResponse["chatId"] as! String
@@ -87,13 +90,13 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
                 let recall = messageResponse["recall"] as! Bool
                 let senderId = (messageResponse["sender"] as! NSDictionary)["id"] as! String
                 let senderName = (messageResponse["sender"] as! NSDictionary)["name"] as! String
-                let message = Message(type: type, content: content, chatId: chatId, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
+                let message = Message(id: messageId, type: type, content: content, chatId: chatId, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
                 completion(message, nil)
             case MessageType.groupNotification.rawValue:
-                let message = Message(type: type, content: content, chatId: chatId, createdAt: createdAt)
+                let message = Message(id: messageId, type: type, content: content, chatId: chatId, createdAt: createdAt)
                 completion(message, nil)
             case MessageType.adminNotification.rawValue:
-                let message = Message(type: type, content: content, chatId: chatId, createdAt: createdAt)
+                let message = Message(id: messageId, type: type, content: content, chatId: chatId, createdAt: createdAt)
                 let adminId = messageResponse["adminId"] as! String
                 completion(message, adminId)
             default: break
@@ -155,5 +158,19 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
     func removeMember(chatId: String, userId: String) {
         let params = ["chatId": chatId, "userId": userId] as [String: Any]
         socket.emit("User-Remove-Member", params)
+    }
+    
+    func recallMessage(messageId: String) {
+        let param = ["messageId": messageId] as [String: Any]
+        socket.emit("User-Recall-Message", param)
+    }
+    
+    func receiveRecallMessage(completion: @escaping(String, String) -> Void) {
+        socket.on("User-Recall-Message") { responseData, _ in
+            let data = responseData[0] as! NSDictionary
+            let chatId = data["chatId"] as! String
+            let messageId = data["messageId"] as! String
+            completion(chatId, messageId)
+        }
     }
 }

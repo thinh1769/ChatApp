@@ -56,4 +56,14 @@ class ChatViewModel {
     func getAllMembers(_ chatId: String) -> Observable<[UserInfo]> {
         return userService.getUserByChatId(chatId)
     }
+    
+    func recallMessage(index: Int) {
+        socket.recallMessage(messageId: messages.value[index].id ?? "")
+    }
+    
+    func receiveRecallMessage(completion: @escaping(String) -> Void) {
+        socket.receiveRecallMessage { chatId, messageId in
+            completion(messageId)
+        }
+    }
 }

@@ -86,6 +86,8 @@ class ChatViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             }
         }
+        
+        // Đang làm on recall chat
     }
     
     private func setupMessageTableView() {
@@ -95,6 +97,7 @@ class ChatViewController: UIViewController {
         messageTableView.register(UINib(nibName: "GroupNotificationCell", bundle: nil), forCellReuseIdentifier: "groupNotificationCell")
         messageTableView.delegate = self
         messageTableView.dataSource = self
+
         
         if viewModel.chatId != "" {
             viewModel.getAllMessages().bind { [weak self] messages in
@@ -154,6 +157,16 @@ class ChatViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    private func showRecallSheet(index: Int) {
+        let recallSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        recallSheet.addAction(UIAlertAction(title: "Thu hồi", style: .default,handler: { _ in
+            print("---------------\(self.viewModel.messages.value[index].id ?? "")")
+            self.viewModel.recallMessage(index: index)
+        }))
+        recallSheet.addAction(UIAlertAction(title: "Hủy", style: .destructive, handler: nil))
+        present(recallSheet, animated: true, completion: nil)
+    }
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
@@ -168,32 +181,45 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
             ///kiểm tra message có trùng với id đang đăng nhập
             if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderMessageCell", for: indexPath) as? SenderMessageCell
-                else{ return UITableViewCell() }
-                cell.config(content: viewModel.messages.value[indexPath.row].content)
+                else { return UITableViewCell() }
+                if viewModel.messages.value[indexPath.row].recall ?? false {
+                    cell.config(content: "Tin nhắn đã được thu hồi")
+                } else {
+                    cell.config(content: viewModel.messages.value[indexPath.row].content ?? "")
+                }
                 return cell
                 
+            } else if viewModel.messages.value[indexPath.row].recall ?? false {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
+                else { return UITableViewCell() }
+                cell.config(content: "Tin nhắn đã được thu hồi")
+                return cell
             } else if viewModel.chatType == ChatType.single.rawValue {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
-                else{ return UITableViewCell() }
-                cell.config(content: viewModel.messages.value[indexPath.row].content)
+                else { return UITableViewCell() }
+                cell.config(content: viewModel.messages.value[indexPath.row].content ?? "")
                 return cell
             } else {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveGroupMessageCell", for: indexPath) as? ReceiveGroupMessageCell else { return UITableViewCell() }
-                cell.config(name: viewModel.messages.value[indexPath.row].sender?.name ?? "", content: viewModel.messages.value[indexPath.row].content)
+                cell.config(name: viewModel.messages.value[indexPath.row].sender?.name ?? "", content: viewModel.messages.value[indexPath.row].content ?? "")
                 return cell
             }
             ///ChatType: GroupNotification
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
-            cell.config(viewModel.messages.value[indexPath.row].content)
+            cell.config(viewModel.messages.value[indexPath.row].content ?? "")
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
-            cell.config(viewModel.messages.value[indexPath.row].content)
+            cell.config(viewModel.messages.value[indexPath.row].content ?? "")
             return cell
         default:
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.showRecallSheet(index: indexPath.row)
     }
 }
 

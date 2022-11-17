@@ -124,7 +124,7 @@
                         <constraint firstAttribute="height" constant="80" id="z8T-vb-a3R"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J0M-Ad-O3n">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J0M-Ad-O3n">
                     <rect key="frame" x="20" y="153.5" width="335" height="448.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
@@ -177,7 +177,7 @@
                 <constraint firstItem="GdG-w8-0m7" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="wfO-dx-KxH"/>
                 <constraint firstItem="GdG-w8-0m7" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.23" id="zO7-FJ-02M"/>
             </constraints>
-            <point key="canvasLocation" x="198" y="-204"/>
+            <point key="canvasLocation" x="-490" y="-479"/>
         </view>
     </objects>
     <resources>
@@ -186,7 +186,7 @@
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="top_background" width="142.5" height="110"/>
-        <image name="user-default-avatar" width="300" height="300"/>
+        <image name="user-default-avatar" width="1000" height="1000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
