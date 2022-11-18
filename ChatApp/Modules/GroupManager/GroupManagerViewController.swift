@@ -67,8 +67,8 @@ class GroupManagerViewController: UIViewController {
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "Cảnh báo", message: "Bạn phải chọn trường nhóm mới trước khi rời nhóm", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: DefaultMessage.alertTitle, message: DefaultMessage.requireChooseAdmin, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: DefaultMessage.ok, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }

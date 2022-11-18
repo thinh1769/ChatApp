@@ -87,7 +87,14 @@ class ChatViewController: UIViewController {
             }
         }
         
-        // Đang làm on recall chat
+        viewModel.receiveRecallMessage { [weak self] chatId, messageId in
+            guard let self = self else { return }
+            if chatId == self.viewModel.chatId {
+                self.viewModel.messages.accept(self.viewModel.updateRecallMessage(messageId))
+                self.messageTableView.reloadData()
+                self.messageTableView.scrollToRow(at: [0, self.viewModel.messages.value.count - 1], at: .top, animated: true)
+            }
+        }
     }
     
     private func setupMessageTableView() {
@@ -161,11 +168,16 @@ class ChatViewController: UIViewController {
     private func showRecallSheet(index: Int) {
         let recallSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         recallSheet.addAction(UIAlertAction(title: "Thu hồi", style: .default,handler: { _ in
-            print("---------------\(self.viewModel.messages.value[index].id ?? "")")
             self.viewModel.recallMessage(index: index)
         }))
         recallSheet.addAction(UIAlertAction(title: "Hủy", style: .destructive, handler: nil))
         present(recallSheet, animated: true, completion: nil)
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: DefaultMessage.alertTitle, message: DefaultMessage.recallAlert, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: DefaultMessage.ok, style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -183,7 +195,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderMessageCell", for: indexPath) as? SenderMessageCell
                 else { return UITableViewCell() }
                 if viewModel.messages.value[indexPath.row].recall ?? false {
-                    cell.config(content: "Tin nhắn đã được thu hồi")
+                    cell.config(content: DefaultMessage.recall)
                 } else {
                     cell.config(content: viewModel.messages.value[indexPath.row].content ?? "")
                 }
@@ -192,7 +204,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
             } else if viewModel.messages.value[indexPath.row].recall ?? false {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
                 else { return UITableViewCell() }
-                cell.config(content: "Tin nhắn đã được thu hồi")
+                cell.config(content: DefaultMessage.recall)
                 return cell
             } else if viewModel.chatType == ChatType.single.rawValue {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
@@ -219,7 +231,14 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.showRecallSheet(index: indexPath.row)
+        let message = viewModel.messages.value[indexPath.row]
+        if !(message.recall ?? false) && (message.sender?.id == UserDefaults.userInfo?.id) && (message.type == MessageType.text.rawValue) {
+            if message.createdAt?.getMinutesFromPresent() ?? 0 < 60 {
+                self.showRecallSheet(index: indexPath.row)
+            } else {
+                self.showAlert()
+            }
+        }
     }
 }
 

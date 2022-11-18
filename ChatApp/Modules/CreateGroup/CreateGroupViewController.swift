@@ -57,9 +57,9 @@ class CreateGroupViewController: UIViewController {
             } onError: { _ in
             } .disposed(by: viewModel.bag)
         } else if let chatName = groupNameTextField.text, chatName.count == 0 {
-            showAlert(message: "Chưa nhập tên nhóm!")
+            showAlert(message: DefaultMessage.requireNameGroup)
         } else if viewModel.selectedFriendsList.value.count <= 1 {
-            showAlert(message: "Chưa đủ số lượng thành viên!")
+            showAlert(message: DefaultMessage.requireNumberOfMember)
         }
     }
     
@@ -83,8 +83,8 @@ class CreateGroupViewController: UIViewController {
     }
 
     private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Cảnh báo", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: DefaultMessage.alertTitle, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: DefaultMessage.ok, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 

@@ -112,6 +112,7 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
             let type = chatResponse["type"] as! Int
             
             let lassMessageResponse = chatResponse ["lastMessage"] as! NSDictionary
+            let messageId = lassMessageResponse["id"] as! String
             let messageType = lassMessageResponse["type"] as! Int
             let messageContent = lassMessageResponse["content"] as! String
             let recall = lassMessageResponse["recall"] as! Bool
@@ -120,7 +121,7 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
             let senderName = sender["name"] as! String
             let createdAt = lassMessageResponse["createdAt"] as! String
             
-            let lassMessage = Message(type: messageType, content: messageContent, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
+            let lassMessage = Message(id: messageId, type: messageType, content: messageContent, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
             
             if type == ChatType.group.rawValue {
                 let chatName = chatResponse["chatName"] as! String

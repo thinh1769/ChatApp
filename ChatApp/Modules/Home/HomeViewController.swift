@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         subscribeSocketIO()
         setupUI()
         setupCollection()
-        setUpTableView(TypeTableCell.chat.rawValue)
+        setUpTableView(TableCellType.chat.rawValue)
         setupBinding()
     }
     
@@ -47,12 +47,18 @@ class HomeViewController: UIViewController {
                 listChat.append(chat)
             }
             self.viewModel.chats.accept(self.viewModel.sortChat(listChat))
-            self.setUpTableView(TypeTableCell.chat.rawValue)
+            self.setUpTableView(TableCellType.chat.rawValue)
         }
         
         viewModel.receiveLeaveChat {[weak self] chatId in
             guard let self = self else { return }
             self.viewModel.removeChat(chatId)
+            self.conversationTableView.reloadData()
+        }
+        
+        viewModel.receiveRecallMessage { [weak self] chatId, messageId in
+            guard let self = self else { return }
+            self.viewModel.chats.accept(self.viewModel.updateRecallMessage(chatId, messageId))
             self.conversationTableView.reloadData()
         }
     }
@@ -61,7 +67,7 @@ class HomeViewController: UIViewController {
         searchTextField.rx.controlEvent([.editingDidEnd]).subscribe { [weak self] _ in
             guard let self = self else { return }
             if self.searchTextField.text == "" {
-                self.viewModel.typeTable = TypeTableCell.chat.rawValue
+                self.viewModel.typeTable = TableCellType.chat.rawValue
                 self.setUpTableView(self.viewModel.typeTable)
                 self.conversationTableView.reloadData()
             }
@@ -96,7 +102,7 @@ class HomeViewController: UIViewController {
         self.conversationTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         conversationTableView.delegate = self
         conversationTableView.dataSource = self
-        if typeTableCell == TypeTableCell.chat.rawValue {
+        if typeTableCell == TableCellType.chat.rawValue {
             conversationTableView.register(UINib(nibName: "ConversationTableViewCell", bundle: nil), forCellReuseIdentifier: "conversationTableViewCell")
         } else {
             conversationTableView.register(UINib(nibName: "FriendTableCell", bundle: nil), forCellReuseIdentifier: "friendTableCell")
@@ -130,7 +136,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 ///-------TableView
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if viewModel.typeTable == TypeTableCell.chat.rawValue {
+        if viewModel.typeTable == TableCellType.chat.rawValue {
             return viewModel.chats.value.count
         } else {
             return viewModel.searchFriendsList.value.count
@@ -138,7 +144,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if viewModel.typeTable == TypeTableCell.chat.rawValue {
+        if viewModel.typeTable == TableCellType.chat.rawValue {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "conversationTableViewCell", for: indexPath) as? ConversationTableViewCell else { return UITableViewCell() }
             cell.selectionStyle = .none
             var name = ""
@@ -149,7 +155,7 @@ extension HomeViewController: UITableViewDataSource {
                 name = viewModel.chats.value[indexPath.row].chatName ?? ""
                 cell.avatarImage.image = UIImage(named: "avatar-group")
             }
-            cell.config(name: name, content: viewModel.chats.value[indexPath.row].lastMessage?.content ?? "")
+            cell.config(name: name, content: viewModel.chats.value[indexPath.row].lastMessage?.content ?? DefaultMessage.recall)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendTableCell", for: indexPath) as? FriendTableCell else { return UITableViewCell() }
@@ -167,7 +173,7 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ChatViewController()
-        if viewModel.typeTable == TypeTableCell.chat.rawValue {
+        if viewModel.typeTable == TableCellType.chat.rawValue {
             var name = ""
             if viewModel.chats.value[indexPath.row].type == ChatType.single.rawValue {
                 name = viewModel.chats.value[indexPath.row].receiver?.name ?? ""
@@ -201,7 +207,7 @@ extension HomeViewController: UITextFieldDelegate {
         guard let nameOrPhone = searchTextField.text else { return false }
         viewModel.searchFriend(nameOrPhone).subscribe { listUser in
             self.viewModel.searchFriendsList.accept(listUser)
-            self.viewModel.typeTable = TypeTableCell.friend.rawValue
+            self.viewModel.typeTable = TableCellType.friend.rawValue
             self.setUpTableView(self.viewModel.typeTable)
             self.conversationTableView.reloadData()
         } onError: { _ in

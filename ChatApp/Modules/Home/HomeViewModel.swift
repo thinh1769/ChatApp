@@ -89,7 +89,7 @@ class HomeViewModel {
         var listChat = chats.value
         for (index, element) in listChat.enumerated() {
             if element.id == message.chatId {
-                listChat[index].lastMessage = Message(type: message.type, content: message.content, recall: message.recall, createdAt: message.createdAt, sender: message.sender)
+                listChat[index].lastMessage = Message(id: message.id, type: message.type, content: message.content, recall: message.recall, createdAt: message.createdAt, sender: message.sender)
             }
         }
         return listChat
@@ -100,6 +100,23 @@ class HomeViewModel {
         convertChat.receiver?.id = chat.lastMessage?.sender?.id
         convertChat.receiver?.name = chat.lastMessage?.sender?.name
         return convertChat
+    }
+    
+    func receiveRecallMessage(completion: @escaping(String, String) -> Void) {
+        socket.receiveRecallMessage { chatId, messageId in
+            completion(chatId, messageId)
+        }
+    }
+    
+    func updateRecallMessage(_ chatId: String, _ messageId: String) -> [Chat] {
+        var listChat = chats.value
+        for (index, element) in listChat.enumerated() {
+            if chatId == element.id && messageId == element.lastMessage?.id {
+                listChat[index].lastMessage?.content = nil
+                listChat[index].lastMessage?.recall = true
+            }
+        }
+        return listChat
     }
     
     func logout() {

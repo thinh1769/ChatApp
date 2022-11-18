@@ -21,8 +21,6 @@
 		223F9C17291775390076AED4 /* AddMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223F9C15291775390076AED4 /* AddMemberViewController.xib */; };
 		2246D57628E0477300E1180D /* HomeFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2246D57428E0477300E1180D /* HomeFriendsCollectionViewCell.swift */; };
 		2246D57728E0477300E1180D /* HomeFriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2246D57528E0477300E1180D /* HomeFriendsCollectionViewCell.xib */; };
-		2272B13F291F8471009C73B2 /* ReceiveGroupMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2272B13D291F8471009C73B2 /* ReceiveGroupMessageCell.swift */; };
-		2272B140291F8471009C73B2 /* ReceiveGroupMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2272B13E291F8471009C73B2 /* ReceiveGroupMessageCell.xib */; };
 		22973D7628E053D200F47C05 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22973D7428E053D200F47C05 /* ConversationTableViewCell.swift */; };
 		22973D7728E053D200F47C05 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22973D7528E053D200F47C05 /* ConversationTableViewCell.xib */; };
 		22973D8328F2B4CB00F47C05 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22973D8228F2B4CB00F47C05 /* Message.swift */; };
@@ -59,6 +57,9 @@
 		FCB53EB12906923D00A75944 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EB02906923D00A75944 /* ChatViewModel.swift */; };
 		FCC8F9FE28EF048B00930DA2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8F9FC28EF048B00930DA2 /* ChatViewController.swift */; };
 		FCC8F9FF28EF048B00930DA2 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */; };
+		FCFE78EB2927590000D76A50 /* ReceiveGroupMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */; };
+		FCFE78EC2927590000D76A50 /* ReceiveGroupMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */; };
+		FCFE78EE29275CF700D76A50 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78ED29275CF700D76A50 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,8 +78,6 @@
 		223F9C15291775390076AED4 /* AddMemberViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemberViewController.xib; sourceTree = "<group>"; };
 		2246D57428E0477300E1180D /* HomeFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2246D57528E0477300E1180D /* HomeFriendsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFriendsCollectionViewCell.xib; sourceTree = "<group>"; };
-		2272B13D291F8471009C73B2 /* ReceiveGroupMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiveGroupMessageCell.swift; path = ../ReceiveGroupMessageCell.swift; sourceTree = "<group>"; };
-		2272B13E291F8471009C73B2 /* ReceiveGroupMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReceiveGroupMessageCell.xib; path = ../ReceiveGroupMessageCell.xib; sourceTree = "<group>"; };
 		22973D7428E053D200F47C05 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		22973D7528E053D200F47C05 /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
 		22973D8228F2B4CB00F47C05 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -118,6 +117,9 @@
 		FCB53EB02906923D00A75944 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		FCC8F9FC28EF048B00930DA2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiveGroupMessageCell.xib; sourceTree = "<group>"; };
+		FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveGroupMessageCell.swift; sourceTree = "<group>"; };
+		FCFE78ED29275CF700D76A50 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,7 +209,7 @@
 		2246D57228E0461C00E1180D /* Supports */ = {
 			isa = PBXGroup;
 			children = (
-				2272B13B291F7D10009C73B2 /* ReceiveGroupMessageCell */,
+				FCFE78E8292758F800D76A50 /* ReceiveGroupMessageCell */,
 				22BE751E291D005800778DB8 /* SenderMessageCell */,
 				22BE7514291BDA7000778DB8 /* ReceiveMessageCell */,
 				22BE75042917C74F00778DB8 /* GroupNotification */,
@@ -227,16 +229,6 @@
 				2246D57528E0477300E1180D /* HomeFriendsCollectionViewCell.xib */,
 			);
 			path = HomeFriendsCollectionViewCell;
-			sourceTree = "<group>";
-		};
-		2272B13B291F7D10009C73B2 /* ReceiveGroupMessageCell */ = {
-			isa = PBXGroup;
-			children = (
-				2272B13D291F8471009C73B2 /* ReceiveGroupMessageCell.swift */,
-				2272B13E291F8471009C73B2 /* ReceiveGroupMessageCell.xib */,
-			);
-			name = ReceiveGroupMessageCell;
-			path = ../../../../../.Trash/ReceiveGroupMessageCell;
 			sourceTree = "<group>";
 		};
 		22973D7328E0538900F47C05 /* ConversationTableViewCell */ = {
@@ -363,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				22C716FB290297B300368D73 /* UserDefaults+Ext.swift */,
+				FCFE78ED29275CF700D76A50 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,6 +394,15 @@
 				FCB53EB02906923D00A75944 /* ChatViewModel.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		FCFE78E8292758F800D76A50 /* ReceiveGroupMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */,
+				FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */,
+			);
+			path = ReceiveGroupMessageCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,7 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				223C627728DF01B000B19A64 /* LoginViewController.xib in Resources */,
-				2272B140291F8471009C73B2 /* ReceiveGroupMessageCell.xib in Resources */,
+				FCFE78EB2927590000D76A50 /* ReceiveGroupMessageCell.xib in Resources */,
 				2246D57728E0477300E1180D /* HomeFriendsCollectionViewCell.xib in Resources */,
 				22046560290E2B9000DF96F1 /* CreateGroupViewController.xib in Resources */,
 				22973D7728E053D200F47C05 /* ConversationTableViewCell.xib in Resources */,
@@ -549,6 +551,7 @@
 				22C716FC290297B300368D73 /* UserDefaults+Ext.swift in Sources */,
 				22A55B7928DEF7A300F936B3 /* SignUpViewController.swift in Sources */,
 				22A55B6328DEF6DD00F936B3 /* AppDelegate.swift in Sources */,
+				FCFE78EE29275CF700D76A50 /* String+Ext.swift in Sources */,
 				22BE750C2918052700778DB8 /* UserService.swift in Sources */,
 				FCB53EB12906923D00A75944 /* ChatViewModel.swift in Sources */,
 				22BE7510291A754E00778DB8 /* GroupManagerViewController.swift in Sources */,
@@ -561,7 +564,7 @@
 				22A55B6528DEF6DD00F936B3 /* SceneDelegate.swift in Sources */,
 				2204655F290E2B9000DF96F1 /* CreateGroupViewController.swift in Sources */,
 				FCB53EAB290644C100A75944 /* Managers.swift in Sources */,
-				2272B13F291F8471009C73B2 /* ReceiveGroupMessageCell.swift in Sources */,
+				FCFE78EC2927590000D76A50 /* ReceiveGroupMessageCell.swift in Sources */,
 				22BE7513291A7EB900778DB8 /* GroupManagerViewModel.swift in Sources */,
 				22C716FE290297F200368D73 /* UserInfo.swift in Sources */,
 				220465622910190900DF96F1 /* CreateGroupViewModel.swift in Sources */,

@@ -12,7 +12,18 @@ enum Base: String {
     case url = "http://localhost:9090/"
 }
 
-enum TypeTableCell: Int {
+struct DefaultMessage {
+    static let recall = "Tin nhắn đã được thu hồi"
+    static let recallAlert = "Chỉ được thu hồi tin nhắn đã gửi trước 1 giờ"
+    static let alertTitle = "Cảnh báo"
+    static let ok = "Ok"
+    static let wrongConfirmPassword = "Nhập lại mật khẩu chưa đúng"
+    static let requireChooseAdmin = "Bạn phải chọn trường nhóm mới trước khi rời nhóm"
+    static let requireNameGroup = "Chưa nhập tên nhóm"
+    static let requireNumberOfMember = "Chưa đủ số lượng thành viên"
+}
+
+enum TableCellType: Int {
     case chat = 0
     case friend = 1
 }

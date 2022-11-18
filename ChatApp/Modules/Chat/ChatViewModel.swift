@@ -61,9 +61,20 @@ class ChatViewModel {
         socket.recallMessage(messageId: messages.value[index].id ?? "")
     }
     
-    func receiveRecallMessage(completion: @escaping(String) -> Void) {
+    func receiveRecallMessage(completion: @escaping(String, String) -> Void) {
         socket.receiveRecallMessage { chatId, messageId in
-            completion(messageId)
+            completion(chatId, messageId)
         }
+    }
+    
+    func updateRecallMessage(_ messageId: String) -> [Message] {
+        var listMessage = messages.value
+        for (index, element) in listMessage.enumerated() {
+            if messageId == element.id {
+                listMessage[index].content = nil
+                listMessage[index].recall = true
+            }
+        }
+        return listMessage
     }
 }
