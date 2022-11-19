@@ -13,7 +13,7 @@ enum Base: String {
 }
 
 struct DefaultMessage {
-    static let recall = "Tin nhắn đã được thu hồi"
+    static let recallMessage = "Tin nhắn đã được thu hồi"
     static let recallAlert = "Chỉ được thu hồi tin nhắn đã gửi trước 1 giờ"
     static let alertTitle = "Cảnh báo"
     static let ok = "Ok"
@@ -21,6 +21,10 @@ struct DefaultMessage {
     static let requireChooseAdmin = "Bạn phải chọn trường nhóm mới trước khi rời nhóm"
     static let requireNameGroup = "Chưa nhập tên nhóm"
     static let requireNumberOfMember = "Chưa đủ số lượng thành viên"
+    static let cancel = "Hủy"
+    static let recall = "Thu hồi"
+    static let camera = "Máy ảnh"
+    static let photoLibrary = "Thư viện ảnh"
 }
 
 enum TableCellType: Int {

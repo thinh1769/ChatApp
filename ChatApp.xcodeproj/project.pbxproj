@@ -40,6 +40,10 @@
 		22BE7518291BDACF00778DB8 /* ReceiveMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BE7516291BDACF00778DB8 /* ReceiveMessageCell.xib */; };
 		22BE7521291D007600778DB8 /* SenderMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BE751F291D007600778DB8 /* SenderMessageCell.swift */; };
 		22BE7522291D007600778DB8 /* SenderMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BE7520291D007600778DB8 /* SenderMessageCell.xib */; };
+		22C11EB02928A36D005273E0 /* ImageReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C11EAC2928A36D005273E0 /* ImageReceiverCell.swift */; };
+		22C11EB12928A36D005273E0 /* ImageSenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C11EAD2928A36D005273E0 /* ImageSenderCell.swift */; };
+		22C11EB22928A36D005273E0 /* ImageReceiverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22C11EAE2928A36D005273E0 /* ImageReceiverCell.xib */; };
+		22C11EB32928A36D005273E0 /* ImageSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22C11EAF2928A36D005273E0 /* ImageSenderCell.xib */; };
 		22C716F22902828200368D73 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C716F12902828200368D73 /* BaseService.swift */; };
 		22C716F42902841400368D73 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C716F32902841400368D73 /* AuthService.swift */; };
 		22C716F7290284AD00368D73 /* ServiceConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C716F6290284AD00368D73 /* ServiceConstant.swift */; };
@@ -99,6 +103,10 @@
 		22BE7516291BDACF00778DB8 /* ReceiveMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiveMessageCell.xib; sourceTree = "<group>"; };
 		22BE751F291D007600778DB8 /* SenderMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderMessageCell.swift; sourceTree = "<group>"; };
 		22BE7520291D007600778DB8 /* SenderMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderMessageCell.xib; sourceTree = "<group>"; };
+		22C11EAC2928A36D005273E0 /* ImageReceiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageReceiverCell.swift; sourceTree = "<group>"; };
+		22C11EAD2928A36D005273E0 /* ImageSenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSenderCell.swift; sourceTree = "<group>"; };
+		22C11EAE2928A36D005273E0 /* ImageReceiverCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageReceiverCell.xib; sourceTree = "<group>"; };
+		22C11EAF2928A36D005273E0 /* ImageSenderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageSenderCell.xib; sourceTree = "<group>"; };
 		22C716F12902828200368D73 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		22C716F32902841400368D73 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		22C716F6290284AD00368D73 /* ServiceConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstant.swift; sourceTree = "<group>"; };
@@ -209,6 +217,7 @@
 		2246D57228E0461C00E1180D /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				22C11EAB2928A36D005273E0 /* ImageCell */,
 				FCFE78E8292758F800D76A50 /* ReceiveGroupMessageCell */,
 				22BE751E291D005800778DB8 /* SenderMessageCell */,
 				22BE7514291BDA7000778DB8 /* ReceiveMessageCell */,
@@ -330,6 +339,17 @@
 				22BE7520291D007600778DB8 /* SenderMessageCell.xib */,
 			);
 			path = SenderMessageCell;
+			sourceTree = "<group>";
+		};
+		22C11EAB2928A36D005273E0 /* ImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				22C11EAC2928A36D005273E0 /* ImageReceiverCell.swift */,
+				22C11EAE2928A36D005273E0 /* ImageReceiverCell.xib */,
+				22C11EAD2928A36D005273E0 /* ImageSenderCell.swift */,
+				22C11EAF2928A36D005273E0 /* ImageSenderCell.xib */,
+			);
+			path = ImageCell;
 			sourceTree = "<group>";
 		};
 		22C716F02902820800368D73 /* Service */ = {
@@ -465,12 +485,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C11EB32928A36D005273E0 /* ImageSenderCell.xib in Resources */,
 				223C627728DF01B000B19A64 /* LoginViewController.xib in Resources */,
 				FCFE78EB2927590000D76A50 /* ReceiveGroupMessageCell.xib in Resources */,
 				2246D57728E0477300E1180D /* HomeFriendsCollectionViewCell.xib in Resources */,
 				22046560290E2B9000DF96F1 /* CreateGroupViewController.xib in Resources */,
 				22973D7728E053D200F47C05 /* ConversationTableViewCell.xib in Resources */,
 				22A55B6F28DEF6E100F936B3 /* LaunchScreen.storyboard in Resources */,
+				22C11EB22928A36D005273E0 /* ImageReceiverCell.xib in Resources */,
 				223F9C17291775390076AED4 /* AddMemberViewController.xib in Resources */,
 				223C627E28E02CBD00B19A64 /* HomeViewController.xib in Resources */,
 				22A55B6C28DEF6E100F936B3 /* Assets.xcassets in Resources */,
@@ -541,6 +563,7 @@
 				FCC8F9FE28EF048B00930DA2 /* ChatViewController.swift in Sources */,
 				223F9C16291775390076AED4 /* AddMemberViewController.swift in Sources */,
 				22C7170A2903C72500368D73 /* SignUpViewModel.swift in Sources */,
+				22C11EB12928A36D005273E0 /* ImageSenderCell.swift in Sources */,
 				22BE7521291D007600778DB8 /* SenderMessageCell.swift in Sources */,
 				22C716F42902841400368D73 /* AuthService.swift in Sources */,
 				22BE7517291BDACF00778DB8 /* ReceiveMessageCell.swift in Sources */,
@@ -559,6 +582,7 @@
 				FCB53EAF2906740500A75944 /* Chat.swift in Sources */,
 				22C7170229029F0F00368D73 /* LoginViewModel.swift in Sources */,
 				22973D8328F2B4CB00F47C05 /* Message.swift in Sources */,
+				22C11EB02928A36D005273E0 /* ImageReceiverCell.swift in Sources */,
 				22C716F7290284AD00368D73 /* ServiceConstant.swift in Sources */,
 				FCB53EAD2906731C00A75944 /* ChatService.swift in Sources */,
 				22A55B6528DEF6DD00F936B3 /* SceneDelegate.swift in Sources */,
@@ -717,7 +741,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -749,7 +773,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

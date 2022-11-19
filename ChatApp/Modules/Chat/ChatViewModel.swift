@@ -16,6 +16,8 @@ class ChatViewModel {
     let listMember = BehaviorRelay<[UserInfo]>(value: [])
     private let chatService = ChatService()
     private let userService = UserService()
+    var sendBtnStatus = MessageType.image.rawValue
+    var imageSelected: [UIImage] = [UIImage(named: "111")!]
     var chatId = ""
     var chatName = ""
     var otherUserId = ""
