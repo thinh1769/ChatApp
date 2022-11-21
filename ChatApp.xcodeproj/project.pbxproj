@@ -64,6 +64,9 @@
 		FCFE78EB2927590000D76A50 /* ReceiveGroupMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */; };
 		FCFE78EC2927590000D76A50 /* ReceiveGroupMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */; };
 		FCFE78EE29275CF700D76A50 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78ED29275CF700D76A50 /* String+Ext.swift */; };
+		FCFE78FD292B60CE00D76A50 /* AWSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78FC292B60CE00D76A50 /* AWSService.swift */; };
+		FCFE78FF292B63DC00D76A50 /* AssetDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78FE292B63DC00D76A50 /* AssetDataModel.swift */; };
+		FCFE7901292B641600D76A50 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE7900292B641600D76A50 /* Asset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +131,9 @@
 		FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiveGroupMessageCell.xib; sourceTree = "<group>"; };
 		FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveGroupMessageCell.swift; sourceTree = "<group>"; };
 		FCFE78ED29275CF700D76A50 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		FCFE78FC292B60CE00D76A50 /* AWSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSService.swift; sourceTree = "<group>"; };
+		FCFE78FE292B63DC00D76A50 /* AssetDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDataModel.swift; sourceTree = "<group>"; };
+		FCFE7900292B641600D76A50 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +262,8 @@
 				22C716FD290297F200368D73 /* UserInfo.swift */,
 				22C716FF29029B5F00368D73 /* ResponseMain.swift */,
 				FCB53EAE2906740500A75944 /* Chat.swift */,
+				FCFE78FE292B63DC00D76A50 /* AssetDataModel.swift */,
+				FCFE7900292B641600D76A50 /* Asset.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -359,6 +367,7 @@
 				22C716F32902841400368D73 /* AuthService.swift */,
 				FCB53EAC2906731C00A75944 /* ChatService.swift */,
 				22BE750B2918052700778DB8 /* UserService.swift */,
+				FCFE78FC292B60CE00D76A50 /* AWSService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -565,6 +574,7 @@
 				22C7170A2903C72500368D73 /* SignUpViewModel.swift in Sources */,
 				22C11EB12928A36D005273E0 /* ImageSenderCell.swift in Sources */,
 				22BE7521291D007600778DB8 /* SenderMessageCell.swift in Sources */,
+				FCFE78FF292B63DC00D76A50 /* AssetDataModel.swift in Sources */,
 				22C716F42902841400368D73 /* AuthService.swift in Sources */,
 				22BE7517291BDACF00778DB8 /* ReceiveMessageCell.swift in Sources */,
 				22BE75072917C7F300778DB8 /* GroupNotificationCell.swift in Sources */,
@@ -587,10 +597,12 @@
 				FCB53EAD2906731C00A75944 /* ChatService.swift in Sources */,
 				22A55B6528DEF6DD00F936B3 /* SceneDelegate.swift in Sources */,
 				2204655F290E2B9000DF96F1 /* CreateGroupViewController.swift in Sources */,
+				FCFE78FD292B60CE00D76A50 /* AWSService.swift in Sources */,
 				FCB53EAB290644C100A75944 /* Managers.swift in Sources */,
 				FCFE78EC2927590000D76A50 /* ReceiveGroupMessageCell.swift in Sources */,
 				22BE7513291A7EB900778DB8 /* GroupManagerViewModel.swift in Sources */,
 				22C716FE290297F200368D73 /* UserInfo.swift in Sources */,
+				FCFE7901292B641600D76A50 /* Asset.swift in Sources */,
 				220465622910190900DF96F1 /* CreateGroupViewModel.swift in Sources */,
 				22C716F22902828200368D73 /* BaseService.swift in Sources */,
 			);

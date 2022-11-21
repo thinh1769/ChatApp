@@ -170,7 +170,7 @@ class ChatViewController: UIViewController {
     private func showImagePickerView() {
         var config = PHPickerConfiguration()
         config.filter = .images
-        config.selectionLimit = 0
+        config.selectionLimit = 2
         
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = self
@@ -198,45 +198,38 @@ class ChatViewController: UIViewController {
     
     private func showRecallSheet(index: Int) {
         let recallSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        recallSheet.addAction(UIAlertAction(title: DefaultMessage.recall, style: .default,handler: { _ in
+        recallSheet.addAction(UIAlertAction(title: DefaultConstants.recall, style: .default,handler: { _ in
             self.viewModel.recallMessage(index: index)
         }))
-        recallSheet.addAction(UIAlertAction(title: DefaultMessage.cancel, style: .destructive, handler: nil))
+        recallSheet.addAction(UIAlertAction(title: DefaultConstants.cancel, style: .destructive, handler: nil))
         present(recallSheet, animated: true, completion: nil)
     }
     
     private func showMediaSheet() {
         let recallSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        recallSheet.addAction(UIAlertAction(title: DefaultMessage.camera, style: .default, handler: { _ in
+        recallSheet.addAction(UIAlertAction(title: DefaultConstants.camera, style: .default, handler: { _ in
             
         }))
-        recallSheet.addAction(UIAlertAction(title: DefaultMessage.photoLibrary, style: .default, handler: { _ in
+        recallSheet.addAction(UIAlertAction(title: DefaultConstants.photoLibrary, style: .default, handler: { _ in
             self.showImagePickerView()
         }))
-        recallSheet.addAction(UIAlertAction(title: DefaultMessage.cancel, style: .destructive, handler: nil))
+        recallSheet.addAction(UIAlertAction(title: DefaultConstants.cancel, style: .destructive, handler: nil))
         present(recallSheet, animated: true, completion: nil)
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: DefaultMessage.alertTitle, message: DefaultMessage.recallAlert, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: DefaultMessage.ok, style: .default, handler: nil))
+        let alert = UIAlertController(title: DefaultConstants.alertTitle, message: DefaultConstants.recallAlert, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: DefaultConstants.ok, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.messages.value.count + 1
+        return viewModel.messages.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        ///Test hiển thị hình ảnh thôi nha, chứ ban đầu chỉ có switch case thôi
-        if viewModel.messages.value.count == indexPath.row {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageSenderCell", for: indexPath) as? ImageSenderCell
-            else { return UITableViewCell() }
-            cell.configImage(image: self.viewModel.imageSelected[0])
-            return cell
-        } else {
             switch viewModel.messages.value[indexPath.row].type {
                 ///ChatType: Text
             case 0:
@@ -245,7 +238,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderMessageCell", for: indexPath) as? SenderMessageCell
                     else { return UITableViewCell() }
                     if viewModel.messages.value[indexPath.row].recall ?? false {
-                        cell.config(content: DefaultMessage.recallMessage)
+                        cell.config(content: DefaultConstants.recallMessage)
                     } else {
                         cell.config(content: viewModel.messages.value[indexPath.row].content ?? "")
                     }
@@ -254,7 +247,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
                 } else if viewModel.messages.value[indexPath.row].recall ?? false {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
                     else { return UITableViewCell() }
-                    cell.config(content: DefaultMessage.recallMessage)
+                    cell.config(content: DefaultConstants.recallMessage)
                     return cell
                 } else if viewModel.chatType == ChatType.single.rawValue {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
@@ -266,19 +259,29 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.config(name: viewModel.messages.value[indexPath.row].sender?.name ?? "", content: viewModel.messages.value[indexPath.row].content ?? "")
                     return cell
                 }
+                
+            case 1:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageSenderCell", for: indexPath) as? ImageSenderCell
+                else { return UITableViewCell() }
+                self.viewModel.getImage(index: indexPath.row) { [weak self] image in
+                    cell.configImage(image: image)
+                }
+                return cell
+                
                 ///ChatType: GroupNotification
             case 2:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
                 cell.config(viewModel.messages.value[indexPath.row].content ?? "")
                 return cell
+                
             case 3:
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
                 cell.config(viewModel.messages.value[indexPath.row].content ?? "")
                 return cell
+                
             default:
                 return UITableViewCell()
             }
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -307,9 +310,10 @@ extension ChatViewController: PHPickerViewControllerDelegate {
             item.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let image = image {
                     DispatchQueue.main.async {
-                        self.viewModel.imageSelected = [image as! UIImage]
-                        self.messageTableView.reloadData()
-//                        self.viewModel.imageSelected.append(image as! UIImage)
+                        self.viewModel.imageSelected = image as! UIImage
+                        self.viewModel.uploadImage {
+                            self.messageTableView.reloadData()
+                        }
                     }
                 }
             }

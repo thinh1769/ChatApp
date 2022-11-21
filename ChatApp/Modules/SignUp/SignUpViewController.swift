@@ -56,8 +56,8 @@ class SignUpViewController: UIViewController {
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: DefaultMessage.alertTitle, message: DefaultMessage.wrongConfirmPassword, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: DefaultMessage.ok, style: .default, handler: nil))
+        let alert = UIAlertController(title: DefaultConstants.alertTitle, message: DefaultConstants.wrongConfirmPassword, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: DefaultConstants.ok, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 

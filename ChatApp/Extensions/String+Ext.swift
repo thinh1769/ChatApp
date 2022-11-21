@@ -9,7 +9,7 @@ import Foundation
 extension String {
     func getMinutesFromPresent() -> Double {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.dateFormat = DefaultConstants.dateFormat
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC+00")
         let currentDate = Date()
         guard let time = dateFormatter.date(from: self) else { return 0 }

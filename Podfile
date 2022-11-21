@@ -12,5 +12,6 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'Alamofire'
 pod 'Socket.IO-Client-Swift'
+pod 'AWSS3'
 
 end

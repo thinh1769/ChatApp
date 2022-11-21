@@ -8,11 +8,17 @@
 import Foundation
 
 enum Base: String {
-//    case url = "http://192.168.2.16:9090/"
-    case url = "http://localhost:9090/"
+    case url = "http://192.168.1.67:9090/"
+//    case url = "http://localhost:9090/"
 }
 
-struct DefaultMessage {
+struct AWSConstants {
+    static let accessKey = "AKIA4SZBYIUOX2L46WOP"
+    static let secretKey = "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"
+    static let s3Bucket = "congnghemoi-nhom15-chatapp"
+}
+
+struct DefaultConstants {
     static let recallMessage = "Tin nhắn đã được thu hồi"
     static let recallAlert = "Chỉ được thu hồi tin nhắn đã gửi trước 1 giờ"
     static let alertTitle = "Cảnh báo"
@@ -25,6 +31,7 @@ struct DefaultMessage {
     static let recall = "Thu hồi"
     static let camera = "Máy ảnh"
     static let photoLibrary = "Thư viện ảnh"
+    static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 }
 
 enum TableCellType: Int {
