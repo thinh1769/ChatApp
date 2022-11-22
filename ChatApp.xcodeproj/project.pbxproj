@@ -54,6 +54,7 @@
 		22C717082902F8FE00368D73 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C717072902F8FE00368D73 /* HomeViewModel.swift */; };
 		22C7170A2903C72500368D73 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C717092903C72500368D73 /* SignUpViewModel.swift */; };
 		DCD9E3CE09658B98754D3D53 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DDBA3C89A558761E7455645 /* Pods_ChatApp.framework */; };
+		FC9FCAAC292CCB0100866D99 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FCAAB292CCB0100866D99 /* ImageCache.swift */; };
 		FCB53EA9290644A200A75944 /* SocketIOManagerDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EA8290644A200A75944 /* SocketIOManagerDefault.swift */; };
 		FCB53EAB290644C100A75944 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EAA290644C100A75944 /* Managers.swift */; };
 		FCB53EAD2906731C00A75944 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EAC2906731C00A75944 /* ChatService.swift */; };
@@ -61,6 +62,8 @@
 		FCB53EB12906923D00A75944 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EB02906923D00A75944 /* ChatViewModel.swift */; };
 		FCC8F9FE28EF048B00930DA2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8F9FC28EF048B00930DA2 /* ChatViewController.swift */; };
 		FCC8F9FF28EF048B00930DA2 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */; };
+		FCDEE827292CFF48002D9D31 /* ImageReceiverGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEE825292CFF48002D9D31 /* ImageReceiverGroupCell.swift */; };
+		FCDEE828292CFF48002D9D31 /* ImageReceiverGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCDEE826292CFF48002D9D31 /* ImageReceiverGroupCell.xib */; };
 		FCFE78EB2927590000D76A50 /* ReceiveGroupMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */; };
 		FCFE78EC2927590000D76A50 /* ReceiveGroupMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */; };
 		FCFE78EE29275CF700D76A50 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78ED29275CF700D76A50 /* String+Ext.swift */; };
@@ -121,6 +124,7 @@
 		22C717092903C72500368D73 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9DDBA3C89A558761E7455645 /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21C8DF8869517526D478067 /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
+		FC9FCAAB292CCB0100866D99 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		FCB53EA8290644A200A75944 /* SocketIOManagerDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManagerDefault.swift; sourceTree = "<group>"; };
 		FCB53EAA290644C100A75944 /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
 		FCB53EAC2906731C00A75944 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 		FCB53EB02906923D00A75944 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		FCC8F9FC28EF048B00930DA2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		FCDEE825292CFF48002D9D31 /* ImageReceiverGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReceiverGroupCell.swift; sourceTree = "<group>"; };
+		FCDEE826292CFF48002D9D31 /* ImageReceiverGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageReceiverGroupCell.xib; sourceTree = "<group>"; };
 		FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiveGroupMessageCell.xib; sourceTree = "<group>"; };
 		FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveGroupMessageCell.swift; sourceTree = "<group>"; };
 		FCFE78ED29275CF700D76A50 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -356,6 +362,8 @@
 				22C11EAE2928A36D005273E0 /* ImageReceiverCell.xib */,
 				22C11EAD2928A36D005273E0 /* ImageSenderCell.swift */,
 				22C11EAF2928A36D005273E0 /* ImageSenderCell.xib */,
+				FCDEE825292CFF48002D9D31 /* ImageReceiverGroupCell.swift */,
+				FCDEE826292CFF48002D9D31 /* ImageReceiverGroupCell.xib */,
 			);
 			path = ImageCell;
 			sourceTree = "<group>";
@@ -385,6 +393,7 @@
 			children = (
 				22C716FB290297B300368D73 /* UserDefaults+Ext.swift */,
 				FCFE78ED29275CF700D76A50 /* String+Ext.swift */,
+				FC9FCAAB292CCB0100866D99 /* ImageCache.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -495,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C11EB32928A36D005273E0 /* ImageSenderCell.xib in Resources */,
+				FCDEE828292CFF48002D9D31 /* ImageReceiverGroupCell.xib in Resources */,
 				223C627728DF01B000B19A64 /* LoginViewController.xib in Resources */,
 				FCFE78EB2927590000D76A50 /* ReceiveGroupMessageCell.xib in Resources */,
 				2246D57728E0477300E1180D /* HomeFriendsCollectionViewCell.xib in Resources */,
@@ -576,8 +586,10 @@
 				22BE7521291D007600778DB8 /* SenderMessageCell.swift in Sources */,
 				FCFE78FF292B63DC00D76A50 /* AssetDataModel.swift in Sources */,
 				22C716F42902841400368D73 /* AuthService.swift in Sources */,
+				FC9FCAAC292CCB0100866D99 /* ImageCache.swift in Sources */,
 				22BE7517291BDACF00778DB8 /* ReceiveMessageCell.swift in Sources */,
 				22BE75072917C7F300778DB8 /* GroupNotificationCell.swift in Sources */,
+				FCDEE827292CFF48002D9D31 /* ImageReceiverGroupCell.swift in Sources */,
 				223C627628DF01B000B19A64 /* LoginViewController.swift in Sources */,
 				22973D7628E053D200F47C05 /* ConversationTableViewCell.swift in Sources */,
 				220BB42C290CE4380029B8E5 /* FriendTableCell.swift in Sources */,

@@ -119,6 +119,8 @@ class ChatViewController: UIViewController {
         messageTableView.register(UINib(nibName: "ReceiveGroupMessageCell", bundle: nil), forCellReuseIdentifier: "receiveGroupMessageCell")
         messageTableView.register(UINib(nibName: "GroupNotificationCell", bundle: nil), forCellReuseIdentifier: "groupNotificationCell")
         messageTableView.register(UINib(nibName: "ImageSenderCell", bundle: nil), forCellReuseIdentifier: "imageSenderCell")
+        messageTableView.register(UINib(nibName: "ImageReceiverCell", bundle: nil), forCellReuseIdentifier: "imageReceiverCell")
+        messageTableView.register(UINib(nibName: "ImageReceiverGroupCell", bundle: nil), forCellReuseIdentifier: "imageReceiverGroupCell")
         messageTableView.delegate = self
         messageTableView.dataSource = self
 
@@ -155,10 +157,14 @@ class ChatViewController: UIViewController {
                     } onError: { _ in
                     } onCompleted: {
                         self.chatInputText.text = ""
+                        self.sendButton.setImage(UIImage(systemName: "photo.fill.on.rectangle.fill"), for: .normal)
+                        self.viewModel.sendBtnStatus = MessageType.image.rawValue
                         self.viewModel.sendMessage(Message(type: 0, content: textMessage, chatId: self.viewModel.chatId))
                     }.disposed(by: viewModel.bag)
                 } else {
                     chatInputText.text = ""
+                    self.sendButton.setImage(UIImage(systemName: "photo.fill.on.rectangle.fill"), for: .normal)
+                    self.viewModel.sendBtnStatus = MessageType.image.rawValue
                     viewModel.sendMessage(Message(type: 0, content: textMessage, chatId: viewModel.chatId))
                 }
             }
@@ -261,12 +267,28 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
             case 1:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageSenderCell", for: indexPath) as? ImageSenderCell
-                else { return UITableViewCell() }
-                self.viewModel.getImage(index: indexPath.row) { [weak self] image in
-                    cell.configImage(image: image)
+                if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageSenderCell", for: indexPath) as? ImageSenderCell
+                    else { return UITableViewCell() }
+                    self.viewModel.getImage(index: indexPath.row) { image in
+                        cell.configImage(image: image)
+                    }
+                    return cell
+                } else if viewModel.chatType == ChatType.single.rawValue {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageReceiverCell", for: indexPath) as? ImageReceiverCell
+                    else { return UITableViewCell() }
+                    self.viewModel.getImage(index: indexPath.row) { image in
+                        cell.configImage(image: image)
+                    }
+                    return cell 
+                } else {
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageReceiverGroupCell", for: indexPath) as? ImageReceiverGroupCell
+                    else { return UITableViewCell() }
+                    self.viewModel.getImage(index: indexPath.row) { image in
+                        cell.configImage(image: image, name: self.viewModel.messages.value[indexPath.row].sender?.name ?? "")
+                    }
+                    return cell
                 }
-                return cell
                 
                 ///ChatType: GroupNotification
             case 2:
@@ -294,6 +316,14 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if viewModel.messages.value[indexPath.row].type == MessageType.image.rawValue {
+            return CGFloat(viewModel.messages.value[indexPath.row].imageHeight ?? 0) + 10
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
 }
 
 extension ChatViewController: ChooseNewAdminDelegate {
@@ -309,9 +339,9 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         for item in results {
             item.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let image = image {
-                    DispatchQueue.main.async {
-                        self.viewModel.imageSelected = image as! UIImage
-                        self.viewModel.uploadImage {
+                    self.viewModel.imageSelected = image as! UIImage
+                    self.viewModel.uploadImage {
+                        DispatchQueue.main.async {
                             self.messageTableView.reloadData()
                         }
                     }

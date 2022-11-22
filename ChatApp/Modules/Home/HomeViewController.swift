@@ -155,7 +155,11 @@ extension HomeViewController: UITableViewDataSource {
                 name = viewModel.chats.value[indexPath.row].chatName ?? ""
                 cell.avatarImage.image = UIImage(named: "avatar-group")
             }
-            cell.config(name: name, content: viewModel.chats.value[indexPath.row].lastMessage?.content ?? DefaultConstants.recallMessage)
+            if viewModel.chats.value[indexPath.row].lastMessage?.type == MessageType.image.rawValue {
+                cell.config(name: name, content: "\(viewModel.chats.value[indexPath.row].lastMessage?.sender?.name ?? "")\(DefaultConstants.sendImage)")
+            } else {
+                cell.config(name: name, content: viewModel.chats.value[indexPath.row].lastMessage?.content ?? DefaultConstants.recallMessage)
+            }
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "friendTableCell", for: indexPath) as? FriendTableCell else { return UITableViewCell() }

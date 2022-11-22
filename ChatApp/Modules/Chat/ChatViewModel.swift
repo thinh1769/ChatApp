@@ -17,6 +17,8 @@ class ChatViewModel {
     private let chatService = ChatService()
     private let userService = UserService()
     private let awsService = AWSService()
+    let maxImageWidth = UIScreen.main.bounds.width * 3 / 5
+    let maxImageHeight = UIScreen.main.bounds.height / 2
     var sendBtnStatus = MessageType.image.rawValue
     var imageSelected = UIImage()
     var chatId = ""
@@ -88,9 +90,20 @@ class ChatViewModel {
         formatter.dateFormat = DefaultConstants.dateFormat
         
         let assetDataModel = AssetDataModel(data: data, pathFile: "", thumbnail: imageSelected)
+        assetDataModel.compressed = true
+        assetDataModel.compressData()
         assetDataModel.remoteName = "\(UserDefaults.userInfo?.id ?? "")_" + formatter.string(from: Date())
         
-        self.sendMessage(Message(type: MessageType.image.rawValue, content: assetDataModel.remoteName, chatId: chatId))
+        let ratio = imageSelected.size.width / imageSelected.size.height
+        var newHeight = 0.0
+        if ratio > 1 {
+            newHeight = maxImageWidth / ratio
+        }
+        else {
+            newHeight = maxImageHeight * ratio
+        }
+        
+        self.sendMessage(Message(type: MessageType.image.rawValue, content: assetDataModel.remoteName, chatId: chatId, imageHeight: Int(floor(newHeight))))
         
         awsService.uploadImage(data: assetDataModel, completionHandler:  { [weak self] _, error in
             guard self != nil else { return }

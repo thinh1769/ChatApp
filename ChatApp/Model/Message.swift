@@ -16,4 +16,5 @@ struct Message: Codable, SocketData {
     var recall: Bool?
     var createdAt: String?
     var sender: UserInfo?
+    var imageHeight: Int?
 }

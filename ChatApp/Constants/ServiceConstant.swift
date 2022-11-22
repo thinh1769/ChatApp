@@ -8,7 +8,7 @@
 import Foundation
 
 enum Base: String {
-    case url = "http://192.168.1.67:9090/"
+    case url = "http://192.168.1.119:9090/"
 //    case url = "http://localhost:9090/"
 }
 
@@ -32,6 +32,7 @@ struct DefaultConstants {
     static let camera = "Máy ảnh"
     static let photoLibrary = "Thư viện ảnh"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    static let sendImage = " đã gửi 1 hình ảnh"
 }
 
 enum TableCellType: Int {

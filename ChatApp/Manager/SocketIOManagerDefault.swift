@@ -67,7 +67,12 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
     }
     
     func sendMessage(_ message: Message) {
-        let params = ["type": message.type, "content": message.content, "chatId": message.chatId] as [String : Any]
+        var params = [String: Any]()
+        if message.type == MessageType.image.rawValue {
+            params = ["type": message.type, "content": message.content ?? "", "chatId": message.chatId ?? "", "imageHeight": message.imageHeight ?? 0] as [String : Any]
+        } else {
+            params = ["type": message.type, "content": message.content ?? "", "chatId": message.chatId ?? ""] as [String : Any]
+        }
         socket.emit("User-Send-Message", params)
     }
     
@@ -91,6 +96,13 @@ class SocketIOManagerDefault: NSObject, SocketIOManager {
                 let senderId = (messageResponse["sender"] as! NSDictionary)["id"] as! String
                 let senderName = (messageResponse["sender"] as! NSDictionary)["name"] as! String
                 let message = Message(id: messageId, type: type, content: content, chatId: chatId, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName))
+                completion(message, nil)
+            case MessageType.image.rawValue:
+                let imageHeight = messageResponse["imageHeight"] as! Int
+                let recall = messageResponse["recall"] as! Bool
+                let senderId = (messageResponse["sender"] as! NSDictionary)["id"] as! String
+                let senderName = (messageResponse["sender"] as! NSDictionary)["name"] as! String
+                let message = Message(id: messageId, type: type, content: content, chatId: chatId, recall: recall, createdAt: createdAt, sender: UserInfo(id: senderId, name: senderName), imageHeight: imageHeight)
                 completion(message, nil)
             case MessageType.groupNotification.rawValue:
                 let message = Message(id: messageId, type: type, content: content, chatId: chatId, createdAt: createdAt)

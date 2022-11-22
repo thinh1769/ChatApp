@@ -26,7 +26,6 @@ class ImageSenderCell: UITableViewCell {
         imageMessage.frame = CGRect(x: UIScreen.main.bounds.width - maxImageWidth, y: 5, width: maxImageWidth, height: maxImageHeight)
         imageMessage.layer.masksToBounds = true
         imageMessage.layer.cornerRadius = 12
-        imageMessage.image = UIImage(named: "111")
         imageMessage.contentMode = .scaleAspectFit
         addSubview(imageMessage)
     }
