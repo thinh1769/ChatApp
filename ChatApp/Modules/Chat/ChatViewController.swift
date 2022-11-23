@@ -91,6 +91,13 @@ class ChatViewController: UIViewController {
                 var listMessages = self.viewModel.messages.value
                 listMessages.append(message)
                 self.viewModel.messages.accept(listMessages)
+                if message.type == MessageType.image.rawValue {
+                    self.viewModel.getImage(remoteName: message.content ?? "") { _ in
+                        DispatchQueue.main.async {
+                            self.messageTableView.reloadData()
+                        }
+                    }
+                }
                 self.messageTableView.reloadData()
                 self.messageTableView.scrollToRow(at: [0, self.viewModel.messages.value.count - 1], at: .top, animated: true)
             }
@@ -270,22 +277,28 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
                 if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageSenderCell", for: indexPath) as? ImageSenderCell
                     else { return UITableViewCell() }
-                    self.viewModel.getImage(index: indexPath.row) { image in
-                        cell.configImage(image: image)
+                    self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
+                        DispatchQueue.main.async {
+                            cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0)
+                        }
                     }
                     return cell
                 } else if viewModel.chatType == ChatType.single.rawValue {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageReceiverCell", for: indexPath) as? ImageReceiverCell
                     else { return UITableViewCell() }
-                    self.viewModel.getImage(index: indexPath.row) { image in
-                        cell.configImage(image: image)
+                    self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
+                        DispatchQueue.main.async {
+                            cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0)
+                        }
                     }
                     return cell 
                 } else {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageReceiverGroupCell", for: indexPath) as? ImageReceiverGroupCell
                     else { return UITableViewCell() }
-                    self.viewModel.getImage(index: indexPath.row) { image in
-                        cell.configImage(image: image, name: self.viewModel.messages.value[indexPath.row].sender?.name ?? "")
+                    self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
+                        DispatchQueue.main.async {
+                            cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0, name: self.viewModel.messages.value[indexPath.row].sender?.name ?? "")
+                        }
                     }
                     return cell
                 }
@@ -319,7 +332,11 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if viewModel.messages.value[indexPath.row].type == MessageType.image.rawValue {
-            return CGFloat(viewModel.messages.value[indexPath.row].imageHeight ?? 0) + 10
+            if viewModel.chatType == ChatType.group.rawValue && viewModel.messages.value[indexPath.row].sender?.id != UserDefaults.userInfo?.id {
+                return CGFloat(viewModel.messages.value[indexPath.row].imageHeight ?? 0) + 25
+            } else {
+                return CGFloat(viewModel.messages.value[indexPath.row].imageHeight ?? 0) + 10
+            }
         } else {
             return UITableView.automaticDimension
         }

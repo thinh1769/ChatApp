@@ -29,17 +29,10 @@ class ImageReceiverCell: UITableViewCell {
         addSubview(imageMessage)
     }
     
-    func configImage(image: UIImage) {
+    func configImage(image: UIImage, imageHeight: Int) {
         let ratio = image.size.width / image.size.height
-        var newHeight = 0.0
-        var newWidth = maxImageWidth
-        if ratio > 1 {
-            newHeight = maxImageWidth / ratio
-        }
-        else {
-            newHeight = maxImageHeight * ratio
-            newWidth = maxImageWidth * ratio
-        }
+        let newHeight = CGFloat(imageHeight)
+        let newWidth = newHeight * ratio
         imageMessage.image = image
         imageMessage.frame = CGRect(x: 0, y: 5, width: newWidth, height: newHeight)
     }

@@ -114,8 +114,8 @@ class ChatViewModel {
         })
     }
     
-    func getImage(index: Int, completion: @escaping(UIImage) -> Void) {
-        awsService.getImage(remoteName: messages.value[index].content ?? "") { data in
+    func getImage(remoteName: String, completion: @escaping(UIImage) -> Void) {
+        awsService.getImage(remoteName: remoteName) { data in
             guard let data = data else { return }
             guard let image = UIImage(data: data) else { return }
             completion(image)

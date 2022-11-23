@@ -41,17 +41,10 @@ class ImageReceiverGroupCell: UITableViewCell {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func configImage(image: UIImage, name: String) {
+    func configImage(image: UIImage, imageHeight: Int, name: String) {
         let ratio = image.size.width / image.size.height
-        var newHeight = 0.0
-        var newWidth = maxImageWidth
-        if ratio > 1 {
-            newHeight = maxImageWidth / ratio
-        }
-        else {
-            newHeight = maxImageHeight * ratio
-            newWidth = maxImageWidth * ratio
-        }
+        let newHeight = CGFloat(imageHeight)
+        let newWidth = newHeight * ratio
         imageMessage.image = image
         imageMessage.frame = CGRect(x: 0, y: 20, width: newWidth, height: newHeight)
         
