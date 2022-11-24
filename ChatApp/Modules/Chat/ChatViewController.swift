@@ -248,80 +248,81 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            switch viewModel.messages.value[indexPath.row].type {
-                ///ChatType: Text
-            case 0:
-                ///kiểm tra message có trùng với id đang đăng nhập
-                if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderMessageCell", for: indexPath) as? SenderMessageCell
-                    else { return UITableViewCell() }
-                    if viewModel.messages.value[indexPath.row].recall ?? false {
-                        cell.config(content: DefaultConstants.recallMessage)
-                    } else {
-                        cell.config(content: viewModel.messages.value[indexPath.row].content ?? "")
-                    }
-                    return cell
-                    
-                } else if viewModel.messages.value[indexPath.row].recall ?? false {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
-                    else { return UITableViewCell() }
+        switch viewModel.messages.value[indexPath.row].type {
+            ///ChatType: Text
+        case 0:
+            ///kiểm tra message có trùng với id đang đăng nhập
+            if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "senderMessageCell", for: indexPath) as? SenderMessageCell
+                else { return UITableViewCell() }
+                if viewModel.messages.value[indexPath.row].recall ?? false {
                     cell.config(content: DefaultConstants.recallMessage)
-                    return cell
-                } else if viewModel.chatType == ChatType.single.rawValue {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
-                    else { return UITableViewCell() }
+                } else {
                     cell.config(content: viewModel.messages.value[indexPath.row].content ?? "")
-                    return cell
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveGroupMessageCell", for: indexPath) as? ReceiveGroupMessageCell else { return UITableViewCell() }
-                    cell.config(name: viewModel.messages.value[indexPath.row].sender?.name ?? "", content: viewModel.messages.value[indexPath.row].content ?? "")
-                    return cell
                 }
-                
-            case 1:
-                if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageSenderCell", for: indexPath) as? ImageSenderCell
-                    else { return UITableViewCell() }
-                    self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
-                        DispatchQueue.main.async {
-                            cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0)
-                        }
-                    }
-                    return cell
-                } else if viewModel.chatType == ChatType.single.rawValue {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageReceiverCell", for: indexPath) as? ImageReceiverCell
-                    else { return UITableViewCell() }
-                    self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
-                        DispatchQueue.main.async {
-                            cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0)
-                        }
-                    }
-                    return cell 
-                } else {
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageReceiverGroupCell", for: indexPath) as? ImageReceiverGroupCell
-                    else { return UITableViewCell() }
-                    self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
-                        DispatchQueue.main.async {
-                            cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0, name: self.viewModel.messages.value[indexPath.row].sender?.name ?? "")
-                        }
-                    }
-                    return cell
-                }
-                
-                ///ChatType: GroupNotification
-            case 2:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
-                cell.config(viewModel.messages.value[indexPath.row].content ?? "")
                 return cell
                 
-            case 3:
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
-                cell.config(viewModel.messages.value[indexPath.row].content ?? "")
+            } else if viewModel.messages.value[indexPath.row].recall ?? false {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
+                else { return UITableViewCell() }
+                cell.config(content: DefaultConstants.recallMessage)
                 return cell
-                
-            default:
-                return UITableViewCell()
+            } else if viewModel.chatType == ChatType.single.rawValue {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveMessageCell", for: indexPath) as? ReceiveMessageCell
+                else { return UITableViewCell() }
+                cell.config(content: viewModel.messages.value[indexPath.row].content ?? "")
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "receiveGroupMessageCell", for: indexPath) as? ReceiveGroupMessageCell else { return UITableViewCell() }
+                cell.config(name: viewModel.messages.value[indexPath.row].sender?.name ?? "", content: viewModel.messages.value[indexPath.row].content ?? "")
+                return cell
             }
+            
+        ///Image
+        case 1:
+            if viewModel.messages.value[indexPath.row].sender?.id == UserDefaults.userInfo?.id {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageSenderCell", for: indexPath) as? ImageSenderCell
+                else { return UITableViewCell() }
+                self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
+                    DispatchQueue.main.async {
+                        cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0)
+                    }
+                }
+                return cell
+            } else if viewModel.chatType == ChatType.single.rawValue {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageReceiverCell", for: indexPath) as? ImageReceiverCell
+                else { return UITableViewCell() }
+                self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
+                    DispatchQueue.main.async {
+                        cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0)
+                    }
+                }
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageReceiverGroupCell", for: indexPath) as? ImageReceiverGroupCell
+                else { return UITableViewCell() }
+                self.viewModel.getImage(remoteName: self.viewModel.messages.value[indexPath.row].content ?? "") { image in
+                    DispatchQueue.main.async {
+                        cell.configImage(image: image, imageHeight: self.viewModel.messages.value[indexPath.row].imageHeight ?? 0, name: self.viewModel.messages.value[indexPath.row].sender?.name ?? "")
+                    }
+                }
+                return cell
+            }
+            
+            ///ChatType: GroupNotification
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
+            cell.config(viewModel.messages.value[indexPath.row].content ?? "")
+            return cell
+            
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupNotificationCell", for: indexPath) as? GroupNotificationCell else { return UITableViewCell() }
+            cell.config(viewModel.messages.value[indexPath.row].content ?? "")
+            return cell
+            
+        default:
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

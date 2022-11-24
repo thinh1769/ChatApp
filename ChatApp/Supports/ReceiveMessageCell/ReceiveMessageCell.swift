@@ -27,6 +27,7 @@ class ReceiveMessageCell: UITableViewCell {
         
         addSubview(messageView)
         addSubview(messageLabel)
+        selectionStyle = .none
         
         messageLabel.numberOfLines = 0
         messageLabel.translatesAutoresizingMaskIntoConstraints = false

@@ -27,6 +27,7 @@ class ImageReceiverCell: UITableViewCell {
         imageMessage.layer.cornerRadius = 12
         imageMessage.contentMode = .scaleAspectFit
         addSubview(imageMessage)
+        selectionStyle = .none
     }
     
     func configImage(image: UIImage, imageHeight: Int) {

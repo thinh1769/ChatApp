@@ -32,6 +32,7 @@ class ReceiveGroupMessageCell: UITableViewCell {
         addSubview(messageView)
         addSubview(messageLabel)
         addSubview(nameLabel)
+        selectionStyle = .none
         
         messageLabel.numberOfLines = 0
         nameLabel.translatesAutoresizingMaskIntoConstraints = false

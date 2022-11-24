@@ -32,6 +32,7 @@ class ImageReceiverGroupCell: UITableViewCell {
         imageMessage.contentMode = .scaleAspectFit
         addSubview(imageMessage)
         addSubview(nameLabel)
+        selectionStyle = .none
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: -5),

@@ -12,7 +12,7 @@ class GroupNotificationCell: UITableViewCell {
     @IBOutlet weak private var notificationLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none 
     }
     
     func config(_ content: String) {
