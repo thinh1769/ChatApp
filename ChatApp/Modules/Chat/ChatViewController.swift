@@ -322,7 +322,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let message = viewModel.messages.value[indexPath.row]
         if !(message.recall ?? false) && (message.sender?.id == UserDefaults.userInfo?.id) && (message.type == MessageType.text.rawValue) {
-            if message.createdAt?.getMinutesFromPresent() ?? 0 < 60 {
+            if message.createdAt?.getSecondsFromPresent() ?? 0 < 3600 {
                 self.showRecallSheet(index: indexPath.row)
             } else {
                 self.showAlert()

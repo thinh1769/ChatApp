@@ -33,6 +33,7 @@ struct DefaultConstants {
     static let photoLibrary = "Thư viện ảnh"
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     static let sendImage = " đã gửi 1 hình ảnh"
+    static let you = "Bạn"
 }
 
 enum TableCellType: Int {

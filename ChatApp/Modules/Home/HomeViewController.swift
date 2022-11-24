@@ -156,9 +156,15 @@ extension HomeViewController: UITableViewDataSource {
                 cell.avatarImage.image = UIImage(named: "avatar-group")
             }
             if viewModel.chats.value[indexPath.row].lastMessage?.type == MessageType.image.rawValue {
-                cell.config(name: name, content: "\(viewModel.chats.value[indexPath.row].lastMessage?.sender?.name ?? "")\(DefaultConstants.sendImage)")
-            } else {
+                if viewModel.chats.value[indexPath.row].lastMessage?.sender?.id != UserDefaults.userInfo?.id {
+                    cell.config(name: name, content: "\(viewModel.chats.value[indexPath.row].lastMessage?.sender?.name ?? "") \(DefaultConstants.sendImage)")
+                } else {
+                    cell.config(name: name, content: "\(DefaultConstants.you)\(DefaultConstants.sendImage)")
+                }
+            } else if viewModel.chats.value[indexPath.row].lastMessage?.sender?.id != UserDefaults.userInfo?.id {
                 cell.config(name: name, content: viewModel.chats.value[indexPath.row].lastMessage?.content ?? DefaultConstants.recallMessage)
+            } else {
+                cell.config(name: name, content: "\(DefaultConstants.you): \(viewModel.chats.value[indexPath.row].lastMessage?.content ?? DefaultConstants.recallMessage)")
             }
             return cell
         } else {

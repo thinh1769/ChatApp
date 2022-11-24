@@ -29,17 +29,10 @@ class HomeViewModel {
     
     func sortChat(_ chats: [Chat]) -> [Chat] {
         return chats.sorted(by: {
-            if self.convertDate($0.lastMessage?.createdAt ?? "").compare(self.convertDate($1.lastMessage?.createdAt ?? "")) == .orderedDescending {
+            if $0.lastMessage?.createdAt?.getSecondsFromPresent() ?? 0.0 < $1.lastMessage?.createdAt?.getSecondsFromPresent() ?? 0.0 {
                 return true
             } else { return false }
         })
-    }
-    
-    func convertDate(_ dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        guard let date = dateFormatter.date(from: dateString) else { return Date() }
-        return date
     }
     
     func updateAdmin(chatId: String, adminId: String) {
