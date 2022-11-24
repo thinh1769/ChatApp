@@ -24,5 +24,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>ChapApp cần máy ảnh của bạn!</string>
 </dict>
 </plist>

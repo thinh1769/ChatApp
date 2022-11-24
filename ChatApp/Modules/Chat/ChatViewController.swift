@@ -22,6 +22,7 @@ class ChatViewController: UIViewController {
     @IBOutlet weak private var sendButton: UIButton!
     
     var viewModel = ChatViewModel()
+    let imagePicked = UIImagePickerController()
     
     func inject(otherUserId: String?, chatId: String?, chatName: String, chatType: Int, adminId: String) {
         viewModel.chatId = chatId ?? ""
@@ -60,6 +61,9 @@ class ChatViewController: UIViewController {
                 self.viewModel.sendBtnStatus = MessageType.image.rawValue
             }
         }.disposed(by: viewModel.bag)
+        
+        imagePicked.delegate = self
+        imagePicked.allowsEditing = false
     }
     
     private func fetchData() {
@@ -221,7 +225,8 @@ class ChatViewController: UIViewController {
     private func showMediaSheet() {
         let recallSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         recallSheet.addAction(UIAlertAction(title: DefaultConstants.camera, style: .default, handler: { _ in
-            
+            self.imagePicked.sourceType = .camera
+            self.present(self.imagePicked, animated: true)
         }))
         recallSheet.addAction(UIAlertAction(title: DefaultConstants.photoLibrary, style: .default, handler: { _ in
             self.showImagePickerView()
@@ -356,7 +361,7 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         for item in results {
             item.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let image = image {
-                    self.viewModel.imageSelected = image as! UIImage
+                    self.viewModel.imageSelected = (image as! UIImage).rotate()
                     self.viewModel.uploadImage {
                         DispatchQueue.main.async {
                             self.messageTableView.reloadData()
@@ -366,6 +371,18 @@ extension ChatViewController: PHPickerViewControllerDelegate {
             }
         }
     }
-    
-    
+}
+
+extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let userPickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            self.viewModel.imageSelected = userPickedImage.rotate()
+            self.viewModel.uploadImage {
+                DispatchQueue.main.async {
+                    self.messageTableView.reloadData()
+                }
+            }
+        }
+        imagePicked.dismiss(animated: true, completion: nil)
+    }
 }

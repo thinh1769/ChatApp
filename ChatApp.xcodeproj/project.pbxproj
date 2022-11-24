@@ -64,6 +64,7 @@
 		FCC8F9FF28EF048B00930DA2 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */; };
 		FCDEE827292CFF48002D9D31 /* ImageReceiverGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEE825292CFF48002D9D31 /* ImageReceiverGroupCell.swift */; };
 		FCDEE828292CFF48002D9D31 /* ImageReceiverGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCDEE826292CFF48002D9D31 /* ImageReceiverGroupCell.xib */; };
+		FCDEE82F292F4665002D9D31 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEE82E292F4665002D9D31 /* UIImage+Ext.swift */; };
 		FCFE78EB2927590000D76A50 /* ReceiveGroupMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */; };
 		FCFE78EC2927590000D76A50 /* ReceiveGroupMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */; };
 		FCFE78EE29275CF700D76A50 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78ED29275CF700D76A50 /* String+Ext.swift */; };
@@ -134,6 +135,7 @@
 		FCC8F9FD28EF048B00930DA2 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		FCDEE825292CFF48002D9D31 /* ImageReceiverGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReceiverGroupCell.swift; sourceTree = "<group>"; };
 		FCDEE826292CFF48002D9D31 /* ImageReceiverGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageReceiverGroupCell.xib; sourceTree = "<group>"; };
+		FCDEE82E292F4665002D9D31 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiveGroupMessageCell.xib; sourceTree = "<group>"; };
 		FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveGroupMessageCell.swift; sourceTree = "<group>"; };
 		FCFE78ED29275CF700D76A50 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				22C716FB290297B300368D73 /* UserDefaults+Ext.swift */,
 				FCFE78ED29275CF700D76A50 /* String+Ext.swift */,
 				FC9FCAAB292CCB0100866D99 /* ImageCache.swift */,
+				FCDEE82E292F4665002D9D31 /* UIImage+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				220BB42C290CE4380029B8E5 /* FriendTableCell.swift in Sources */,
 				22C716FC290297B300368D73 /* UserDefaults+Ext.swift in Sources */,
 				22A55B7928DEF7A300F936B3 /* SignUpViewController.swift in Sources */,
+				FCDEE82F292F4665002D9D31 /* UIImage+Ext.swift in Sources */,
 				22A55B6328DEF6DD00F936B3 /* AppDelegate.swift in Sources */,
 				FCFE78EE29275CF700D76A50 /* String+Ext.swift in Sources */,
 				22BE750C2918052700778DB8 /* UserService.swift in Sources */,

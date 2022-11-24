@@ -94,16 +94,7 @@ class ChatViewModel {
         assetDataModel.compressData()
         assetDataModel.remoteName = "\(UserDefaults.userInfo?.id ?? "")_" + formatter.string(from: Date())
         
-        let ratio = imageSelected.size.width / imageSelected.size.height
-        var newHeight = 0.0
-        if ratio > 1 {
-            newHeight = maxImageWidth / ratio
-        }
-        else {
-            newHeight = maxImageHeight * ratio
-        }
-        
-        self.sendMessage(Message(type: MessageType.image.rawValue, content: assetDataModel.remoteName, chatId: chatId, imageHeight: Int(floor(newHeight))))
+        self.sendMessage(Message(type: MessageType.image.rawValue, content: assetDataModel.remoteName, chatId: chatId, imageHeight: self.calculateNewHeight()))
         
         awsService.uploadImage(data: assetDataModel, completionHandler:  { [weak self] _, error in
             guard self != nil else { return }
@@ -119,6 +110,18 @@ class ChatViewModel {
             guard let data = data else { return }
             guard let image = UIImage(data: data) else { return }
             completion(image)
+        }
+    }
+    
+    func calculateNewHeight() -> Int {
+        let ratio = imageSelected.size.width / imageSelected.size.height
+        if ratio > 1 {
+            return Int(floor(maxImageWidth / ratio))
+        }
+        else if ratio < 1 {
+            return Int(floor(maxImageHeight * ratio))
+        } else {
+            return Int(floor(maxImageWidth))
         }
     }
 }
