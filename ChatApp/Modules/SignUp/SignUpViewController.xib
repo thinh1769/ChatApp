@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -72,30 +72,32 @@
                         <action selector="onClickSignUpBtn:" destination="-1" eventType="touchUpInside" id="Vir-2o-Uki"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="jG9-V3-EzF">
-                    <rect key="frame" x="165.66666666666666" y="81.666666666666671" width="82.666666666666657" height="82.000000000000014"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrC-nU-1gj">
-                    <rect key="frame" x="30" y="575.33333333333337" width="354" height="31"/>
+                    <rect key="frame" x="30" y="575.33333333333337" width="354" height="34.333333333333371"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Bạn đã có tài khoản? Đăng nhập ngay"/>
                     <connections>
                         <action selector="onClickedSignInBtn:" destination="-1" eventType="touchUpInside" id="vJg-Cc-FR7"/>
                     </connections>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app-logo" translatesAutoresizingMaskIntoConstraints="NO" id="jG9-V3-EzF">
+                    <rect key="frame" x="132" y="67.666666666666686" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="IAg-UH-qDa"/>
+                        <constraint firstAttribute="width" constant="150" id="u7e-dy-0YJ"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="jG9-V3-EzF" firstAttribute="width" secondItem="XHG-wP-Oot" secondAttribute="width" multiplier="1/5" id="1Cg-rO-cEj"/>
                 <constraint firstItem="XHG-wP-Oot" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2R8-pu-ZLc"/>
                 <constraint firstItem="KrC-nU-1gj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="3oU-Zx-oqd"/>
                 <constraint firstItem="x6U-sb-vTN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="6H5-7x-gam"/>
                 <constraint firstItem="KrC-nU-1gj" firstAttribute="top" secondItem="q5w-u4-vz2" secondAttribute="bottom" constant="20" id="AZc-6p-KSC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0dB-gq-1pc" secondAttribute="trailing" constant="30" id="B8W-mz-HdD"/>
                 <constraint firstItem="0dB-gq-1pc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="F5B-Ly-BpP"/>
-                <constraint firstItem="jG9-V3-EzF" firstAttribute="centerY" secondItem="XHG-wP-Oot" secondAttribute="centerY" id="LhG-xi-0ZC"/>
-                <constraint firstItem="jG9-V3-EzF" firstAttribute="height" secondItem="XHG-wP-Oot" secondAttribute="height" multiplier="1/3" id="Qgj-k8-Yuc"/>
+                <constraint firstItem="jG9-V3-EzF" firstAttribute="centerY" secondItem="XHG-wP-Oot" secondAttribute="centerY" constant="20" id="Nvo-CK-cCE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="q5w-u4-vz2" secondAttribute="trailing" constant="30" id="QrV-kV-wHI"/>
                 <constraint firstItem="q5w-u4-vz2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="agm-U9-tR9"/>
                 <constraint firstItem="XHG-wP-Oot" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cLv-QG-Chq"/>
@@ -105,8 +107,8 @@
                 <constraint firstItem="x6U-sb-vTN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mHo-EQ-G7B"/>
                 <constraint firstItem="x6U-sb-vTN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mnW-xc-lwY"/>
                 <constraint firstItem="x6U-sb-vTN" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/3" id="o13-EN-zDk"/>
+                <constraint firstItem="jG9-V3-EzF" firstAttribute="centerX" secondItem="XHG-wP-Oot" secondAttribute="centerX" id="rWC-Ie-9J9"/>
                 <constraint firstItem="KrC-nU-1gj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uEs-Na-mwO"/>
-                <constraint firstItem="jG9-V3-EzF" firstAttribute="centerX" secondItem="XHG-wP-Oot" secondAttribute="centerX" id="ueg-qR-Heb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XHG-wP-Oot" secondAttribute="trailing" id="yMi-du-32l"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KrC-nU-1gj" secondAttribute="trailing" constant="30" id="zjB-qX-lLB"/>
             </constraints>
@@ -114,8 +116,8 @@
         </view>
     </objects>
     <resources>
+        <image name="app-logo" width="73.666664123535156" height="65.333335876464844"/>
         <image name="bottom_background" width="125.66666412353516" height="63.333332061767578"/>
-        <image name="logo" width="36.666667938232422" height="39.333332061767578"/>
         <image name="top_background" width="142.66667175292969" height="110.33333587646484"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
