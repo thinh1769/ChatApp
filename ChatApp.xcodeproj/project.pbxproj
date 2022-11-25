@@ -65,6 +65,7 @@
 		FCDEE827292CFF48002D9D31 /* ImageReceiverGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEE825292CFF48002D9D31 /* ImageReceiverGroupCell.swift */; };
 		FCDEE828292CFF48002D9D31 /* ImageReceiverGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCDEE826292CFF48002D9D31 /* ImageReceiverGroupCell.xib */; };
 		FCDEE82F292F4665002D9D31 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEE82E292F4665002D9D31 /* UIImage+Ext.swift */; };
+		FCDEE83129305F5F002D9D31 /* RegexConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEE83029305F5F002D9D31 /* RegexConstants.swift */; };
 		FCFE78EB2927590000D76A50 /* ReceiveGroupMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */; };
 		FCFE78EC2927590000D76A50 /* ReceiveGroupMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */; };
 		FCFE78EE29275CF700D76A50 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFE78ED29275CF700D76A50 /* String+Ext.swift */; };
@@ -136,6 +137,7 @@
 		FCDEE825292CFF48002D9D31 /* ImageReceiverGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReceiverGroupCell.swift; sourceTree = "<group>"; };
 		FCDEE826292CFF48002D9D31 /* ImageReceiverGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageReceiverGroupCell.xib; sourceTree = "<group>"; };
 		FCDEE82E292F4665002D9D31 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		FCDEE83029305F5F002D9D31 /* RegexConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexConstants.swift; sourceTree = "<group>"; };
 		FCFE78E92927590000D76A50 /* ReceiveGroupMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiveGroupMessageCell.xib; sourceTree = "<group>"; };
 		FCFE78EA2927590000D76A50 /* ReceiveGroupMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveGroupMessageCell.swift; sourceTree = "<group>"; };
 		FCFE78ED29275CF700D76A50 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				22C716F6290284AD00368D73 /* ServiceConstant.swift */,
+				FCDEE83029305F5F002D9D31 /* RegexConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				220BB42C290CE4380029B8E5 /* FriendTableCell.swift in Sources */,
 				22C716FC290297B300368D73 /* UserDefaults+Ext.swift in Sources */,
 				22A55B7928DEF7A300F936B3 /* SignUpViewController.swift in Sources */,
+				FCDEE83129305F5F002D9D31 /* RegexConstants.swift in Sources */,
 				FCDEE82F292F4665002D9D31 /* UIImage+Ext.swift in Sources */,
 				22A55B6328DEF6DD00F936B3 /* AppDelegate.swift in Sources */,
 				FCFE78EE29275CF700D76A50 /* String+Ext.swift in Sources */,

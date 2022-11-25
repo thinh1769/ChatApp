@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var homeFriendsCollectionView: UICollectionView!
     @IBOutlet weak var conversationTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -25,7 +24,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         subscribeSocketIO()
         setupUI()
-        setupCollection()
         setUpTableView(TableCellType.chat.rawValue)
         setupBinding()
     }
@@ -89,15 +87,6 @@ class HomeViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    func setupCollection() {
-        homeFriendsCollectionView.delegate = self
-        homeFriendsCollectionView.dataSource = self
-        homeFriendsCollectionView.register(UINib(nibName: "HomeFriendsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "homeFriendsCollectionViewcell")
-        homeFriendsCollectionView.backgroundColor = .clear
-        cellSize = homeFriendsCollectionView.frame.size.height
-        homeFriendsCollectionView.backgroundColor = .clear
-    }
-    
     func setUpTableView(_ typeTableCell: Int) {
         self.conversationTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         conversationTableView.delegate = self
@@ -117,20 +106,6 @@ class HomeViewController: UIViewController {
         }.disposed(by: viewModel.bag)
     }
     
-}
-
-///-------CollectionView
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeFriendsCollectionViewcell", for: indexPath) as? HomeFriendsCollectionViewCell else { return UICollectionViewCell() }
-        cell.avatarImage.layer.cornerRadius = cellSize/2
-        cell.deleteBtn.isHidden = true
-        return cell
-    }
 }
 
 ///-------TableView
@@ -195,20 +170,6 @@ extension HomeViewController: UITableViewDelegate {
             vc.inject(otherUserId: viewModel.searchFriendsList.value[indexPath.row].id, chatId: nil, chatName: viewModel.searchFriendsList.value[indexPath.row].name ?? "", chatType: ChatType.single.rawValue, adminId: "")
         }
         navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: homeFriendsCollectionView.bounds.size.height , height: homeFriendsCollectionView.bounds.size.height )
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 7.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
     }
 }
 

@@ -19,3 +19,12 @@ extension String {
         return seconds
     }
 }
+
+extension String {
+    func isMatches(_ regex: String) -> Bool{
+        if self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil {
+            return true
+        }
+        return false
+    }
+}

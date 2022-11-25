@@ -33,16 +33,21 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
     @IBAction func onClickLoginBtn(_ sender: UIButton) {
-        guard let phone = phoneTextField.text,
-              let password = passwordTextField.text else { return }
-        
-        viewModel.login(userName: phone, password: password).subscribe { user in
+        guard let phone = phoneTextField.text, phone.isMatches(RegexConstants.PHONE_NUMBER),
+              let password = passwordTextField.text, password.isMatches(RegexConstants.PASSWORD)
+        else {
+            showAlert(DefaultConstants.registerInformation)
+            return
+        }
+        viewModel.login(userName: phone, password: password).subscribe { [weak self] user in
+            guard let self = self else { return }
             UserDefaults.userInfo = user
             self.viewModel.connectToSocket()
             let vc = HomeViewController()
             vc.name = user.name ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         } onError: { error in
+            self.showAlert(DefaultConstants.loginFailed)
             print("------------------------ error = \(error.localizedDescription)")
         }.disposed(by: viewModel.bag)
 
@@ -51,6 +56,12 @@ class LoginViewController: UIViewController {
     @IBAction func onClickSignUpBtn(_ sender: UIButton) {
         let vc = SignUpViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func showAlert(_ message: String) {
+        let alert = UIAlertController(title: DefaultConstants.alertTitle, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: DefaultConstants.ok, style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
 }

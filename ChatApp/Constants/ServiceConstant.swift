@@ -34,6 +34,8 @@ struct DefaultConstants {
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     static let sendImage = " đã gửi 1 hình ảnh"
     static let you = "Bạn"
+    static let registerInformation = "Chưa nhập đủ thông tin đăng ký"
+    static let loginFailed = "Thông tin đăng nhập không đúng"
 }
 
 enum TableCellType: Int {

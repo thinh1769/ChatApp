@@ -33,14 +33,14 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hak-5A-j4j">
                             <rect key="frame" x="0.0" y="0.0" width="354" height="52.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Họ tên" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bnQ-I5-aMI">
                             <rect key="frame" x="0.0" y="72.666666666666686" width="354" height="52.333333333333343"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-c0-EJw">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu (từ 5 - 20 ký tự)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-c0-EJw">
                             <rect key="frame" x="0.0" y="145" width="354" height="52.666666666666657"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -112,7 +112,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XHG-wP-Oot" secondAttribute="trailing" id="yMi-du-32l"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KrC-nU-1gj" secondAttribute="trailing" constant="30" id="zjB-qX-lLB"/>
             </constraints>
-            <point key="canvasLocation" x="101" y="135"/>
+            <point key="canvasLocation" x="-123" y="33"/>
         </view>
     </objects>
     <resources>
