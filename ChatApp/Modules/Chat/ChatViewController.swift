@@ -223,16 +223,16 @@ class ChatViewController: UIViewController {
     }
     
     private func showMediaSheet() {
-        let recallSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        recallSheet.addAction(UIAlertAction(title: DefaultConstants.camera, style: .default, handler: { _ in
+        let mediaSheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        mediaSheet.addAction(UIAlertAction(title: DefaultConstants.camera, style: .default, handler: { _ in
             self.imagePicked.sourceType = .camera
             self.present(self.imagePicked, animated: true)
         }))
-        recallSheet.addAction(UIAlertAction(title: DefaultConstants.photoLibrary, style: .default, handler: { _ in
+        mediaSheet.addAction(UIAlertAction(title: DefaultConstants.photoLibrary, style: .default, handler: { _ in
             self.showImagePickerView()
         }))
-        recallSheet.addAction(UIAlertAction(title: DefaultConstants.cancel, style: .destructive, handler: nil))
-        present(recallSheet, animated: true, completion: nil)
+        mediaSheet.addAction(UIAlertAction(title: DefaultConstants.cancel, style: .destructive, handler: nil))
+        present(mediaSheet, animated: true, completion: nil)
     }
     
     private func showAlert() {

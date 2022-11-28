@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        phoneTextField.text = "11111"
+        phoneTextField.text = "0934348847"
         passwordTextField.text = "11111"
         loginBtn.layer.cornerRadius = 17
         

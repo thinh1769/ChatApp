@@ -91,7 +91,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-OR-HzX">
                             <rect key="frame" x="0.0" y="65" width="414" height="50"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập tên nhóm" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Mv-e4-CdE">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập tên nhóm" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Mv-e4-CdE">
                                     <rect key="frame" x="30" y="0.0" width="354" height="50"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
@@ -148,7 +148,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCd-Pb-0yq">
                             <rect key="frame" x="0.0" y="231" width="414" height="50"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tìm liên hệ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="luP-gn-tF6">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tìm liên hệ" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="luP-gn-tF6">
                                     <rect key="frame" x="30" y="5" width="354" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="0tC-vs-bLL"/>
@@ -194,7 +194,7 @@
                 <constraint firstItem="Yey-wm-qQM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hUb-ky-ZLz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dCe-qA-5gj" secondAttribute="trailing" id="mTN-IQ-lG9"/>
             </constraints>
-            <point key="canvasLocation" x="-99" y="56"/>
+            <point key="canvasLocation" x="348" y="16"/>
         </view>
     </objects>
     <resources>

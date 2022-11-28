@@ -109,6 +109,7 @@ enum ApiConstants: String {
     case searchFriends = "users/search/" // {userName or phoneNumber}
     case getChatByUserId = "chats/getByOtherUser/" //{userId}
     case getUserByChatId = "users/getByChat/" // {chatId}
+    case updateUserInfo = "/users/updateInfo/"
     
     var method: HTTPMethodSupport {
         switch self {
@@ -128,6 +129,8 @@ enum ApiConstants: String {
             return .get
         case .getUserByChatId:
             return .get
+        case .updateUserInfo:
+            return .put
         }
     }
 

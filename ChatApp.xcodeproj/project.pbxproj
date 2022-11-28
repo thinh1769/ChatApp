@@ -54,6 +54,9 @@
 		22C717082902F8FE00368D73 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C717072902F8FE00368D73 /* HomeViewModel.swift */; };
 		22C7170A2903C72500368D73 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C717092903C72500368D73 /* SignUpViewModel.swift */; };
 		DCD9E3CE09658B98754D3D53 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DDBA3C89A558761E7455645 /* Pods_ChatApp.framework */; };
+		FC811D6029349E6800D61164 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC811D5E29349E6800D61164 /* UserInfoViewController.swift */; };
+		FC811D6129349E6800D61164 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC811D5F29349E6800D61164 /* UserInfoViewController.xib */; };
+		FC811D632934A64800D61164 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC811D622934A64800D61164 /* UserInfoViewModel.swift */; };
 		FC9FCAAC292CCB0100866D99 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FCAAB292CCB0100866D99 /* ImageCache.swift */; };
 		FCB53EA9290644A200A75944 /* SocketIOManagerDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EA8290644A200A75944 /* SocketIOManagerDefault.swift */; };
 		FCB53EAB290644C100A75944 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB53EAA290644C100A75944 /* Managers.swift */; };
@@ -126,6 +129,9 @@
 		22C717092903C72500368D73 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9DDBA3C89A558761E7455645 /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21C8DF8869517526D478067 /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
+		FC811D5E29349E6800D61164 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		FC811D5F29349E6800D61164 /* UserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
+		FC811D622934A64800D61164 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		FC9FCAAB292CCB0100866D99 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		FCB53EA8290644A200A75944 /* SocketIOManagerDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManagerDefault.swift; sourceTree = "<group>"; };
 		FCB53EAA290644C100A75944 /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 				22A55B7628DEF77600F936B3 /* SignUp */,
 				223C627328DF015300B19A64 /* Login */,
 				223C627A28E02C8200B19A64 /* Home */,
+				FC811D5D29349E2E00D61164 /* UserInfo */,
 				FCC8F9FB28EF031C00930DA2 /* Chat */,
 				2204655C290E2B3900DF96F1 /* CreateGroup */,
 				223F9C0D291773860076AED4 /* AddMember */,
@@ -421,6 +428,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FC811D5D29349E2E00D61164 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				FC811D5E29349E6800D61164 /* UserInfoViewController.swift */,
+				FC811D5F29349E6800D61164 /* UserInfoViewController.xib */,
+				FC811D622934A64800D61164 /* UserInfoViewModel.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
 		FCB53EA52906444C00A75944 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +543,7 @@
 				22BE7511291A754E00778DB8 /* GroupManagerViewController.xib in Resources */,
 				22BE7522291D007600778DB8 /* SenderMessageCell.xib in Resources */,
 				220BB42D290CE4380029B8E5 /* FriendTableCell.xib in Resources */,
+				FC811D6129349E6800D61164 /* UserInfoViewController.xib in Resources */,
 				22A55B7A28DEF7A300F936B3 /* SignUpViewController.xib in Resources */,
 				22BE7518291BDACF00778DB8 /* ReceiveMessageCell.xib in Resources */,
 			);
@@ -613,6 +631,7 @@
 				22C7170229029F0F00368D73 /* LoginViewModel.swift in Sources */,
 				22973D8328F2B4CB00F47C05 /* Message.swift in Sources */,
 				22C11EB02928A36D005273E0 /* ImageReceiverCell.swift in Sources */,
+				FC811D6029349E6800D61164 /* UserInfoViewController.swift in Sources */,
 				22C716F7290284AD00368D73 /* ServiceConstant.swift in Sources */,
 				FCB53EAD2906731C00A75944 /* ChatService.swift in Sources */,
 				22A55B6528DEF6DD00F936B3 /* SceneDelegate.swift in Sources */,
@@ -624,6 +643,7 @@
 				22C716FE290297F200368D73 /* UserInfo.swift in Sources */,
 				FCFE7901292B641600D76A50 /* Asset.swift in Sources */,
 				220465622910190900DF96F1 /* CreateGroupViewModel.swift in Sources */,
+				FC811D632934A64800D61164 /* UserInfoViewModel.swift in Sources */,
 				22C716F22902828200368D73 /* BaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

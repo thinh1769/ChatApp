@@ -11,10 +11,11 @@ import RxCocoa
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var avatarImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var conversationTableView: UITableView!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet private weak var avatarImage: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var conversationTableView: UITableView!
+    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var userInfoView: UIView!
     
     var cellSize = 0.0
     var name = ""
@@ -75,6 +76,7 @@ class HomeViewController: UIViewController {
         searchTextField.delegate = self
         avatarImage.layer.cornerRadius = avatarImage.bounds.width / 2
         nameLabel.text = name
+        userInfoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToUserInfoView)))
     }
     
     @IBAction func createGroupBtnClicked(_ sender: UIButton) {
@@ -104,6 +106,11 @@ class HomeViewController: UIViewController {
             self.viewModel.chats.accept(self.viewModel.sortChat(chats))
             self.conversationTableView.reloadData()
         }.disposed(by: viewModel.bag)
+    }
+    
+    @objc private func goToUserInfoView() {
+        let vc = UserInfoViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

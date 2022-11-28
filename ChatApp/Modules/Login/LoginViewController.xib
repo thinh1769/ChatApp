@@ -31,12 +31,12 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Xkn-oK-RdG">
                     <rect key="frame" x="30" y="283.66666666666669" width="315" height="130"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vxL-WN-JwS">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vxL-WN-JwS">
                             <rect key="frame" x="0.0" y="0.0" width="315" height="55"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Cv-uM-oSL">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Cv-uM-oSL">
                             <rect key="frame" x="0.0" y="75" width="315" height="55"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -124,7 +124,7 @@
                 <constraint firstItem="2E5-Ed-MNT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nnl-Ji-Zw7"/>
                 <constraint firstItem="MGI-8s-1xq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yuy-Wb-YCP"/>
             </constraints>
-            <point key="canvasLocation" x="-244" y="26"/>
+            <point key="canvasLocation" x="340" y="43"/>
         </view>
     </objects>
     <resources>
