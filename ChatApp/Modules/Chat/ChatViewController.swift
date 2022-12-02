@@ -187,7 +187,7 @@ class ChatViewController: UIViewController {
     private func showImagePickerView() {
         var config = PHPickerConfiguration()
         config.filter = .images
-        config.selectionLimit = 2
+        config.selectionLimit = 1
         
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = self
