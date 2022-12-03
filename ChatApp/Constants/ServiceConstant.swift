@@ -8,8 +8,8 @@
 import Foundation
 
 enum Base: String {
-    case url = "http://192.168.1.119:9090/"
-//    case url = "http://localhost:9090/"
+//    case url = "http://192.168.1.119:9090/"
+    case url = "http://localhost:9090/"
 }
 
 struct AWSConstants {
